@@ -119,6 +119,7 @@ a {
     height: 70vh;
     background-image: url('./assets/images/me-cover-flip.png');
     background-position: 58% 30%;
+    background-repeat: no-repeat;
     justify-content: center;
 }
 
