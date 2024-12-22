@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <title>Sajad Ali | CV</title>
+
+    <style>
+        ::-webkit-scrollbar{
+            width: .50rem;
+        }
+
+        ::-webkit-scrollbar-thumb{
+            background-color: limegreen;
+        } 
+
+        ::-webkit-scrollbar-track{
+            background: transparent;
+        }
+
+        @keyframes load {
+            from {
+                transform: translateY(100px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0px);
+                opacity: 1;
+            }
+        }
+        
+        body {
+            padding: 5% 15%;
+            font-family: 'DM Sans', sans-serif;
+            transform: translateY(100px);
+            opacity: 0;
+            animation-name: load;
+            animation-duration: 0.5s;
+            animation-fill-mode: forwards;
+        }
+
+        h1 {
+            text-align: center;
+            letter-spacing: 2px;
+        }
+
+        h2 {
+            /* margin: 5% 0% 1% 0%; */
+            color: limegreen;
+            letter-spacing: 2px;
+        }
+
+        .card {
+            display: flex;
+        }
+
+        .profile-img {
+            height: 170px;
+            margin-right: 20px;
+            margin-top: 14px;
+            border-radius: 50%;
+            box-shadow: 0px 0px 2px 1px silver;
+        }
+
+        p {
+            padding-left: 11px;
+            text-align: justify;
+        }
+
+        ul {
+            list-style: none;
+            padding: 2%;
+        }
+
+        li {
+            margin-bottom: 2%;
+        }
+
+        td {
+            padding: 10px;
+        }
+
+        @media (max-width: 767px) {
+            body {
+                padding: 5% 5%;
+            }
+
+            .card {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            img {
+                height: 250px;
+            }
+
+            .profile-img {
+                width: 48%;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <h1>My CV</h1>
+    <div class="card">
+        <img class="profile-img" src="../assets/images/me-profile.png" alt="profile picture">
+        <div>
+            <h2>Sajad Ali Tavakoli</h2>
+            <p>
+                Web Developer | ICDL Teacher <br>
+                Graduated from Avicenna University <br>
+                Email: <a href="mailto:sajadalitavakoli@gmail.com">sajadalitavakoli@gmail.com</a> <br>
+                Phone: (+93) 0794 080 306 / (+93) 0773 161 562 <br>
+                Address: Golayee Mahtab Qala station, Shaheed Mazari road, 13th district, Kabul, Afghanistan 
+            </p>
+        </div>
+    </div>
+    <h2>Cover Letter</h2>
+    <p>I graduated from Abdulrahim Shaheed High School in 2016. My passion for technology led me to pursue a degree in Software Engineering from the Faculty of Computer Science at Avicenna University, from which I graduated in 2023. During my studies, I honed my skills in various programming languages, software development methodologies, problem-solving techniques and mathematics.</p>
+    <p>In my academic and personal projects, I have developed robust web applications and refined my ability to troubleshoot complex coding issues. I understand the importance of creating efficient, secure, and scalable back-end and fron-end solutions that enhance user experience. My familiarity with data structures, algorithms, and database management further enhances my ability to build effective and efficient systems. I am also proficient in SQL and have hands-on experience in working with relational databases.</p>
+    <p>In the year following my graduation, I gained valuable two years of experience working as an ICDL instructor at Jahan Danesh Educational Institute and Amoozgar Education Center. This role honed my ability to explain complex concepts in an accessible manner—a skill that is directly transferable to a teaching environment.</p>
+    
+    <h2>languages</h2>
+    <ul>
+        <li>Dari - Pashto - English</li>
+    </ul>
+
+    <h2>Programming</h2>
+    <table>
+        <tr> <td>HTML</td> <td>CSS</td> <td>Bootstrap</td> <td>JavaScript</td> </tr>
+        <tr> <td>PHP</td> <td>MySQL</td> <td>Data Structure</td> <td>Algorithm</td> </tr>
+        <tr> <td>C++</td> <td>Java</td> <td>Python</td> </tr>
+    </table>
+    
+    <h2>Education</h2>
+    <ul>
+        <li><b>In progress | The Complete 2024 Web Development Bootcamp</b> <br> www.udemy.com</li>
+        <li><b>2019 - 2023 | Computer Science - Software Engineering</b><br> Avicenna University, Kabul, Afghanistan.</li>
+        <li><b>2016 | High School Degree</b> <br> Abdulrahim Shaheed high scholl, Kabul, Afghanistan.</li>
+        <li><b>2014 | Certified English</b> <br> Agahi Educational Academy, Kabul, Afghanistan </li>
+    </ul>
+
+    <h2>Work Experience</h2>
+    <ul>
+        <li><b>2023 - 2024 | ICDL Instructor</b> <br> Amoozgar Educational Center <br> I have been teaching since the establishment</li>
+        <li><b>2020 - 2021 | IBO</b> <br> Onyxum Inc <br> Onyxum is a service company in the field of booking 3-5 star hotels around the world, and I worked as Independent Business Owner in it.</li>
+    </ul>
+
+    <h2>References</h2>
+    <ul>
+        <li><b>Sultan Mohseni</b> <br> Jahan Danesh Educational Institute founder <br> (+93) 0794 056 616 / (+93) 0730 0280868</li>
+        <li><b>Nematullah Ashori</b> <br> CEO at Amoozgar Educational Center <br> (+93) 0747 670 003</li>
+    </ul>
+
+    <h2>Certificates</h2>
+    <ul>
+        <li>
+            <b>Software Engineering Diploma</b> <br>
+            <img src="../assets/images/software eng.jpg" alt="iamge of diploma" height="400">
+        </li>
+        <li>
+            <b>Appreciation Letter</b> <br>
+            <img src="../assets/images/top student.jpg" alt="image of ppreciation letter" height="400">
+        </li>
+        <li>
+            <b>High School Diploma</b> <br>
+            <img src="../assets/images/high school.jpg" alt="image of high school diploma" height="400">
+        </li>
+        <li>
+            <b>English Language Certificate</b> <br>
+            <img src="../assets/images/english certificate.jpg" alt="image of english language certificate" height="400">
+        </li>
+    </ul>
+</body>
+</html>
