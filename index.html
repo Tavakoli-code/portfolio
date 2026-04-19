@@ -34,8 +34,8 @@
         html { scroll-behavior: smooth; }
 
         ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: #F5F5F5; }
-        ::-webkit-scrollbar-thumb { background: #ccc; border-radius: 3px; }
+        ::-webkit-scrollbar-track { background: #222831; }
+        ::-webkit-scrollbar-thumb { background: #393E46; border-radius: 3px; }
         ::-webkit-scrollbar-thumb:hover { background: #00ADB5; }
 
         .geo-element {
@@ -105,7 +105,7 @@
         .project-card { transition: all 0.4s ease; }
         .project-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
         }
         .project-card:hover .project-image { transform: scale(1.05); }
         .project-image { transition: transform 0.6s ease; }
@@ -125,8 +125,8 @@
 
         .grid-bg {
             background-image:
-                linear-gradient(rgba(0,173,181,0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0,173,181,0.03) 1px, transparent 1px);
+                linear-gradient(rgba(34,40,49,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(34,40,49,0.03) 1px, transparent 1px);
             background-size: 60px 60px;
         }
 
@@ -153,7 +153,7 @@
         .contact-icon-link { transition: all 0.3s ease; }
         .contact-icon-link:hover {
             transform: translateY(-4px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 8px 25px rgba(34, 40, 49, 0.12);
         }
         .contact-icon-link:hover .contact-icon-circle {
             background: #00ADB5;
@@ -165,7 +165,36 @@
         .service-card { transition: all 0.3s ease; }
         .service-card:hover {
             transform: translateY(-4px);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06);
+            box-shadow: 0 12px 40px rgba(34, 40, 49, 0.1);
+        }
+
+        .focus-card { transition: all 0.3s ease; }
+        .focus-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(34, 40, 49, 0.1);
+        }
+
+        .competency-card { transition: all 0.3s ease; }
+        .competency-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(34, 40, 49, 0.08);
+        }
+
+        .content-card { transition: all 0.3s ease; }
+        .content-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(34, 40, 49, 0.1);
+        }
+
+        .exp-card { transition: all 0.3s ease; }
+        .exp-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(34, 40, 49, 0.1);
+        }
+
+        .pill-tag { transition: all 0.2s ease; }
+        .pill-tag:hover {
+            background: rgba(34, 40, 49, 0.06);
         }
 
         .mobile-menu {
@@ -173,12 +202,6 @@
             transition: transform 0.3s ease;
         }
         .mobile-menu.open { transform: translateX(0); }
-
-        .focus-card { transition: all 0.3s ease; }
-        .focus-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06);
-        }
     </style>
 </head>
 <body class="bg-surface text-primary">
@@ -313,17 +336,17 @@
                     </a>
                 </div>
                 <div class="flex gap-10 pt-4">
-                    <div>
-                        <p class="text-2xl font-bold text-accent">6+</p>
-                        <p class="text-xs text-secondary/50 mt-1">Projects</p>
+                    <div class="bg-primary/[0.04] px-5 py-3 rounded-xl">
+                        <p class="text-2xl font-bold text-primary">6+</p>
+                        <p class="text-xs text-secondary/60 mt-1">Projects</p>
                     </div>
-                    <div>
-                        <p class="text-2xl font-bold text-accent">5+</p>
-                        <p class="text-xs text-secondary/50 mt-1">Languages</p>
+                    <div class="bg-primary/[0.04] px-5 py-3 rounded-xl">
+                        <p class="text-2xl font-bold text-primary">5+</p>
+                        <p class="text-xs text-secondary/60 mt-1">Languages</p>
                     </div>
-                    <div>
-                        <p class="text-2xl font-bold text-accent">3+</p>
-                        <p class="text-xs text-secondary/50 mt-1">Years Learning</p>
+                    <div class="bg-primary/[0.04] px-5 py-3 rounded-xl">
+                        <p class="text-2xl font-bold text-primary">3+</p>
+                        <p class="text-xs text-secondary/60 mt-1">Years Learning</p>
                     </div>
                 </div>
             </div>
@@ -354,15 +377,15 @@
                         I approach development incrementally—breaking down complex problems into manageable steps. I value clarity in architecture decisions and always consider trade-offs before implementing solutions. Beyond coding, I've worked on educational content and tools, including designing structured learning materials and planning user-focused experiences with Figma.
                     </p>
                     <div class="flex flex-wrap gap-3 pt-3">
-                        <span class="inline-flex items-center gap-1.5 text-xs font-medium text-secondary bg-surface border border-primary/5 px-3 py-1.5 rounded-lg">
+                        <span class="inline-flex items-center gap-1.5 text-xs font-medium text-secondary bg-primary/[0.04] border border-secondary/10 px-3 py-1.5 rounded-lg">
                             <iconify-icon icon="lucide:map-pin" width="12" class="text-secondary/50"></iconify-icon>
                             Afghanistan
                         </span>
-                        <span class="inline-flex items-center gap-1.5 text-xs font-medium text-secondary bg-surface border border-primary/5 px-3 py-1.5 rounded-lg">
+                        <span class="inline-flex items-center gap-1.5 text-xs font-medium text-secondary bg-primary/[0.04] border border-secondary/10 px-3 py-1.5 rounded-lg">
                             <iconify-icon icon="lucide:briefcase" width="12" class="text-secondary/50"></iconify-icon>
                             Open to Freelance
                         </span>
-                        <span class="inline-flex items-center gap-1.5 text-xs font-medium text-secondary bg-surface border border-primary/5 px-3 py-1.5 rounded-lg">
+                        <span class="inline-flex items-center gap-1.5 text-xs font-medium text-secondary bg-primary/[0.04] border border-secondary/10 px-3 py-1.5 rounded-lg">
                             <iconify-icon icon="lucide:clock" width="12" class="text-secondary/50"></iconify-icon>
                             Full-time / Freelance
                         </span>
@@ -377,122 +400,118 @@
         <div class="max-w-6xl mx-auto px-6">
             <div class="fade-up text-center mb-16">
                 <div class="inline-flex items-center gap-2 text-accent text-xs font-semibold uppercase tracking-widest mb-4 justify-center">
-                    <div class="w-6 h-px bg-accent/40"></div>
+                    <div class="w-6 h-px bg-secondary/30"></div>
                     Tech Stack
-                    <div class="w-6 h-px bg-accent/40"></div>
+                    <div class="w-6 h-px bg-secondary/30"></div>
                 </div>
                 <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-primary">Skills & Technologies</h2>
-                <p class="text-secondary/50 mt-4 max-w-lg mx-auto">The tools and technologies I use to build server-side applications.</p>
+                <p class="text-secondary/60 mt-4 max-w-lg mx-auto">The tools and technologies I use to build server-side applications.</p>
             </div>
 
-            <!-- Main Skill Cards -->
             <div class="fade-up grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-5 max-w-4xl mx-auto">
-                <div class="skill-card bg-card border border-gray-100 rounded-2xl p-5 text-center cursor-default shadow-sm">
-                    <div class="w-12 h-12 mx-auto mb-3 rounded-xl bg-[#E0234E]/8 flex items-center justify-center">
+                <div class="skill-card bg-card border border-secondary/8 rounded-2xl p-5 text-center cursor-default shadow-sm">
+                    <div class="w-12 h-12 mx-auto mb-3 rounded-xl bg-primary/[0.04] flex items-center justify-center">
                         <iconify-icon icon="logos:nestjs" width="26"></iconify-icon>
                     </div>
                     <h3 class="font-semibold text-xs text-primary">NestJS</h3>
-                    <p class="text-[10px] text-secondary/40 mt-0.5">Backend</p>
+                    <p class="text-[10px] text-secondary/50 mt-0.5">Backend</p>
                 </div>
-                <div class="skill-card bg-card border border-gray-100 rounded-2xl p-5 text-center cursor-default shadow-sm">
-                    <div class="w-12 h-12 mx-auto mb-3 rounded-xl bg-gray-100 flex items-center justify-center">
+                <div class="skill-card bg-card border border-secondary/8 rounded-2xl p-5 text-center cursor-default shadow-sm">
+                    <div class="w-12 h-12 mx-auto mb-3 rounded-xl bg-primary/[0.04] flex items-center justify-center">
                         <iconify-icon icon="skill-icons:expressjs-dark" width="26"></iconify-icon>
                     </div>
                     <h3 class="font-semibold text-xs text-primary">Express.js</h3>
-                    <p class="text-[10px] text-secondary/40 mt-0.5">Web Framework</p>
+                    <p class="text-[10px] text-secondary/50 mt-0.5">Web Framework</p>
                 </div>
-                <div class="skill-card bg-card border border-gray-100 rounded-2xl p-5 text-center cursor-default shadow-sm">
-                    <div class="w-12 h-12 mx-auto mb-3 rounded-xl bg-[#4169E1]/8 flex items-center justify-center">
+                <div class="skill-card bg-card border border-secondary/8 rounded-2xl p-5 text-center cursor-default shadow-sm">
+                    <div class="w-12 h-12 mx-auto mb-3 rounded-xl bg-primary/[0.04] flex items-center justify-center">
                         <iconify-icon icon="logos:postgresql" width="26"></iconify-icon>
                     </div>
                     <h3 class="font-semibold text-xs text-primary">PostgreSQL</h3>
-                    <p class="text-[10px] text-secondary/40 mt-0.5">Database</p>
+                    <p class="text-[10px] text-secondary/50 mt-0.5">Database</p>
                 </div>
-                <div class="skill-card bg-card border border-gray-100 rounded-2xl p-5 text-center cursor-default shadow-sm">
-                    <div class="w-12 h-12 mx-auto mb-3 rounded-xl bg-[#00758F]/8 flex items-center justify-center">
+                <div class="skill-card bg-card border border-secondary/8 rounded-2xl p-5 text-center cursor-default shadow-sm">
+                    <div class="w-12 h-12 mx-auto mb-3 rounded-xl bg-primary/[0.04] flex items-center justify-center">
                         <iconify-icon icon="logos:mysql-icon" width="26"></iconify-icon>
                     </div>
                     <h3 class="font-semibold text-xs text-primary">MySQL</h3>
-                    <p class="text-[10px] text-secondary/40 mt-0.5">Database</p>
+                    <p class="text-[10px] text-secondary/50 mt-0.5">Database</p>
                 </div>
-                <div class="skill-card bg-card border border-gray-100 rounded-2xl p-5 text-center cursor-default shadow-sm">
-                    <div class="w-12 h-12 mx-auto mb-3 rounded-xl bg-[#3178C6]/8 flex items-center justify-center">
+                <div class="skill-card bg-card border border-secondary/8 rounded-2xl p-5 text-center cursor-default shadow-sm">
+                    <div class="w-12 h-12 mx-auto mb-3 rounded-xl bg-primary/[0.04] flex items-center justify-center">
                         <iconify-icon icon="logos:typescript-icon" width="26"></iconify-icon>
                     </div>
                     <h3 class="font-semibold text-xs text-primary">TypeScript</h3>
-                    <p class="text-[10px] text-secondary/40 mt-0.5">Type Safety</p>
+                    <p class="text-[10px] text-secondary/50 mt-0.5">Type Safety</p>
                 </div>
-                <div class="skill-card bg-card border border-gray-100 rounded-2xl p-5 text-center cursor-default shadow-sm">
-                    <div class="w-12 h-12 mx-auto mb-3 rounded-xl bg-[#2496ED]/8 flex items-center justify-center">
+                <div class="skill-card bg-card border border-secondary/8 rounded-2xl p-5 text-center cursor-default shadow-sm">
+                    <div class="w-12 h-12 mx-auto mb-3 rounded-xl bg-primary/[0.04] flex items-center justify-center">
                         <iconify-icon icon="logos:docker-icon" width="26"></iconify-icon>
                     </div>
                     <h3 class="font-semibold text-xs text-primary">Docker</h3>
-                    <p class="text-[10px] text-secondary/40 mt-0.5">Containerization</p>
+                    <p class="text-[10px] text-secondary/50 mt-0.5">Containerization</p>
                 </div>
             </div>
 
-            <!-- Programming Languages -->
             <div class="fade-up mt-12">
-                <p class="text-xs text-secondary/40 uppercase tracking-wider font-semibold text-center mb-5">Programming Languages</p>
+                <p class="text-xs text-secondary/50 uppercase tracking-wider font-semibold text-center mb-5">Programming Languages</p>
                 <div class="flex flex-wrap justify-center gap-2.5">
-                    <span class="text-xs font-medium text-secondary bg-card border border-primary/5 px-3.5 py-2 rounded-lg">Python</span>
-                    <span class="text-xs font-medium text-secondary bg-card border border-primary/5 px-3.5 py-2 rounded-lg">PHP</span>
-                    <span class="text-xs font-medium text-secondary bg-card border border-primary/5 px-3.5 py-2 rounded-lg">JavaScript</span>
-                    <span class="text-xs font-medium text-secondary bg-card border border-primary/5 px-3.5 py-2 rounded-lg">Java</span>
-                    <span class="text-xs font-medium text-secondary bg-card border border-primary/5 px-3.5 py-2 rounded-lg">C++</span>
+                    <span class="pill-tag text-xs font-medium text-primary bg-primary/[0.05] border border-secondary/10 px-3.5 py-2 rounded-lg">Python</span>
+                    <span class="pill-tag text-xs font-medium text-primary bg-primary/[0.05] border border-secondary/10 px-3.5 py-2 rounded-lg">PHP</span>
+                    <span class="pill-tag text-xs font-medium text-primary bg-primary/[0.05] border border-secondary/10 px-3.5 py-2 rounded-lg">JavaScript</span>
+                    <span class="pill-tag text-xs font-medium text-primary bg-primary/[0.05] border border-secondary/10 px-3.5 py-2 rounded-lg">Java</span>
+                    <span class="pill-tag text-xs font-medium text-primary bg-primary/[0.05] border border-secondary/10 px-3.5 py-2 rounded-lg">C++</span>
                 </div>
             </div>
 
-            <!-- Also Familiar With -->
             <div class="fade-up mt-8">
-                <p class="text-xs text-secondary/40 uppercase tracking-wider font-semibold text-center mb-5">Also Familiar With</p>
+                <p class="text-xs text-secondary/50 uppercase tracking-wider font-semibold text-center mb-5">Also Familiar With</p>
                 <div class="flex flex-wrap justify-center gap-2.5">
-                    <span class="text-xs font-medium text-secondary bg-card border border-primary/5 px-3.5 py-2 rounded-lg">HTML5 & CSS3</span>
-                    <span class="text-xs font-medium text-secondary bg-card border border-primary/5 px-3.5 py-2 rounded-lg">Bootstrap 5</span>
-                    <span class="text-xs font-medium text-secondary bg-card border border-primary/5 px-3.5 py-2 rounded-lg">EJS Templating</span>
-                    <span class="text-xs font-medium text-secondary bg-card border border-primary/5 px-3.5 py-2 rounded-lg">REST API</span>
-                    <span class="text-xs font-medium text-secondary bg-card border border-primary/5 px-3.5 py-2 rounded-lg">Prisma ORM</span>
-                    <span class="text-xs font-medium text-secondary bg-card border border-primary/5 px-3.5 py-2 rounded-lg">TypeORM</span>
-                    <span class="text-xs font-medium text-secondary bg-card border border-primary/5 px-3.5 py-2 rounded-lg">JWT Auth</span>
-                    <span class="text-xs font-medium text-secondary bg-card border border-primary/5 px-3.5 py-2 rounded-lg">Redis</span>
-                    <span class="text-xs font-medium text-secondary bg-card border border-primary/5 px-3.5 py-2 rounded-lg">Git</span>
-                    <span class="text-xs font-medium text-secondary bg-card border border-primary/5 px-3.5 py-2 rounded-lg">VS Code</span>
-                    <span class="text-xs font-medium text-secondary bg-card border border-primary/5 px-3.5 py-2 rounded-lg">Linux</span>
-                    <span class="text-xs font-medium text-secondary bg-card border border-primary/5 px-3.5 py-2 rounded-lg">Postman</span>
-                    <span class="text-xs font-medium text-secondary bg-card border border-primary/5 px-3.5 py-2 rounded-lg">MS Access</span>
-                    <span class="text-xs font-medium text-secondary bg-card border border-primary/5 px-3.5 py-2 rounded-lg">VBA</span>
-                    <span class="text-xs font-medium text-secondary bg-card border border-primary/5 px-3.5 py-2 rounded-lg">MS Office</span>
-                    <span class="text-xs font-medium text-secondary bg-card border border-primary/5 px-3.5 py-2 rounded-lg">Figma</span>
+                    <span class="pill-tag text-xs font-medium text-secondary bg-primary/[0.04] border border-secondary/8 px-3.5 py-2 rounded-lg">HTML5 & CSS3</span>
+                    <span class="pill-tag text-xs font-medium text-secondary bg-primary/[0.04] border border-secondary/8 px-3.5 py-2 rounded-lg">Bootstrap 5</span>
+                    <span class="pill-tag text-xs font-medium text-secondary bg-primary/[0.04] border border-secondary/8 px-3.5 py-2 rounded-lg">EJS Templating</span>
+                    <span class="pill-tag text-xs font-medium text-secondary bg-primary/[0.04] border border-secondary/8 px-3.5 py-2 rounded-lg">REST API</span>
+                    <span class="pill-tag text-xs font-medium text-secondary bg-primary/[0.04] border border-secondary/8 px-3.5 py-2 rounded-lg">Prisma ORM</span>
+                    <span class="pill-tag text-xs font-medium text-secondary bg-primary/[0.04] border border-secondary/8 px-3.5 py-2 rounded-lg">TypeORM</span>
+                    <span class="pill-tag text-xs font-medium text-secondary bg-primary/[0.04] border border-secondary/8 px-3.5 py-2 rounded-lg">JWT Auth</span>
+                    <span class="pill-tag text-xs font-medium text-secondary bg-primary/[0.04] border border-secondary/8 px-3.5 py-2 rounded-lg">Redis</span>
+                    <span class="pill-tag text-xs font-medium text-secondary bg-primary/[0.04] border border-secondary/8 px-3.5 py-2 rounded-lg">Git</span>
+                    <span class="pill-tag text-xs font-medium text-secondary bg-primary/[0.04] border border-secondary/8 px-3.5 py-2 rounded-lg">VS Code</span>
+                    <span class="pill-tag text-xs font-medium text-secondary bg-primary/[0.04] border border-secondary/8 px-3.5 py-2 rounded-lg">Linux</span>
+                    <span class="pill-tag text-xs font-medium text-secondary bg-primary/[0.04] border border-secondary/8 px-3.5 py-2 rounded-lg">Postman</span>
+                    <span class="pill-tag text-xs font-medium text-secondary bg-primary/[0.04] border border-secondary/8 px-3.5 py-2 rounded-lg">MS Access</span>
+                    <span class="pill-tag text-xs font-medium text-secondary bg-primary/[0.04] border border-secondary/8 px-3.5 py-2 rounded-lg">VBA</span>
+                    <span class="pill-tag text-xs font-medium text-secondary bg-primary/[0.04] border border-secondary/8 px-3.5 py-2 rounded-lg">MS Office</span>
+                    <span class="pill-tag text-xs font-medium text-secondary bg-primary/[0.04] border border-secondary/8 px-3.5 py-2 rounded-lg">Figma</span>
                 </div>
             </div>
 
-            <!-- Core Competencies -->
             <div class="fade-up mt-8">
-                <p class="text-xs text-secondary/40 uppercase tracking-wider font-semibold text-center mb-5">Core Competencies</p>
+                <p class="text-xs text-secondary/50 uppercase tracking-wider font-semibold text-center mb-5">Core Competencies</p>
                 <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 max-w-3xl mx-auto">
-                    <div class="flex items-center gap-2.5 bg-card border border-primary/5 rounded-xl px-4 py-3">
-                        <iconify-icon icon="lucide:server" width="14" class="text-accent/60 shrink-0"></iconify-icon>
-                        <span class="text-xs font-medium text-secondary">Backend Fundamentals</span>
+                    <div class="competency-card flex items-center gap-2.5 bg-card border border-secondary/8 rounded-xl px-4 py-3 cursor-default">
+                        <iconify-icon icon="lucide:server" width="14" class="text-accent shrink-0"></iconify-icon>
+                        <span class="text-xs font-medium text-primary">Backend Fundamentals</span>
                     </div>
-                    <div class="flex items-center gap-2.5 bg-card border border-primary/5 rounded-xl px-4 py-3">
-                        <iconify-icon icon="lucide:database" width="14" class="text-accent/60 shrink-0"></iconify-icon>
-                        <span class="text-xs font-medium text-secondary">Database Design & Normalization</span>
+                    <div class="competency-card flex items-center gap-2.5 bg-card border border-secondary/8 rounded-xl px-4 py-3 cursor-default">
+                        <iconify-icon icon="lucide:database" width="14" class="text-accent shrink-0"></iconify-icon>
+                        <span class="text-xs font-medium text-primary">Database Design & Normalization</span>
                     </div>
-                    <div class="flex items-center gap-2.5 bg-card border border-primary/5 rounded-xl px-4 py-3">
-                        <iconify-icon icon="lucide:shield-check" width="14" class="text-accent/60 shrink-0"></iconify-icon>
-                        <span class="text-xs font-medium text-secondary">Form Validation & Input Handling</span>
+                    <div class="competency-card flex items-center gap-2.5 bg-card border border-secondary/8 rounded-xl px-4 py-3 cursor-default">
+                        <iconify-icon icon="lucide:shield-check" width="14" class="text-accent shrink-0"></iconify-icon>
+                        <span class="text-xs font-medium text-primary">Form Validation & Input Handling</span>
                     </div>
-                    <div class="flex items-center gap-2.5 bg-card border border-primary/5 rounded-xl px-4 py-3">
-                        <iconify-icon icon="lucide:bug" width="14" class="text-accent/60 shrink-0"></iconify-icon>
-                        <span class="text-xs font-medium text-secondary">Problem-Solving & Debugging</span>
+                    <div class="competency-card flex items-center gap-2.5 bg-card border border-secondary/8 rounded-xl px-4 py-3 cursor-default">
+                        <iconify-icon icon="lucide:bug" width="14" class="text-accent shrink-0"></iconify-icon>
+                        <span class="text-xs font-medium text-primary">Problem-Solving & Debugging</span>
                     </div>
-                    <div class="flex items-center gap-2.5 bg-card border border-primary/5 rounded-xl px-4 py-3">
-                        <iconify-icon icon="lucide:scan-search" width="14" class="text-accent/60 shrink-0"></iconify-icon>
-                        <span class="text-xs font-medium text-secondary">System Analysis & Structured Thinking</span>
+                    <div class="competency-card flex items-center gap-2.5 bg-card border border-secondary/8 rounded-xl px-4 py-3 cursor-default">
+                        <iconify-icon icon="lucide:scan-search" width="14" class="text-accent shrink-0"></iconify-icon>
+                        <span class="text-xs font-medium text-primary">System Analysis & Structured Thinking</span>
                     </div>
-                    <div class="flex items-center gap-2.5 bg-card border border-primary/5 rounded-xl px-4 py-3">
-                        <iconify-icon icon="lucide:presentation" width="14" class="text-accent/60 shrink-0"></iconify-icon>
-                        <span class="text-xs font-medium text-secondary">Teaching & Simplifying Concepts</span>
+                    <div class="competency-card flex items-center gap-2.5 bg-card border border-secondary/8 rounded-xl px-4 py-3 cursor-default">
+                        <iconify-icon icon="lucide:presentation" width="14" class="text-accent shrink-0"></iconify-icon>
+                        <span class="text-xs font-medium text-primary">Teaching & Simplifying Concepts</span>
                     </div>
                 </div>
             </div>
@@ -504,36 +523,35 @@
         <div class="max-w-6xl mx-auto px-6">
             <div class="fade-up text-center mb-16">
                 <div class="inline-flex items-center gap-2 text-accent text-xs font-semibold uppercase tracking-widest mb-4 justify-center">
-                    <div class="w-6 h-px bg-accent/40"></div>
+                    <div class="w-6 h-px bg-secondary/30"></div>
                     Portfolio
-                    <div class="w-6 h-px bg-accent/40"></div>
+                    <div class="w-6 h-px bg-secondary/30"></div>
                 </div>
                 <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-primary">Projects & Practical Experience</h2>
-                <p class="text-secondary/50 mt-4 max-w-lg mx-auto">Real-world projects built through hands-on learning and practical application.</p>
+                <p class="text-secondary/60 mt-4 max-w-lg mx-auto">Real-world projects built through hands-on learning and practical application.</p>
             </div>
             <div class="space-y-8">
-                <!-- Project 1: Leitner System -->
-                <div class="fade-up project-card bg-card border border-gray-100 rounded-2xl overflow-hidden shadow-sm">
+                <div class="fade-up project-card bg-card border border-secondary/8 rounded-2xl overflow-hidden shadow-sm">
                     <div class="grid md:grid-cols-2">
                         <div class="h-56 md:h-auto overflow-hidden">
                             <img src="https://picsum.photos/seed/leitnersystem2024/800/500.jpg" alt="Leitner System" class="project-image w-full h-full object-cover">
                         </div>
                         <div class="p-8 md:p-10 flex flex-col justify-center space-y-5">
                             <div class="flex items-center gap-2">
-                                <span class="px-3 py-1 rounded-full bg-accent/8 text-accent text-xs font-medium">Current Project</span>
+                                <span class="px-3 py-1 rounded-full bg-primary/[0.05] text-primary text-xs font-semibold">Current Project</span>
                                 <span class="px-3 py-1 rounded-full bg-accent/8 text-accent text-xs font-medium">Education</span>
                             </div>
                             <h3 class="text-xl md:text-2xl font-bold tracking-tight text-primary">Leitner System Web App</h3>
-                            <p class="text-secondary/55 text-sm leading-relaxed">
-                                A web application based on the Leitner system, designed to help users memorize information more effectively—especially for language learning and structured study. Building a system that is practical for everyday learners and flexible enough to support different types of knowledge retention.
+                            <p class="text-secondary/60 text-sm leading-relaxed">
+                                A web application based on the Leitner system, designed to help users memorize information more effectively—especially for language learning and structured study.
                             </p>
                             <div class="flex flex-wrap gap-2">
-                                <span class="px-2.5 py-1 rounded-lg bg-surface text-secondary/55 text-xs">Node.js</span>
-                                <span class="px-2.5 py-1 rounded-lg bg-surface text-secondary/55 text-xs">Express.js</span>
-                                <span class="px-2.5 py-1 rounded-lg bg-surface text-secondary/55 text-xs">EJS</span>
-                                <span class="px-2.5 py-1 rounded-lg bg-surface text-secondary/55 text-xs">NestJS</span>
-                                <span class="px-2.5 py-1 rounded-lg bg-surface text-secondary/55 text-xs">Prisma</span>
-                                <span class="px-2.5 py-1 rounded-lg bg-surface text-secondary/55 text-xs">Redis</span>
+                                <span class="px-2.5 py-1 rounded-lg bg-primary/[0.04] text-secondary/70 text-xs">Node.js</span>
+                                <span class="px-2.5 py-1 rounded-lg bg-primary/[0.04] text-secondary/70 text-xs">Express.js</span>
+                                <span class="px-2.5 py-1 rounded-lg bg-primary/[0.04] text-secondary/70 text-xs">EJS</span>
+                                <span class="px-2.5 py-1 rounded-lg bg-primary/[0.04] text-secondary/70 text-xs">NestJS</span>
+                                <span class="px-2.5 py-1 rounded-lg bg-primary/[0.04] text-secondary/70 text-xs">Prisma</span>
+                                <span class="px-2.5 py-1 rounded-lg bg-primary/[0.04] text-secondary/70 text-xs">Redis</span>
                             </div>
                             <div class="flex gap-3 pt-1">
                                 <a href="#" class="btn-primary inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-semibold text-white">
@@ -549,26 +567,25 @@
                     </div>
                 </div>
 
-                <!-- Project 2: Blog App -->
-                <div class="fade-up project-card bg-card border border-gray-100 rounded-2xl overflow-hidden shadow-sm">
+                <div class="fade-up project-card bg-card border border-secondary/8 rounded-2xl overflow-hidden shadow-sm">
                     <div class="grid md:grid-cols-2">
                         <div class="h-56 md:h-auto overflow-hidden md:order-2">
                             <img src="https://picsum.photos/seed/blogapp2024/800/500.jpg" alt="Blog Web App" class="project-image w-full h-full object-cover">
                         </div>
                         <div class="p-8 md:p-10 flex flex-col justify-center space-y-5 md:order-1">
                             <div class="flex items-center gap-2">
-                                <span class="px-3 py-1 rounded-full bg-accent/8 text-accent text-xs font-medium">Web App</span>
+                                <span class="px-3 py-1 rounded-full bg-primary/[0.05] text-primary text-xs font-semibold">Web App</span>
                                 <span class="px-3 py-1 rounded-full bg-accent/8 text-accent text-xs font-medium">Full-Stack</span>
                             </div>
                             <h3 class="text-xl md:text-2xl font-bold tracking-tight text-primary">Blog Web Application</h3>
-                            <p class="text-secondary/55 text-sm leading-relaxed">
-                                Built a complete blog system with routing, dynamic content rendering, and clean UI/UX styling. Focused on understanding request-response cycles, template rendering, and front-end integration with a Node.js backend.
+                            <p class="text-secondary/60 text-sm leading-relaxed">
+                                Built a complete blog system with routing, dynamic content rendering, and clean UI/UX styling. Focused on understanding request-response cycles and template rendering.
                             </p>
                             <div class="flex flex-wrap gap-2">
-                                <span class="px-2.5 py-1 rounded-lg bg-surface text-secondary/55 text-xs">Node.js</span>
-                                <span class="px-2.5 py-1 rounded-lg bg-surface text-secondary/55 text-xs">Express.js</span>
-                                <span class="px-2.5 py-1 rounded-lg bg-surface text-secondary/55 text-xs">EJS</span>
-                                <span class="px-2.5 py-1 rounded-lg bg-surface text-secondary/55 text-xs">CSS</span>
+                                <span class="px-2.5 py-1 rounded-lg bg-primary/[0.04] text-secondary/70 text-xs">Node.js</span>
+                                <span class="px-2.5 py-1 rounded-lg bg-primary/[0.04] text-secondary/70 text-xs">Express.js</span>
+                                <span class="px-2.5 py-1 rounded-lg bg-primary/[0.04] text-secondary/70 text-xs">EJS</span>
+                                <span class="px-2.5 py-1 rounded-lg bg-primary/[0.04] text-secondary/70 text-xs">CSS</span>
                             </div>
                             <div class="flex gap-3 pt-1">
                                 <a href="#" class="btn-primary inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-semibold text-white">
@@ -584,26 +601,25 @@
                     </div>
                 </div>
 
-                <!-- Project 3: PHP Student System -->
-                <div class="fade-up project-card bg-card border border-gray-100 rounded-2xl overflow-hidden shadow-sm">
+                <div class="fade-up project-card bg-card border border-secondary/8 rounded-2xl overflow-hidden shadow-sm">
                     <div class="grid md:grid-cols-2">
                         <div class="h-56 md:h-auto overflow-hidden">
                             <img src="https://picsum.photos/seed/phpstudentsystem/800/500.jpg" alt="Student Management" class="project-image w-full h-full object-cover">
                         </div>
                         <div class="p-8 md:p-10 flex flex-col justify-center space-y-5">
                             <div class="flex items-center gap-2">
-                                <span class="px-3 py-1 rounded-full bg-accent/8 text-accent text-xs font-medium">CRUD App</span>
+                                <span class="px-3 py-1 rounded-full bg-primary/[0.05] text-primary text-xs font-semibold">CRUD App</span>
                                 <span class="px-3 py-1 rounded-full bg-accent/8 text-accent text-xs font-medium">PHP</span>
                             </div>
                             <h3 class="text-xl md:text-2xl font-bold tracking-tight text-primary">Student Management System</h3>
-                            <p class="text-secondary/55 text-sm leading-relaxed">
-                                Developed backend logic for managing student records with full CRUD operations. Implemented delete confirmation using JavaScript, dynamic table display, and a clean interface for data management.
+                            <p class="text-secondary/60 text-sm leading-relaxed">
+                                Developed backend logic for managing student records with full CRUD operations. Implemented delete confirmation, dynamic table display, and a clean interface.
                             </p>
                             <div class="flex flex-wrap gap-2">
-                                <span class="px-2.5 py-1 rounded-lg bg-surface text-secondary/55 text-xs">PHP</span>
-                                <span class="px-2.5 py-1 rounded-lg bg-surface text-secondary/55 text-xs">MySQL</span>
-                                <span class="px-2.5 py-1 rounded-lg bg-surface text-secondary/55 text-xs">JavaScript</span>
-                                <span class="px-2.5 py-1 rounded-lg bg-surface text-secondary/55 text-xs">CSS</span>
+                                <span class="px-2.5 py-1 rounded-lg bg-primary/[0.04] text-secondary/70 text-xs">PHP</span>
+                                <span class="px-2.5 py-1 rounded-lg bg-primary/[0.04] text-secondary/70 text-xs">MySQL</span>
+                                <span class="px-2.5 py-1 rounded-lg bg-primary/[0.04] text-secondary/70 text-xs">JavaScript</span>
+                                <span class="px-2.5 py-1 rounded-lg bg-primary/[0.04] text-secondary/70 text-xs">CSS</span>
                             </div>
                             <div class="flex gap-3 pt-1">
                                 <a href="#" class="btn-outline inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-semibold">
@@ -615,26 +631,25 @@
                     </div>
                 </div>
 
-                <!-- Project 4: Educational Management System -->
-                <div class="fade-up project-card bg-card border border-gray-100 rounded-2xl overflow-hidden shadow-sm">
+                <div class="fade-up project-card bg-card border border-secondary/8 rounded-2xl overflow-hidden shadow-sm">
                     <div class="grid md:grid-cols-2">
                         <div class="h-56 md:h-auto overflow-hidden md:order-2">
                             <img src="https://picsum.photos/seed/edumanagementsystem/800/500.jpg" alt="Educational Management" class="project-image w-full h-full object-cover">
                         </div>
                         <div class="p-8 md:p-10 flex flex-col justify-center space-y-5 md:order-1">
                             <div class="flex items-center gap-2">
-                                <span class="px-3 py-1 rounded-full bg-accent/8 text-accent text-xs font-medium">Database</span>
+                                <span class="px-3 py-1 rounded-full bg-primary/[0.05] text-primary text-xs font-semibold">Database</span>
                                 <span class="px-3 py-1 rounded-full bg-accent/8 text-accent text-xs font-medium">MS Access</span>
                             </div>
                             <h3 class="text-xl md:text-2xl font-bold tracking-tight text-primary">Educational Management System</h3>
-                            <p class="text-secondary/55 text-sm leading-relaxed">
-                                Designed a full database system for an educational center including students, teachers, courses, classes, monthly enrollments, salaries, costs, and a reporting system. Implemented using Microsoft Access with validation rules and structured relationships.
+                            <p class="text-secondary/60 text-sm leading-relaxed">
+                                Full database system for an educational center—students, teachers, courses, enrollments, salaries, costs, and reporting. Implemented with validation rules and structured relationships.
                             </p>
                             <div class="flex flex-wrap gap-2">
-                                <span class="px-2.5 py-1 rounded-lg bg-surface text-secondary/55 text-xs">MS Access</span>
-                                <span class="px-2.5 py-1 rounded-lg bg-surface text-secondary/55 text-xs">VBA</span>
-                                <span class="px-2.5 py-1 rounded-lg bg-surface text-secondary/55 text-xs">Database Design</span>
-                                <span class="px-2.5 py-1 rounded-lg bg-surface text-secondary/55 text-xs">SQL</span>
+                                <span class="px-2.5 py-1 rounded-lg bg-primary/[0.04] text-secondary/70 text-xs">MS Access</span>
+                                <span class="px-2.5 py-1 rounded-lg bg-primary/[0.04] text-secondary/70 text-xs">VBA</span>
+                                <span class="px-2.5 py-1 rounded-lg bg-primary/[0.04] text-secondary/70 text-xs">Database Design</span>
+                                <span class="px-2.5 py-1 rounded-lg bg-primary/[0.04] text-secondary/70 text-xs">SQL</span>
                             </div>
                             <div class="flex gap-3 pt-1">
                                 <a href="#" class="btn-outline inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-semibold">
@@ -646,25 +661,24 @@
                     </div>
                 </div>
 
-                <!-- Project 5: Student Forms + VBA -->
-                <div class="fade-up project-card bg-card border border-gray-100 rounded-2xl overflow-hidden shadow-sm">
+                <div class="fade-up project-card bg-card border border-secondary/8 rounded-2xl overflow-hidden shadow-sm">
                     <div class="grid md:grid-cols-2">
                         <div class="h-56 md:h-auto overflow-hidden">
                             <img src="https://picsum.photos/seed/vbaforms2024/800/500.jpg" alt="Student Management Forms" class="project-image w-full h-full object-cover">
                         </div>
                         <div class="p-8 md:p-10 flex flex-col justify-center space-y-5">
                             <div class="flex items-center gap-2">
-                                <span class="px-3 py-1 rounded-full bg-accent/8 text-accent text-xs font-medium">VBA</span>
+                                <span class="px-3 py-1 rounded-full bg-primary/[0.05] text-primary text-xs font-semibold">VBA</span>
                                 <span class="px-3 py-1 rounded-full bg-accent/8 text-accent text-xs font-medium">Validation</span>
                             </div>
                             <h3 class="text-xl md:text-2xl font-bold tracking-tight text-primary">Student Management Forms</h3>
-                            <p class="text-secondary/55 text-sm leading-relaxed">
-                                Developed interactive forms (frmStudent, frmNewStudent) with required field validation, custom date input format (yyyy/mm/dd), and data integrity constraints using MS Access and VBA automation.
+                            <p class="text-secondary/60 text-sm leading-relaxed">
+                                Interactive forms with required field validation, custom date input format (yyyy/mm/dd), and data integrity constraints using MS Access and VBA automation.
                             </p>
                             <div class="flex flex-wrap gap-2">
-                                <span class="px-2.5 py-1 rounded-lg bg-surface text-secondary/55 text-xs">VBA</span>
-                                <span class="px-2.5 py-1 rounded-lg bg-surface text-secondary/55 text-xs">MS Access</span>
-                                <span class="px-2.5 py-1 rounded-lg bg-surface text-secondary/55 text-xs">Form Design</span>
+                                <span class="px-2.5 py-1 rounded-lg bg-primary/[0.04] text-secondary/70 text-xs">VBA</span>
+                                <span class="px-2.5 py-1 rounded-lg bg-primary/[0.04] text-secondary/70 text-xs">MS Access</span>
+                                <span class="px-2.5 py-1 rounded-lg bg-primary/[0.04] text-secondary/70 text-xs">Form Design</span>
                             </div>
                             <div class="flex gap-3 pt-1">
                                 <a href="#" class="btn-outline inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-semibold">
@@ -676,26 +690,25 @@
                     </div>
                 </div>
 
-                <!-- Project 6: HRMS Thesis -->
-                <div class="fade-up project-card bg-card border border-gray-100 rounded-2xl overflow-hidden shadow-sm">
+                <div class="fade-up project-card bg-card border border-secondary/8 rounded-2xl overflow-hidden shadow-sm">
                     <div class="grid md:grid-cols-2">
                         <div class="h-56 md:h-auto overflow-hidden md:order-2">
                             <img src="https://picsum.photos/seed/hrmsystem2024/800/500.jpg" alt="HR Management System" class="project-image w-full h-full object-cover">
                         </div>
                         <div class="p-8 md:p-10 flex flex-col justify-center space-y-5 md:order-1">
                             <div class="flex items-center gap-2">
-                                <span class="px-3 py-1 rounded-full bg-accent/8 text-accent text-xs font-medium">Thesis</span>
+                                <span class="px-3 py-1 rounded-full bg-primary/[0.05] text-primary text-xs font-semibold">Thesis</span>
                                 <span class="px-3 py-1 rounded-full bg-accent/8 text-accent text-xs font-medium">System Analysis</span>
                             </div>
                             <h3 class="text-xl md:text-2xl font-bold tracking-tight text-primary">HR Management System (Thesis)</h3>
-                            <p class="text-secondary/55 text-sm leading-relaxed">
-                                Comprehensive thesis work on Human Resource Management System, including full system analysis, design methodology, and testing approaches. Covered requirement analysis, data flow diagrams, and implementation planning.
+                            <p class="text-secondary/60 text-sm leading-relaxed">
+                                Comprehensive thesis on Human Resource Management System—system analysis, design methodology, testing approaches, requirement analysis, and implementation planning.
                             </p>
                             <div class="flex flex-wrap gap-2">
-                                <span class="px-2.5 py-1 rounded-lg bg-surface text-secondary/55 text-xs">System Analysis</span>
-                                <span class="px-2.5 py-1 rounded-lg bg-surface text-secondary/55 text-xs">Database Design</span>
-                                <span class="px-2.5 py-1 rounded-lg bg-surface text-secondary/55 text-xs">Testing</span>
-                                <span class="px-2.5 py-1 rounded-lg bg-surface text-secondary/55 text-xs">UML</span>
+                                <span class="px-2.5 py-1 rounded-lg bg-primary/[0.04] text-secondary/70 text-xs">System Analysis</span>
+                                <span class="px-2.5 py-1 rounded-lg bg-primary/[0.04] text-secondary/70 text-xs">Database Design</span>
+                                <span class="px-2.5 py-1 rounded-lg bg-primary/[0.04] text-secondary/70 text-xs">Testing</span>
+                                <span class="px-2.5 py-1 rounded-lg bg-primary/[0.04] text-secondary/70 text-xs">UML</span>
                             </div>
                         </div>
                     </div>
@@ -709,77 +722,74 @@
         <div class="max-w-6xl mx-auto px-6">
             <div class="fade-up text-center mb-16">
                 <div class="inline-flex items-center gap-2 text-accent text-xs font-semibold uppercase tracking-widest mb-4 justify-center">
-                    <div class="w-6 h-px bg-accent/40"></div>
+                    <div class="w-6 h-px bg-secondary/30"></div>
                     Current Focus
-                    <div class="w-6 h-px bg-accent/40"></div>
+                    <div class="w-6 h-px bg-secondary/30"></div>
                 </div>
                 <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-primary">What I Work On</h2>
             </div>
 
             <div class="fade-up grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                <!-- Leitner System Highlight -->
-                <div class="bg-card border border-gray-100 rounded-2xl p-8 shadow-sm">
-                    <div class="w-12 h-12 rounded-xl bg-accent/8 flex items-center justify-center mb-5">
+                <div class="content-card bg-card border border-secondary/8 rounded-2xl p-8 shadow-sm cursor-default">
+                    <div class="w-12 h-12 rounded-xl bg-primary/[0.05] flex items-center justify-center mb-5">
                         <iconify-icon icon="lucide:brain" width="22" class="text-accent"></iconify-icon>
                     </div>
                     <h3 class="text-lg font-bold text-primary mb-3">Leitner System App</h3>
                     <p class="text-sm text-secondary/60 leading-relaxed mb-4">
                         Currently developing a web application based on the Leitner spaced repetition system—designed to help users memorize information more effectively, especially for language learning and structured study.
                     </p>
-                    <p class="text-xs text-secondary/40 leading-relaxed">
+                    <p class="text-xs text-secondary/50 leading-relaxed">
                         Goal: Build a system that is practical for everyday learners and flexible enough to support different types of knowledge retention.
                     </p>
                 </div>
 
-                <!-- Focus Areas -->
                 <div class="space-y-4">
-                    <div class="focus-card bg-card border border-gray-100 rounded-xl p-5 shadow-sm flex gap-4 items-start">
-                        <div class="w-9 h-9 rounded-lg bg-accent/8 flex items-center justify-center shrink-0 mt-0.5">
+                    <div class="focus-card bg-card border border-secondary/8 rounded-xl p-5 shadow-sm flex gap-4 items-start">
+                        <div class="w-9 h-9 rounded-lg bg-primary/[0.05] flex items-center justify-center shrink-0 mt-0.5">
                             <iconify-icon icon="lucide:blocks" width="16" class="text-accent"></iconify-icon>
                         </div>
                         <div>
                             <h4 class="text-sm font-semibold text-primary mb-1">Modular Backend Architecture</h4>
-                            <p class="text-xs text-secondary/50 leading-relaxed">Designing clean, modular backends that are easy to maintain and extend.</p>
+                            <p class="text-xs text-secondary/60 leading-relaxed">Designing clean, modular backends that are easy to maintain and extend.</p>
                         </div>
                     </div>
-                    <div class="focus-card bg-card border border-gray-100 rounded-xl p-5 shadow-sm flex gap-4 items-start">
-                        <div class="w-9 h-9 rounded-lg bg-accent/8 flex items-center justify-center shrink-0 mt-0.5">
+                    <div class="focus-card bg-card border border-secondary/8 rounded-xl p-5 shadow-sm flex gap-4 items-start">
+                        <div class="w-9 h-9 rounded-lg bg-primary/[0.05] flex items-center justify-center shrink-0 mt-0.5">
                             <iconify-icon icon="lucide:key-round" width="16" class="text-accent"></iconify-icon>
                         </div>
                         <div>
                             <h4 class="text-sm font-semibold text-primary mb-1">Secure Authentication Flows</h4>
-                            <p class="text-xs text-secondary/50 leading-relaxed">Implementing access tokens, refresh tokens, OTP, and MFA patterns.</p>
+                            <p class="text-xs text-secondary/60 leading-relaxed">Implementing access tokens, refresh tokens, OTP, and MFA patterns.</p>
                         </div>
                     </div>
-                    <div class="focus-card bg-card border border-gray-100 rounded-xl p-5 shadow-sm flex gap-4 items-start">
-                        <div class="w-9 h-9 rounded-lg bg-accent/8 flex items-center justify-center shrink-0 mt-0.5">
+                    <div class="focus-card bg-card border border-secondary/8 rounded-xl p-5 shadow-sm flex gap-4 items-start">
+                        <div class="w-9 h-9 rounded-lg bg-primary/[0.05] flex items-center justify-center shrink-0 mt-0.5">
                             <iconify-icon icon="lucide:zap" width="16" class="text-accent"></iconify-icon>
                         </div>
                         <div>
                             <h4 class="text-sm font-semibold text-primary mb-1">State & Performance with Redis</h4>
-                            <p class="text-xs text-secondary/50 leading-relaxed">Managing caching, sessions, and performance optimization with Redis.</p>
+                            <p class="text-xs text-secondary/60 leading-relaxed">Managing caching, sessions, and performance optimization with Redis.</p>
                         </div>
                     </div>
-                    <div class="focus-card bg-card border border-gray-100 rounded-xl p-5 shadow-sm flex gap-4 items-start">
-                        <div class="w-9 h-9 rounded-lg bg-accent/8 flex items-center justify-center shrink-0 mt-0.5">
+                    <div class="focus-card bg-card border border-secondary/8 rounded-xl p-5 shadow-sm flex gap-4 items-start">
+                        <div class="w-9 h-9 rounded-lg bg-primary/[0.05] flex items-center justify-center shrink-0 mt-0.5">
                             <iconify-icon icon="lucide:database" width="16" class="text-accent"></iconify-icon>
                         </div>
                         <div>
                             <h4 class="text-sm font-semibold text-primary mb-1">Prisma & Database Services</h4>
-                            <p class="text-xs text-secondary/50 leading-relaxed">Structuring databases and services using Prisma ORM for type-safe data access.</p>
+                            <p class="text-xs text-secondary/60 leading-relaxed">Structuring databases and services using Prisma ORM for type-safe data access.</p>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Learning Path -->
             <div class="fade-up mt-10 max-w-4xl mx-auto">
-                <p class="text-xs text-secondary/40 uppercase tracking-wider font-semibold text-center mb-5">Currently Learning</p>
+                <p class="text-xs text-secondary/50 uppercase tracking-wider font-semibold text-center mb-5">Currently Learning</p>
                 <div class="flex flex-wrap justify-center gap-2.5">
-                    <span class="text-xs font-medium text-secondary bg-card border border-primary/5 px-3.5 py-2 rounded-lg">Advanced Python</span>
-                    <span class="text-xs font-medium text-secondary bg-card border border-primary/5 px-3.5 py-2 rounded-lg">Java Spring Boot</span>
-                    <span class="text-xs font-medium text-secondary bg-card border border-primary/5 px-3.5 py-2 rounded-lg">System Design Principles</span>
-                    <span class="text-xs font-medium text-secondary bg-card border border-primary/5 px-3.5 py-2 rounded-lg">Advanced NestJS Patterns</span>
+                    <span class="pill-tag text-xs font-medium text-primary bg-primary/[0.05] border border-secondary/10 px-3.5 py-2 rounded-lg">Advanced Python</span>
+                    <span class="pill-tag text-xs font-medium text-primary bg-primary/[0.05] border border-secondary/10 px-3.5 py-2 rounded-lg">Java Spring Boot</span>
+                    <span class="pill-tag text-xs font-medium text-primary bg-primary/[0.05] border border-secondary/10 px-3.5 py-2 rounded-lg">System Design Principles</span>
+                    <span class="pill-tag text-xs font-medium text-primary bg-primary/[0.05] border border-secondary/10 px-3.5 py-2 rounded-lg">Advanced NestJS Patterns</span>
                 </div>
             </div>
         </div>
@@ -790,17 +800,17 @@
         <div class="max-w-6xl mx-auto px-6">
             <div class="fade-up text-center mb-14">
                 <div class="inline-flex items-center gap-2 text-accent text-xs font-semibold uppercase tracking-widest mb-4 justify-center">
-                    <div class="w-6 h-px bg-accent/40"></div>
+                    <div class="w-6 h-px bg-secondary/30"></div>
                     Experience
-                    <div class="w-6 h-px bg-accent/40"></div>
+                    <div class="w-6 h-px bg-secondary/30"></div>
                 </div>
                 <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-primary">Where I've Worked</h2>
             </div>
 
             <div class="fade-up max-w-3xl mx-auto space-y-0">
-                <div class="relative pl-8 pb-10 border-l-2 border-primary/[0.08] group">
+                <div class="relative pl-8 pb-10 border-l-2 border-secondary/10 group">
                     <div class="absolute left-0 top-0 w-4 h-4 -translate-x-[9px] rounded-full border-2 border-accent bg-surface group-hover:bg-accent group-hover:border-accent transition-colors duration-300"></div>
-                    <div class="bg-surface border border-primary/[0.05] rounded-2xl p-6 hover:shadow-lg hover:shadow-primary/[0.04] transition-all duration-300">
+                    <div class="exp-card bg-surface border border-secondary/8 rounded-2xl p-6">
                         <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-3">
                             <div>
                                 <h3 class="font-bold text-primary">Backend Developer</h3>
@@ -812,9 +822,9 @@
                     </div>
                 </div>
 
-                <div class="relative pl-8 pb-10 border-l-2 border-primary/[0.08] group">
-                    <div class="absolute left-0 top-0 w-4 h-4 -translate-x-[9px] rounded-full border-2 border-primary/15 bg-surface group-hover:bg-accent group-hover:border-accent transition-colors duration-300"></div>
-                    <div class="bg-surface border border-primary/[0.05] rounded-2xl p-6 hover:shadow-lg hover:shadow-primary/[0.04] transition-all duration-300">
+                <div class="relative pl-8 pb-10 border-l-2 border-secondary/10 group">
+                    <div class="absolute left-0 top-0 w-4 h-4 -translate-x-[9px] rounded-full border-2 border-secondary/20 bg-surface group-hover:bg-accent group-hover:border-accent transition-colors duration-300"></div>
+                    <div class="exp-card bg-surface border border-secondary/8 rounded-2xl p-6">
                         <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-3">
                             <div>
                                 <h3 class="font-bold text-primary">Junior Backend Developer</h3>
@@ -826,9 +836,9 @@
                     </div>
                 </div>
 
-                <div class="relative pl-8 pb-10 border-l-2 border-primary/[0.08] group">
-                    <div class="absolute left-0 top-0 w-4 h-4 -translate-x-[9px] rounded-full border-2 border-primary/15 bg-surface group-hover:bg-accent group-hover:border-accent transition-colors duration-300"></div>
-                    <div class="bg-surface border border-primary/[0.05] rounded-2xl p-6 hover:shadow-lg hover:shadow-primary/[0.04] transition-all duration-300">
+                <div class="relative pl-8 pb-10 border-l-2 border-secondary/10 group">
+                    <div class="absolute left-0 top-0 w-4 h-4 -translate-x-[9px] rounded-full border-2 border-secondary/20 bg-surface group-hover:bg-accent group-hover:border-accent transition-colors duration-300"></div>
+                    <div class="exp-card bg-surface border border-secondary/8 rounded-2xl p-6">
                         <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-3">
                             <div>
                                 <h3 class="font-bold text-primary">Backend Intern</h3>
@@ -840,10 +850,9 @@
                     </div>
                 </div>
 
-                <!-- Teaching Experience -->
-                <div class="relative pl-8 pb-0 border-l-2 border-primary/[0.08] group">
-                    <div class="absolute left-0 top-0 w-4 h-4 -translate-x-[9px] rounded-full border-2 border-primary/15 bg-surface group-hover:bg-accent group-hover:border-accent transition-colors duration-300"></div>
-                    <div class="bg-surface border border-primary/[0.05] rounded-2xl p-6 hover:shadow-lg hover:shadow-primary/[0.04] transition-all duration-300">
+                <div class="relative pl-8 pb-0 border-l-2 border-secondary/10 group">
+                    <div class="absolute left-0 top-0 w-4 h-4 -translate-x-[9px] rounded-full border-2 border-secondary/20 bg-surface group-hover:bg-accent group-hover:border-accent transition-colors duration-300"></div>
+                    <div class="exp-card bg-surface border border-secondary/8 rounded-2xl p-6">
                         <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-3">
                             <div>
                                 <h3 class="font-bold text-primary">ICDL Instructor</h3>
@@ -851,7 +860,7 @@
                             </div>
                             <span class="text-xs text-secondary/50 font-medium bg-card px-3 py-1 rounded-md w-fit">Teaching</span>
                         </div>
-                        <p class="text-sm text-secondary leading-relaxed">Instructor in ICDL (International Computer Driving License) programs. Teaching areas include Microsoft Word (Beginner to Advanced) and Microsoft Excel. Created structured lesson plans and practical assignments for students.</p>
+                        <p class="text-sm text-secondary leading-relaxed">Instructor in ICDL programs. Teaching Microsoft Word (Beginner to Advanced) and Microsoft Excel. Created structured lesson plans and practical assignments for students.</p>
                     </div>
                 </div>
             </div>
@@ -863,47 +872,45 @@
         <div class="max-w-6xl mx-auto px-6">
             <div class="fade-up text-center mb-16">
                 <div class="inline-flex items-center gap-2 text-accent text-xs font-semibold uppercase tracking-widest mb-4 justify-center">
-                    <div class="w-6 h-px bg-accent/40"></div>
+                    <div class="w-6 h-px bg-secondary/30"></div>
                     Approach & Goals
-                    <div class="w-6 h-px bg-accent/40"></div>
+                    <div class="w-6 h-px bg-secondary/30"></div>
                 </div>
                 <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-primary">How I Think & Where I'm Going</h2>
             </div>
 
             <div class="fade-up grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                <!-- How I Think -->
-                <div class="bg-card border border-gray-100 rounded-2xl p-8 shadow-sm">
-                    <div class="w-12 h-12 rounded-xl bg-accent/8 flex items-center justify-center mb-5">
+                <div class="content-card bg-card border border-secondary/8 rounded-2xl p-8 shadow-sm cursor-default">
+                    <div class="w-12 h-12 rounded-xl bg-primary/[0.05] flex items-center justify-center mb-5">
                         <iconify-icon icon="lucide:lightbulb" width="22" class="text-accent"></iconify-icon>
                     </div>
                     <h3 class="text-lg font-bold text-primary mb-4">How I Think</h3>
                     <div class="space-y-3">
                         <div class="flex gap-3 items-start">
                             <div class="w-1.5 h-1.5 rounded-full bg-accent mt-2 shrink-0"></div>
-                            <p class="text-sm text-secondary/60 leading-relaxed">Backend engineering is about <span class="text-primary font-medium">designing systems</span>, not just writing code</p>
+                            <p class="text-sm text-secondary/70 leading-relaxed">Backend engineering is about <span class="text-primary font-medium">designing systems</span>, not just writing code</p>
                         </div>
                         <div class="flex gap-3 items-start">
                             <div class="w-1.5 h-1.5 rounded-full bg-accent mt-2 shrink-0"></div>
-                            <p class="text-sm text-secondary/60 leading-relaxed">Step-by-step implementation over large, risky rewrites</p>
+                            <p class="text-sm text-secondary/70 leading-relaxed">Step-by-step implementation over large, risky rewrites</p>
                         </div>
                         <div class="flex gap-3 items-start">
                             <div class="w-1.5 h-1.5 rounded-full bg-accent mt-2 shrink-0"></div>
-                            <p class="text-sm text-secondary/60 leading-relaxed">Clear <span class="text-primary font-medium">separation of concerns</span> in every layer</p>
+                            <p class="text-sm text-secondary/70 leading-relaxed">Clear <span class="text-primary font-medium">separation of concerns</span> in every layer</p>
                         </div>
                         <div class="flex gap-3 items-start">
                             <div class="w-1.5 h-1.5 rounded-full bg-accent mt-2 shrink-0"></div>
-                            <p class="text-sm text-secondary/60 leading-relaxed">Explicit reasoning behind every architectural decision</p>
+                            <p class="text-sm text-secondary/70 leading-relaxed">Explicit reasoning behind every architectural decision</p>
                         </div>
                         <div class="flex gap-3 items-start">
                             <div class="w-1.5 h-1.5 rounded-full bg-accent mt-2 shrink-0"></div>
-                            <p class="text-sm text-secondary/60 leading-relaxed">Clean, maintainable, and <span class="text-primary font-medium">production-ready</span> code always</p>
+                            <p class="text-sm text-secondary/70 leading-relaxed">Clean, maintainable, and <span class="text-primary font-medium">production-ready</span> code always</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- Career Goals -->
-                <div class="bg-card border border-gray-100 rounded-2xl p-8 shadow-sm">
-                    <div class="w-12 h-12 rounded-xl bg-accent/8 flex items-center justify-center mb-5">
+                <div class="content-card bg-card border border-secondary/8 rounded-2xl p-8 shadow-sm cursor-default">
+                    <div class="w-12 h-12 rounded-xl bg-primary/[0.05] flex items-center justify-center mb-5">
                         <iconify-icon icon="lucide:target" width="22" class="text-accent"></iconify-icon>
                     </div>
                     <h3 class="text-lg font-bold text-primary mb-4">Career Goals</h3>
@@ -913,15 +920,15 @@
                             <div class="space-y-2">
                                 <div class="flex gap-2.5 items-start">
                                     <iconify-icon icon="lucide:check" width="14" class="text-accent mt-0.5 shrink-0"></iconify-icon>
-                                    <p class="text-sm text-secondary/60">Gain real-world freelance projects</p>
+                                    <p class="text-sm text-secondary/70">Gain real-world freelance projects</p>
                                 </div>
                                 <div class="flex gap-2.5 items-start">
                                     <iconify-icon icon="lucide:check" width="14" class="text-accent mt-0.5 shrink-0"></iconify-icon>
-                                    <p class="text-sm text-secondary/60">Strengthen backend and database skills</p>
+                                    <p class="text-sm text-secondary/70">Strengthen backend and database skills</p>
                                 </div>
                                 <div class="flex gap-2.5 items-start">
                                     <iconify-icon icon="lucide:check" width="14" class="text-accent mt-0.5 shrink-0"></iconify-icon>
-                                    <p class="text-sm text-secondary/60">Build portfolio-ready applications</p>
+                                    <p class="text-sm text-secondary/70">Build portfolio-ready applications</p>
                                 </div>
                             </div>
                         </div>
@@ -930,15 +937,15 @@
                             <div class="space-y-2">
                                 <div class="flex gap-2.5 items-start">
                                     <iconify-icon icon="lucide:star" width="14" class="text-accent mt-0.5 shrink-0"></iconify-icon>
-                                    <p class="text-sm text-secondary/60">Establish a <span class="text-primary font-medium">software solutions company</span></p>
+                                    <p class="text-sm text-secondary/70">Establish a <span class="text-primary font-medium">software solutions company</span></p>
                                 </div>
                                 <div class="flex gap-2.5 items-start">
                                     <iconify-icon icon="lucide:star" width="14" class="text-accent mt-0.5 shrink-0"></iconify-icon>
-                                    <p class="text-sm text-secondary/60">Develop HRMS & educational platforms</p>
+                                    <p class="text-sm text-secondary/70">Develop HRMS & educational platforms</p>
                                 </div>
                                 <div class="flex gap-2.5 items-start">
                                     <iconify-icon icon="lucide:star" width="14" class="text-accent mt-0.5 shrink-0"></iconify-icon>
-                                    <p class="text-sm text-secondary/60">Lead a team delivering scalable software</p>
+                                    <p class="text-sm text-secondary/70">Lead a team delivering scalable software</p>
                                 </div>
                             </div>
                         </div>
@@ -946,61 +953,58 @@
                 </div>
             </div>
 
-            <!-- Strengths & Learning -->
             <div class="fade-up grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mt-8">
-                <!-- Strengths -->
-                <div class="bg-card border border-gray-100 rounded-2xl p-8 shadow-sm">
-                    <div class="w-12 h-12 rounded-xl bg-accent/8 flex items-center justify-center mb-5">
+                <div class="content-card bg-card border border-secondary/8 rounded-2xl p-8 shadow-sm cursor-default">
+                    <div class="w-12 h-12 rounded-xl bg-primary/[0.05] flex items-center justify-center mb-5">
                         <iconify-icon icon="lucide:sparkles" width="22" class="text-accent"></iconify-icon>
                     </div>
                     <h3 class="text-lg font-bold text-primary mb-4">Strengths</h3>
                     <div class="space-y-3">
                         <div class="flex gap-3 items-start">
                             <div class="w-1.5 h-1.5 rounded-full bg-accent mt-2 shrink-0"></div>
-                            <p class="text-sm text-secondary/60 leading-relaxed">Strong foundation across <span class="text-primary font-medium">multiple programming languages</span></p>
+                            <p class="text-sm text-secondary/70 leading-relaxed">Strong foundation across <span class="text-primary font-medium">multiple programming languages</span></p>
                         </div>
                         <div class="flex gap-3 items-start">
                             <div class="w-1.5 h-1.5 rounded-full bg-accent mt-2 shrink-0"></div>
-                            <p class="text-sm text-secondary/60 leading-relaxed">Practical experience with real systems, not just theory</p>
+                            <p class="text-sm text-secondary/70 leading-relaxed">Practical experience with real systems, not just theory</p>
                         </div>
                         <div class="flex gap-3 items-start">
                             <div class="w-1.5 h-1.5 rounded-full bg-accent mt-2 shrink-0"></div>
-                            <p class="text-sm text-secondary/60 leading-relaxed">Ability to <span class="text-primary font-medium">teach and explain</span> concepts clearly</p>
+                            <p class="text-sm text-secondary/70 leading-relaxed">Ability to <span class="text-primary font-medium">teach and explain</span> concepts clearly</p>
                         </div>
                         <div class="flex gap-3 items-start">
                             <div class="w-1.5 h-1.5 rounded-full bg-accent mt-2 shrink-0"></div>
-                            <p class="text-sm text-secondary/60 leading-relaxed">Consistent learner with structured goals</p>
+                            <p class="text-sm text-secondary/70 leading-relaxed">Consistent learner with structured goals</p>
                         </div>
                         <div class="flex gap-3 items-start">
                             <div class="w-1.5 h-1.5 rounded-full bg-accent mt-2 shrink-0"></div>
-                            <p class="text-sm text-secondary/60 leading-relaxed">Focus on building <span class="text-primary font-medium">real-world solutions</span></p>
+                            <p class="text-sm text-secondary/70 leading-relaxed">Focus on building <span class="text-primary font-medium">real-world solutions</span></p>
                         </div>
                     </div>
                 </div>
 
-                <!-- Learning Approach & Context -->
-                <div class="bg-card border border-gray-100 rounded-2xl p-8 shadow-sm">
-                    <div class="w-12 h-12 rounded-xl bg-accent/8 flex items-center justify-center mb-5">
+                <div class="content-card bg-card border border-secondary/8 rounded-2xl p-8 shadow-sm cursor-default">
+                    <div class="w-12 h-12 rounded-xl bg-primary/[0.05] flex items-center justify-center mb-5">
                         <iconify-icon icon="lucide:book-open" width="22" class="text-accent"></iconify-icon>
                     </div>
                     <h3 class="text-lg font-bold text-primary mb-4">Learning Approach</h3>
                     <div class="space-y-3 mb-6">
                         <div class="flex gap-3 items-start">
                             <div class="w-1.5 h-1.5 rounded-full bg-accent mt-2 shrink-0"></div>
-                            <p class="text-sm text-secondary/60 leading-relaxed">Combines practical projects with theoretical understanding</p>
+                            <p class="text-sm text-secondary/70 leading-relaxed">Combines practical projects with theoretical understanding</p>
                         </div>
                         <div class="flex gap-3 items-start">
                             <div class="w-1.5 h-1.5 rounded-full bg-accent mt-2 shrink-0"></div>
-                            <p class="text-sm text-secondary/60 leading-relaxed">Prefers <span class="text-primary font-medium">hands-on, project-based</span> learning</p>
+                            <p class="text-sm text-secondary/70 leading-relaxed">Prefers <span class="text-primary font-medium">hands-on, project-based</span> learning</p>
                         </div>
                         <div class="flex gap-3 items-start">
                             <div class="w-1.5 h-1.5 rounded-full bg-accent mt-2 shrink-0"></div>
-                            <p class="text-sm text-secondary/60 leading-relaxed">Values video-based explanations and guided tutorials</p>
+                            <p class="text-sm text-secondary/70 leading-relaxed">Values video-based explanations and guided tutorials</p>
                         </div>
                     </div>
-                    <div class="pt-4 border-t border-primary/[0.05]">
+                    <div class="pt-4 border-t border-secondary/8">
                         <p class="text-xs font-semibold text-accent uppercase tracking-wider mb-2">Work Context</p>
-                        <p class="text-sm text-secondary/60 leading-relaxed">
+                        <p class="text-sm text-secondary/70 leading-relaxed">
                             Based in <span class="text-primary font-medium">Afghanistan</span>, actively preparing for both local and international freelancing opportunities. Interested in building solutions relevant to education and business management sectors.
                         </p>
                     </div>
@@ -1014,48 +1018,48 @@
         <div class="max-w-6xl mx-auto px-6">
             <div class="fade-up text-center mb-16">
                 <div class="inline-flex items-center gap-2 text-accent text-xs font-semibold uppercase tracking-widest mb-4 justify-center">
-                    <div class="w-6 h-px bg-accent/40"></div>
+                    <div class="w-6 h-px bg-secondary/30"></div>
                     Expertise
-                    <div class="w-6 h-px bg-accent/40"></div>
+                    <div class="w-6 h-px bg-secondary/30"></div>
                 </div>
                 <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-primary">What I Offer</h2>
-                <p class="text-secondary/50 mt-4 max-w-lg mx-auto">Services I can provide for your projects.</p>
+                <p class="text-secondary/60 mt-4 max-w-lg mx-auto">Services I can provide for your projects.</p>
             </div>
             <div class="fade-up grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-                <div class="service-card bg-card border border-gray-100 rounded-2xl p-6 text-center shadow-sm">
-                    <div class="w-14 h-14 mx-auto mb-4 rounded-xl bg-accent/8 flex items-center justify-center">
+                <div class="service-card bg-card border border-secondary/8 rounded-2xl p-6 text-center shadow-sm">
+                    <div class="w-14 h-14 mx-auto mb-4 rounded-xl bg-primary/[0.05] flex items-center justify-center">
                         <iconify-icon icon="lucide:server" width="24" class="text-accent"></iconify-icon>
                     </div>
                     <h4 class="font-semibold text-sm text-primary mb-2">API Development</h4>
-                    <p class="text-xs text-secondary/50 leading-relaxed">RESTful APIs with NestJS and Express.js, following clean architecture principles.</p>
+                    <p class="text-xs text-secondary/60 leading-relaxed">RESTful APIs with NestJS and Express.js, following clean architecture.</p>
                 </div>
-                <div class="service-card bg-card border border-gray-100 rounded-2xl p-6 text-center shadow-sm">
-                    <div class="w-14 h-14 mx-auto mb-4 rounded-xl bg-accent/8 flex items-center justify-center">
+                <div class="service-card bg-card border border-secondary/8 rounded-2xl p-6 text-center shadow-sm">
+                    <div class="w-14 h-14 mx-auto mb-4 rounded-xl bg-primary/[0.05] flex items-center justify-center">
                         <iconify-icon icon="lucide:database" width="24" class="text-accent"></iconify-icon>
                     </div>
                     <h4 class="font-semibold text-sm text-primary mb-2">Database Design</h4>
-                    <p class="text-xs text-secondary/50 leading-relaxed">Efficient schemas with PostgreSQL and MySQL, including normalization and query optimization.</p>
+                    <p class="text-xs text-secondary/60 leading-relaxed">Efficient schemas with PostgreSQL and MySQL, normalization and optimization.</p>
                 </div>
-                <div class="service-card bg-card border border-gray-100 rounded-2xl p-6 text-center shadow-sm">
-                    <div class="w-14 h-14 mx-auto mb-4 rounded-xl bg-accent/8 flex items-center justify-center">
+                <div class="service-card bg-card border border-secondary/8 rounded-2xl p-6 text-center shadow-sm">
+                    <div class="w-14 h-14 mx-auto mb-4 rounded-xl bg-primary/[0.05] flex items-center justify-center">
                         <iconify-icon icon="lucide:shield-check" width="24" class="text-accent"></iconify-icon>
                     </div>
                     <h4 class="font-semibold text-sm text-primary mb-2">Auth & Security</h4>
-                    <p class="text-xs text-secondary/50 leading-relaxed">JWT, OAuth 2.0, RBAC systems, rate limiting, and security best practices.</p>
+                    <p class="text-xs text-secondary/60 leading-relaxed">JWT, OAuth 2.0, RBAC systems, rate limiting, and security best practices.</p>
                 </div>
-                <div class="service-card bg-card border border-gray-100 rounded-2xl p-6 text-center shadow-sm">
-                    <div class="w-14 h-14 mx-auto mb-4 rounded-xl bg-accent/8 flex items-center justify-center">
+                <div class="service-card bg-card border border-secondary/8 rounded-2xl p-6 text-center shadow-sm">
+                    <div class="w-14 h-14 mx-auto mb-4 rounded-xl bg-primary/[0.05] flex items-center justify-center">
                         <iconify-icon icon="lucide:container" width="24" class="text-accent"></iconify-icon>
                     </div>
                     <h4 class="font-semibold text-sm text-primary mb-2">DevOps & Deployment</h4>
-                    <p class="text-xs text-secondary/50 leading-relaxed">Docker containerization, CI/CD pipelines, and cloud deployment for production.</p>
+                    <p class="text-xs text-secondary/60 leading-relaxed">Docker containerization, CI/CD pipelines, and cloud deployment for production.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-24 md:py-32 bg-surface">
+    <section id="contact" class="py-24 md:py-32 bg-primary">
         <div class="max-w-6xl mx-auto px-6">
             <div class="fade-up max-w-2xl mx-auto text-center">
                 <div class="inline-flex items-center gap-2 text-accent text-xs font-semibold uppercase tracking-widest mb-4 justify-center">
@@ -1063,39 +1067,39 @@
                     Get in Touch
                     <div class="w-6 h-px bg-accent/40"></div>
                 </div>
-                <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-primary mb-4">
+                <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-light mb-4">
                     Let's work together
                 </h2>
-                <p class="text-secondary/50 mb-12">
+                <p class="text-light/50 mb-12">
                     Have a project in mind or want to discuss an opportunity? I'd love to hear from you.
                 </p>
 
                 <div class="flex items-center justify-center gap-5 mb-12">
-                    <a href="mailto:sajad.tavakoli@email.com" class="contact-icon-link flex flex-col items-center gap-3 bg-card border border-gray-100 rounded-2xl p-6 w-36 shadow-sm">
-                        <div class="contact-icon-circle w-12 h-12 rounded-xl bg-accent/8 flex items-center justify-center transition-all">
+                    <a href="mailto:sajad.tavakoli@email.com" class="contact-icon-link flex flex-col items-center gap-3 bg-secondary/40 border border-secondary/30 rounded-2xl p-6 w-36">
+                        <div class="contact-icon-circle w-12 h-12 rounded-xl bg-accent/15 flex items-center justify-center transition-all">
                             <iconify-icon icon="lucide:mail" width="20" class="text-accent transition-colors"></iconify-icon>
                         </div>
                         <div>
-                            <p class="text-xs font-semibold text-primary">Email</p>
-                            <p class="text-[10px] text-secondary/40 mt-0.5">sajad.tavakoli</p>
+                            <p class="text-xs font-semibold text-light">Email</p>
+                            <p class="text-[10px] text-light/40 mt-0.5">sajad.tavakoli</p>
                         </div>
                     </a>
-                    <a href="https://github.com" target="_blank" rel="noopener" class="contact-icon-link flex flex-col items-center gap-3 bg-card border border-gray-100 rounded-2xl p-6 w-36 shadow-sm">
-                        <div class="contact-icon-circle w-12 h-12 rounded-xl bg-gray-100 flex items-center justify-center transition-all">
-                            <iconify-icon icon="lucide:github" width="20" class="text-primary transition-colors"></iconify-icon>
+                    <a href="https://github.com" target="_blank" rel="noopener" class="contact-icon-link flex flex-col items-center gap-3 bg-secondary/40 border border-secondary/30 rounded-2xl p-6 w-36">
+                        <div class="contact-icon-circle w-12 h-12 rounded-xl bg-light/10 flex items-center justify-center transition-all">
+                            <iconify-icon icon="lucide:github" width="20" class="text-light transition-colors"></iconify-icon>
                         </div>
                         <div>
-                            <p class="text-xs font-semibold text-primary">GitHub</p>
-                            <p class="text-[10px] text-secondary/40 mt-0.5">@sajadtavakoli</p>
+                            <p class="text-xs font-semibold text-light">GitHub</p>
+                            <p class="text-[10px] text-light/40 mt-0.5">@sajadtavakoli</p>
                         </div>
                     </a>
-                    <a href="https://linkedin.com" target="_blank" rel="noopener" class="contact-icon-link flex flex-col items-center gap-3 bg-card border border-gray-100 rounded-2xl p-6 w-36 shadow-sm">
-                        <div class="contact-icon-circle w-12 h-12 rounded-xl bg-[#0A66C2]/8 flex items-center justify-center transition-all">
+                    <a href="https://linkedin.com" target="_blank" rel="noopener" class="contact-icon-link flex flex-col items-center gap-3 bg-secondary/40 border border-secondary/30 rounded-2xl p-6 w-36">
+                        <div class="contact-icon-circle w-12 h-12 rounded-xl bg-[#0A66C2]/15 flex items-center justify-center transition-all">
                             <iconify-icon icon="lucide:linkedin" width="20" class="text-[#0A66C2] transition-colors"></iconify-icon>
                         </div>
                         <div>
-                            <p class="text-xs font-semibold text-primary">LinkedIn</p>
-                            <p class="text-[10px] text-secondary/40 mt-0.5">Sajad Tavakoli</p>
+                            <p class="text-xs font-semibold text-light">LinkedIn</p>
+                            <p class="text-[10px] text-light/40 mt-0.5">Sajad Tavakoli</p>
                         </div>
                     </a>
                 </div>
@@ -1109,24 +1113,24 @@
     </section>
 
     <!-- Footer -->
-    <footer class="border-t border-gray-200 py-10 bg-white">
+    <footer class="border-t border-secondary/20 py-10 bg-secondary">
         <div class="max-w-6xl mx-auto px-6">
             <div class="flex flex-col md:flex-row items-center justify-between gap-6">
                 <div class="flex items-center gap-2">
-                    <span class="text-lg font-semibold text-primary"><span class="text-accent">S</span>ajad<span class="text-accent">.</span></span>
+                    <span class="text-lg font-semibold text-light"><span class="text-accent">S</span>ajad<span class="text-accent">.</span></span>
                 </div>
                 <div class="flex items-center gap-6">
-                    <a href="https://github.com" target="_blank" rel="noopener" class="text-secondary/40 hover:text-accent transition-colors">
+                    <a href="https://github.com" target="_blank" rel="noopener" class="text-light/40 hover:text-accent transition-colors">
                         <iconify-icon icon="lucide:github" width="18"></iconify-icon>
                     </a>
-                    <a href="https://linkedin.com" target="_blank" rel="noopener" class="text-secondary/40 hover:text-accent transition-colors">
+                    <a href="https://linkedin.com" target="_blank" rel="noopener" class="text-light/40 hover:text-accent transition-colors">
                         <iconify-icon icon="lucide:linkedin" width="18"></iconify-icon>
                     </a>
-                    <a href="mailto:sajad.tavakoli@email.com" class="text-secondary/40 hover:text-accent transition-colors">
+                    <a href="mailto:sajad.tavakoli@email.com" class="text-light/40 hover:text-accent transition-colors">
                         <iconify-icon icon="lucide:mail" width="18"></iconify-icon>
                     </a>
                 </div>
-                <p class="text-xs text-secondary/30">
+                <p class="text-xs text-light/30">
                     &copy; 2024 Sajad Ali Tavakoli. All rights reserved.
                 </p>
             </div>
@@ -1148,9 +1152,9 @@
         const navbar = document.getElementById('navbar');
         window.addEventListener('scroll', () => {
             if (window.pageYOffset > 50) {
-                navbar.style.borderBottom = '1px solid rgba(0,0,0,0.06)';
+                navbar.style.borderBottom = '1px solid rgba(57,62,70,0.1)';
                 navbar.style.background = 'rgba(255,255,255,0.95)';
-                navbar.style.boxShadow = '0 1px 3px rgba(0,0,0,0.04)';
+                navbar.style.boxShadow = '0 1px 3px rgba(34,40,49,0.06)';
             } else {
                 navbar.style.borderBottom = 'none';
                 navbar.style.background = 'rgba(255,255,255,0.8)';
