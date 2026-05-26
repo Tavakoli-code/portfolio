@@ -1,493 +1,667 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sajad Ali Tavakoli — Backend Developer</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <link rel="stylesheet" href="./style.css">
-</head>
-<body>
-
-    <!-- Preloader -->
-    <div id="preloader">
-        <div class="preloader-code">
-            <span class="bracket">&lt;</span>
-            <div class="preloader-dots">
-                <div class="preloader-dot"></div>
-                <div class="preloader-dot"></div>
-                <div class="preloader-dot"></div>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Sajad Ali Tavakoli — Backend Developer</title>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap"
+            rel="stylesheet"
+        />
+        <script src="https://unpkg.com/lucide@latest"></script>
+        <link rel="stylesheet" href="./style.css" />
+    </head>
+    <body>
+        <!-- Preloader -->
+        <div id="preloader">
+            <div class="preloader-code">
+                <span class="bracket">&lt;</span>
+                <div class="preloader-dots">
+                    <div class="preloader-dot"></div>
+                    <div class="preloader-dot"></div>
+                    <div class="preloader-dot"></div>
+                </div>
+                <span class="bracket">&gt;</span>
             </div>
-            <span class="bracket">&gt;</span>
         </div>
-    </div>
 
-    <!-- Page Content (hidden until loaded) -->
-    <div id="page-content">
+        <!-- Page Content (hidden until loaded) -->
+        <div id="page-content">
+            <nav id="navbar">
+                <a href="#hero" class="nav-logo">sajad<span>.</span>dev</a>
+                <ul class="nav-links">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#focus">Focus</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#approach">Approach</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <button class="nav-mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
+                    <i data-lucide="menu" style="width: 20px; height: 20px"></i>
+                </button>
+            </nav>
 
-    <nav id="navbar">
-        <a href="#hero" class="nav-logo">sajad<span>.</span>dev</a>
-        <ul class="nav-links">
-            <li><a href="#about">About</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#focus">Focus</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#approach">Approach</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-        <button class="nav-mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
-            <i data-lucide="menu" style="width:20px;height:20px;"></i>
-        </button>
-    </nav>
+            <div class="mobile-menu" id="mobileMenu">
+                <a href="#about" onclick="closeMobile()">About</a>
+                <a href="#skills" onclick="closeMobile()">Skills</a>
+                <a href="#projects" onclick="closeMobile()">Projects</a>
+                <a href="#focus" onclick="closeMobile()">Focus</a>
+                <a href="#experience" onclick="closeMobile()">Experience</a>
+                <a href="#approach" onclick="closeMobile()">Approach</a>
+                <a href="#contact" onclick="closeMobile()">Contact</a>
+            </div>
 
-    <div class="mobile-menu" id="mobileMenu">
-        <a href="#about" onclick="closeMobile()">About</a>
-        <a href="#skills" onclick="closeMobile()">Skills</a>
-        <a href="#projects" onclick="closeMobile()">Projects</a>
-        <a href="#focus" onclick="closeMobile()">Focus</a>
-        <a href="#experience" onclick="closeMobile()">Experience</a>
-        <a href="#approach" onclick="closeMobile()">Approach</a>
-        <a href="#contact" onclick="closeMobile()">Contact</a>
-    </div>
+            <!-- Hero -->
+            <section id="hero"></section>
 
-    <!-- Hero -->
-    <section id="hero">
+            <!-- About -->
+            <section id="about">
+                <div class="section-max-narrow">
+                    <p class="section-label reveal">About</p>
+                    <h2 class="section-heading reveal delay-1">About Me</h2>
+                    <p class="about-text reveal delay-2">
+                        I'm a backend engineer focused on building
+                        <em>scalable, maintainable systems</em> with clean architecture and
+                        production-ready solutions. I enjoy breaking complex problems into clear,
+                        manageable steps and designing systems that are secure, modular, and easy to
+                        evolve.
+                    </p>
+                    <p class="about-text reveal delay-3">
+                        With a <strong>Computer Science degree</strong> and hands-on experience in
+                        full-stack backend development, I've worked on systems ranging from land
+                        management platforms to learning applications and educational management
+                        tools.
+                    </p>
+                    <p class="about-text reveal delay-4">
+                        I prefer <em>step-by-step implementation</em>, separation of concerns, and
+                        clear architectural decisions over quick fixes and technical debt. Every
+                        line of code should serve the system's clarity, not just its functionality.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Skills -->
+            <section id="skills">
+                <div class="section-max">
+                    <p class="section-label reveal">Skills</p>
+                    <h2 class="section-heading reveal delay-1">My Skills</h2>
+                    <div class="skills-grid">
+                        <div class="skill-card reveal delay-2">
+                            <div class="skill-card-header">
+                                <div class="skill-card-icon"><i data-lucide="server"></i></div>
+                                <p class="skill-category">Backend</p>
+                            </div>
+                            <ul class="skill-list">
+                                <li>NestJS</li>
+                                <li>Node.js</li>
+                                <li>Express.js</li>
+                                <li>PHP</li>
+                            </ul>
+                        </div>
+                        <div class="skill-card reveal delay-3">
+                            <div class="skill-card-header">
+                                <div class="skill-card-icon"><i data-lucide="database"></i></div>
+                                <p class="skill-category">Database</p>
+                            </div>
+                            <ul class="skill-list">
+                                <li>Prisma</li>
+                                <li>MySQL</li>
+                                <li>PostgreSQL</li>
+                                <li>Microsoft Access</li>
+                            </ul>
+                        </div>
+                        <div class="skill-card reveal delay-4">
+                            <div class="skill-card-header">
+                                <div class="skill-card-icon">
+                                    <i data-lucide="shield-check"></i>
+                                </div>
+                                <p class="skill-category">Auth & Performance</p>
+                            </div>
+                            <ul class="skill-list">
+                                <li>JWT</li>
+                                <li>OTP</li>
+                                <li>MFA</li>
+                                <li>Redis</li>
+                            </ul>
+                        </div>
+                        <div class="skill-card reveal delay-5">
+                            <div class="skill-card-header">
+                                <div class="skill-card-icon"><i data-lucide="code-2"></i></div>
+                                <p class="skill-category">Languages</p>
+                            </div>
+                            <ul class="skill-list">
+                                <li>JavaScript</li>
+                                <li>Python</li>
+                                <li>Java</li>
+                                <li>C++</li>
+                            </ul>
+                        </div>
+                        <div class="skill-card reveal delay-6">
+                            <div class="skill-card-header">
+                                <div class="skill-card-icon"><i data-lucide="wrench"></i></div>
+                                <p class="skill-category">Tools</p>
+                            </div>
+                            <ul class="skill-list">
+                                <li>Git</li>
+                                <li>VS Code</li>
+                                <li>Figma</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Projects -->
+            <section id="projects">
+                <div class="section-max">
+                    <p class="section-label reveal">Projects</p>
+                    <h2 class="section-heading reveal delay-1">Featured Projects</h2>
+                    <div class="projects-list">
+                        <div class="project-card reveal delay-2">
+                            <div class="project-header">
+                                <p class="project-number">01</p>
+                                <div class="project-icon"><i data-lucide="landmark"></i></div>
+                            </div>
+                            <h3 class="project-title">Deh-Sabz LMS / Land Management System</h3>
+                            <p class="project-desc">
+                                A production-focused land and ownership management system built with
+                                structured backend architecture, authentication, registry workflows,
+                                and scalable data modeling.
+                            </p>
+                            <div class="tags-container">
+                                <span class="tag">NestJS</span>
+                                <span class="tag">Prisma</span>
+                                <span class="tag">PostgreSQL</span>
+                                <span class="tag">Redis</span>
+                                <span class="tag">JWT</span>
+                            </div>
+                        </div>
+                        <div class="project-card reveal delay-3">
+                            <div class="project-header">
+                                <p class="project-number">02</p>
+                                <div class="project-icon"><i data-lucide="brain"></i></div>
+                            </div>
+                            <h3 class="project-title">Leitner Learning System</h3>
+                            <p class="project-desc">
+                                A web application based on the Leitner method to help users memorize
+                                information more effectively, especially for language learning and
+                                structured study.
+                            </p>
+                            <div class="tags-container">
+                                <span class="tag">Backend Architecture</span>
+                                <span class="tag">Authentication</span>
+                                <span class="tag">Learning System</span>
+                            </div>
+                        </div>
+                        <div class="project-card reveal delay-4">
+                            <div class="project-header">
+                                <p class="project-number">03</p>
+                                <div class="project-icon"><i data-lucide="graduation-cap"></i></div>
+                            </div>
+                            <h3 class="project-title">Educational Management System</h3>
+                            <p class="project-desc">
+                                A database system for managing students, teachers, courses,
+                                enrollments, salaries, costs, and reports for an educational center.
+                            </p>
+                            <div class="tags-container">
+                                <span class="tag">Microsoft Access</span>
+                                <span class="tag">VBA</span>
+                                <span class="tag">Database Design</span>
+                            </div>
+                        </div>
+                        <div class="project-card reveal delay-5">
+                            <div class="project-header">
+                                <p class="project-number">04</p>
+                                <div class="project-icon"><i data-lucide="pen-line"></i></div>
+                            </div>
+                            <h3 class="project-title">Blog Web Application</h3>
+                            <p class="project-desc">
+                                A blog system built with Node.js, Express.js, and EJS, focused on
+                                routing, dynamic rendering, and clean UI structure.
+                            </p>
+                            <div class="tags-container">
+                                <span class="tag">Node.js</span>
+                                <span class="tag">Express.js</span>
+                                <span class="tag">EJS</span>
+                            </div>
+                        </div>
+                        <div class="project-card reveal delay-6">
+                            <div class="project-header">
+                                <p class="project-number">05</p>
+                                <div class="project-icon"><i data-lucide="users"></i></div>
+                            </div>
+                            <h3 class="project-title">Student Management System</h3>
+                            <p class="project-desc">
+                                A PHP and MySQL-based system for managing student records with CRUD
+                                operations, validation, and dynamic table display.
+                            </p>
+                            <div class="tags-container">
+                                <span class="tag">PHP</span>
+                                <span class="tag">MySQL</span>
+                                <span class="tag">JavaScript</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Current Focus -->
+            <section id="focus">
+                <div class="section-max">
+                    <p class="section-label reveal">Current Focus</p>
+                    <h2 class="section-heading reveal delay-1">What I'm Focused On</h2>
+                    <div class="focus-grid">
+                        <div class="focus-card reveal delay-2">
+                            <div class="focus-icon"><i data-lucide="layers"></i></div>
+                            <h3 class="focus-title">Clean Architecture</h3>
+                            <p class="focus-desc">
+                                Designing systems with clear separation of concerns, modular
+                                boundaries, and decisions that remain valid as the codebase grows.
+                            </p>
+                        </div>
+                        <div class="focus-card reveal delay-3">
+                            <div class="focus-icon"><i data-lucide="shield-check"></i></div>
+                            <h3 class="focus-title">Auth & Security</h3>
+                            <p class="focus-desc">
+                                Implementing JWT, OTP, MFA, and session management patterns that
+                                protect data without overcomplicating the user experience.
+                            </p>
+                        </div>
+                        <div class="focus-card reveal delay-4">
+                            <div class="focus-icon"><i data-lucide="database"></i></div>
+                            <h3 class="focus-title">Scalable Data Models</h3>
+                            <p class="focus-desc">
+                                Building database schemas with Prisma and PostgreSQL that handle
+                                complex relationships, migrations, and performance at scale.
+                            </p>
+                        </div>
+                        <div class="focus-card reveal delay-5">
+                            <div class="focus-icon"><i data-lucide="zap"></i></div>
+                            <h3 class="focus-title">Performance & Caching</h3>
+                            <p class="focus-desc">
+                                Using Redis and optimized query patterns to reduce latency and
+                                handle concurrent requests in production environments.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Experience -->
+            <section id="experience">
+                <div class="section-max-narrow">
+                    <p class="section-label reveal">Experience</p>
+                    <h2 class="section-heading reveal delay-1">My Experience</h2>
+                    <div class="timeline">
+                        <div class="timeline-item reveal delay-2">
+                            <p class="timeline-date">2024 — Present</p>
+                            <h3 class="timeline-role">Backend Developer</h3>
+                            <p class="timeline-company">Deh-Sabz LMS Project</p>
+                            <p class="timeline-desc">
+                                Building a production land management system with NestJS, Prisma,
+                                PostgreSQL, Redis, and JWT authentication. Designing scalable data
+                                models and registry workflows.
+                            </p>
+                        </div>
+                        <div class="timeline-item reveal delay-3">
+                            <p class="timeline-date">2023 — 2024</p>
+                            <h3 class="timeline-role">Full-Stack Developer</h3>
+                            <p class="timeline-company">Freelance Projects</p>
+                            <p class="timeline-desc">
+                                Developed learning systems, blog platforms, and student management
+                                tools using Node.js, Express, PHP, and MySQL with a focus on backend
+                                architecture.
+                            </p>
+                        </div>
+                        <div class="timeline-item reveal delay-4">
+                            <p class="timeline-date">2022 — 2023</p>
+                            <h3 class="timeline-role">Database Developer</h3>
+                            <p class="timeline-company">Educational Management System</p>
+                            <p class="timeline-desc">
+                                Designed and implemented a comprehensive educational management
+                                database using Microsoft Access and VBA, handling students, courses,
+                                salaries, and reporting.
+                            </p>
+                        </div>
+                        <div class="timeline-item reveal delay-5">
+                            <p class="timeline-date">2019 — 2023</p>
+                            <h3 class="timeline-role">Computer Science Student</h3>
+                            <p class="timeline-company">University</p>
+                            <p class="timeline-desc">
+                                Studied core CS fundamentals including data structures, algorithms,
+                                software engineering, database systems, and object-oriented
+                                programming in Java, C++, and Python.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Approach & Goals -->
+            <section id="approach">
+                <div class="section-max-narrow" style="text-align: center">
+                    <p class="section-label reveal">Approach & Goals</p>
+                    <h2 class="section-heading reveal delay-1">My Approach</h2>
+                    <p class="approach-quote reveal delay-2">
+                        Backend engineering is not just about writing code — it is about designing
+                        systems that remain clear, reliable, and maintainable as they grow.
+                    </p>
+                    <div class="principles-grid">
+                        <div class="principle-card reveal delay-3">
+                            <p class="principle-num">01</p>
+                            <h4 class="principle-title">Build Incrementally</h4>
+                            <p class="principle-desc">
+                                Start with what's necessary. Add complexity only when the system
+                                demands it, not when curiosity suggests it.
+                            </p>
+                        </div>
+                        <div class="principle-card reveal delay-4">
+                            <p class="principle-num">02</p>
+                            <h4 class="principle-title">Keep Architecture Clean</h4>
+                            <p class="principle-desc">
+                                Separation of concerns isn't a theory — it's a practice. Every
+                                module should have one reason to change.
+                            </p>
+                        </div>
+                        <div class="principle-card reveal delay-5">
+                            <p class="principle-num">03</p>
+                            <h4 class="principle-title">Make Systems Easy to Evolve</h4>
+                            <p class="principle-desc">
+                                Code is read more than it's written. Prioritize clarity, naming, and
+                                structure that a new developer can follow.
+                            </p>
+                        </div>
+                    </div>
+                    <p class="goals-text reveal delay-6">
+                        My goal is to <strong>grow as a backend engineer</strong> who designs
+                        systems that teams can rely on — systems that are not just functional today,
+                        but built to remain clear and maintainable for years.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Services -->
+            <section id="services">
+                <div class="section-max">
+                    <p class="section-label reveal">Services</p>
+                    <h2 class="section-heading reveal delay-1">What I Offer</h2>
+                    <div class="services-grid">
+                        <div class="service-card reveal delay-2">
+                            <div class="service-icon"><i data-lucide="layout-dashboard"></i></div>
+                            <h3 class="service-title">Backend System Design</h3>
+                            <p class="service-desc">
+                                Designing scalable, well-structured backend architectures with clear
+                                module boundaries and production-ready patterns.
+                            </p>
+                        </div>
+                        <div class="service-card reveal delay-3">
+                            <div class="service-icon"><i data-lucide="plug"></i></div>
+                            <h3 class="service-title">API Development</h3>
+                            <p class="service-desc">
+                                Building RESTful APIs with NestJS or Express.js, including
+                                authentication, validation, error handling, and documentation.
+                            </p>
+                        </div>
+                        <div class="service-card reveal delay-4">
+                            <div class="service-icon"><i data-lucide="hard-drive"></i></div>
+                            <h3 class="service-title">Database Design & Optimization</h3>
+                            <p class="service-desc">
+                                Creating normalized schemas with Prisma or raw SQL, writing
+                                efficient queries, and planning for scale from the start.
+                            </p>
+                        </div>
+                        <div class="service-card reveal delay-5">
+                            <div class="service-icon"><i data-lucide="lock"></i></div>
+                            <h3 class="service-title">Auth & Security Implementation</h3>
+                            <p class="service-desc">
+                                Implementing JWT, OTP, MFA, role-based access, and secure session
+                                management for production applications.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contact -->
+            <section id="contact">
+                <div class="section-max-narrow" style="text-align: center">
+                    <p class="section-label reveal">Contact</p>
+                    <h2 class="contact-heading reveal delay-1">Let's build something reliable.</h2>
+                    <p class="contact-sub reveal delay-2">
+                        If you have a project in mind or want to discuss backend architecture, feel
+                        free to reach out.
+                    </p>
+                    <div class="contact-links reveal delay-3">
+                        <a href="mailto:hello@sajadtavakoli.com" class="contact-link">
+                            <i data-lucide="mail" style="width: 16px; height: 16px"></i>
+                            Email
+                        </a>
+                        <a
+                            href="https://github.com"
+                            target="_blank"
+                            rel="noopener"
+                            class="contact-link"
+                        >
+                            <svg
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            >
+                                <path
+                                    d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"
+                                ></path>
+                                <path d="M9 18c-4.51 2-5-2-7-2"></path>
+                            </svg>
+                            GitHub
+                        </a>
+                        <a
+                            href="https://gitlab.com"
+                            target="_blank"
+                            rel="noopener"
+                            class="contact-link"
+                        >
+                            <svg
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            >
+                                <path
+                                    d="M22.65 14.39L12 22.13 1.35 14.39a.84.84 0 0 1-.3-.94l1.22-3.78 2.44-7.51A.42.42 0 0 1 4.82 2a.43.43 0 0 1 .58 0 .42.42 0 0 1 .11.18l2.44 7.49h8.1l2.44-7.51A.42.42 0 0 1 18.6 2a.43.43 0 0 1 .58 0 .42.42 0 0 1 .11.18l2.44 7.51L23 13.45a.84.84 0 0 1-.35.94z"
+                                ></path>
+                                <path d="m6.09 9.67 5.91 12.46 5.91-12.46"></path>
+                            </svg>
+                            GitLab
+                        </a>
+                        <a
+                            href="https://linkedin.com"
+                            target="_blank"
+                            rel="noopener"
+                            class="contact-link"
+                        >
+                            <svg
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            >
+                                <path
+                                    d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"
+                                ></path>
+                                <rect width="4" height="12" x="2" y="9"></rect>
+                                <circle cx="4" cy="4" r="2"></circle>
+                            </svg>
+                            LinkedIn
+                        </a>
+                        <a href="#" class="contact-link">
+                            <i data-lucide="file-text" style="width: 16px; height: 16px"></i>
+                            Resume
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <footer>
+                <p class="footer-text">
+                    © 2025 Sajad Ali Tavakoli <span>·</span> Backend Developer
+                </p>
+                <div class="footer-links">
+                    <a href="#hero">Top</a>
+                    <a href="https://github.com" target="_blank" rel="noopener">GitHub</a>
+                    <a href="https://gitlab.com" target="_blank" rel="noopener">GitLab</a>
+                    <a href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn</a>
+                </div>
+            </footer>
+        </div>
+        <!-- end #page-content -->
+
+        <script src="./data.js"></script>
+
+        <script>
+            function renderHero() {
+                const hero = portfolioData.hero;
+                const heroSection = document.getElementById("hero");
+
+                if (!heroSection || !hero) return;
+
+                const buttonsHtml = hero.buttons
+                    .filter((button) => button.text && button.link)
+                    .map((button) => {
+                        const className = button.type === "outline" ? "btn-outline" : "btn-primary";
+
+                        return `
+                <a href="${button.link}" class="${className}">
+                    ${button.text}
+                </a>
+            `;
+                    })
+                    .join("");
+
+                heroSection.innerHTML = `
         <div class="hero-bg">
-            <img src="https://z-cdn-media.chatglm.cn/files/a1dfa643-4b54-41cd-b5e2-4c4c6afef2b2.png?auth_key=1879830464-2aef707ed3f4436fb53b7ca5cac76063-0-829314f964dae523e19ceaf37e86bfee" alt="Sajad Ali Tavakoli" loading="eager">
+            <img src="${hero.image}" alt="${hero.imageAlt || "Portfolio hero image"}" loading="eager">
         </div>
         <div class="hero-overlay"></div>
         <div class="hero-content">
-            <p class="hero-label reveal">Backend Developer</p>
-            <h1 class="hero-name reveal delay-1">Sajad Ali<br>Tavakoli</h1>
-            <p class="hero-role reveal delay-2">Building clean, scalable systems.</p>
-            <p class="hero-desc reveal delay-3">Computer Science graduate and backend developer focused on designing secure, maintainable systems with clean architecture, production-ready workflows, and scalable data modeling.</p>
+            <p class="hero-label reveal">${hero.label}</p>
+            <h1 class="hero-name reveal delay-1">${hero.name}</h1>
+            <p class="hero-role reveal delay-2">${hero.role}</p>
+            <p class="hero-desc reveal delay-3">${hero.description}</p>
             <div class="hero-cta reveal delay-4">
-                <a href="#projects" class="btn-primary">View Projects</a>
-                <a href="#contact" class="btn-outline">Contact Me</a>
+                ${buttonsHtml}
             </div>
         </div>
-    </section>
-
-    <!-- About -->
-    <section id="about">
-        <div class="section-max-narrow">
-            <p class="section-label reveal">About</p>
-            <h2 class="section-heading reveal delay-1">About Me</h2>
-            <p class="about-text reveal delay-2">I'm a backend engineer focused on building <em>scalable, maintainable systems</em> with clean architecture and production-ready solutions. I enjoy breaking complex problems into clear, manageable steps and designing systems that are secure, modular, and easy to evolve.</p>
-            <p class="about-text reveal delay-3">With a <strong>Computer Science degree</strong> and hands-on experience in full-stack backend development, I've worked on systems ranging from land management platforms to learning applications and educational management tools.</p>
-            <p class="about-text reveal delay-4">I prefer <em>step-by-step implementation</em>, separation of concerns, and clear architectural decisions over quick fixes and technical debt. Every line of code should serve the system's clarity, not just its functionality.</p>
-        </div>
-    </section>
-
-    <!-- Skills -->
-    <section id="skills">
-        <div class="section-max">
-            <p class="section-label reveal">Skills</p>
-            <h2 class="section-heading reveal delay-1">My Skills</h2>
-            <div class="skills-grid">
-                <div class="skill-card reveal delay-2">
-                    <div class="skill-card-header">
-                        <div class="skill-card-icon"><i data-lucide="server"></i></div>
-                        <p class="skill-category">Backend</p>
-                    </div>
-                    <ul class="skill-list">
-                        <li>NestJS</li>
-                        <li>Node.js</li>
-                        <li>Express.js</li>
-                        <li>PHP</li>
-                    </ul>
-                </div>
-                <div class="skill-card reveal delay-3">
-                    <div class="skill-card-header">
-                        <div class="skill-card-icon"><i data-lucide="database"></i></div>
-                        <p class="skill-category">Database</p>
-                    </div>
-                    <ul class="skill-list">
-                        <li>Prisma</li>
-                        <li>MySQL</li>
-                        <li>PostgreSQL</li>
-                        <li>Microsoft Access</li>
-                    </ul>
-                </div>
-                <div class="skill-card reveal delay-4">
-                    <div class="skill-card-header">
-                        <div class="skill-card-icon"><i data-lucide="shield-check"></i></div>
-                        <p class="skill-category">Auth & Performance</p>
-                    </div>
-                    <ul class="skill-list">
-                        <li>JWT</li>
-                        <li>OTP</li>
-                        <li>MFA</li>
-                        <li>Redis</li>
-                    </ul>
-                </div>
-                <div class="skill-card reveal delay-5">
-                    <div class="skill-card-header">
-                        <div class="skill-card-icon"><i data-lucide="code-2"></i></div>
-                        <p class="skill-category">Languages</p>
-                    </div>
-                    <ul class="skill-list">
-                        <li>JavaScript</li>
-                        <li>Python</li>
-                        <li>Java</li>
-                        <li>C++</li>
-                    </ul>
-                </div>
-                <div class="skill-card reveal delay-6">
-                    <div class="skill-card-header">
-                        <div class="skill-card-icon"><i data-lucide="wrench"></i></div>
-                        <p class="skill-category">Tools</p>
-                    </div>
-                    <ul class="skill-list">
-                        <li>Git</li>
-                        <li>VS Code</li>
-                        <li>Figma</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Projects -->
-    <section id="projects">
-        <div class="section-max">
-            <p class="section-label reveal">Projects</p>
-            <h2 class="section-heading reveal delay-1">Featured Projects</h2>
-            <div class="projects-list">
-                <div class="project-card reveal delay-2">
-                    <div class="project-header">
-                        <p class="project-number">01</p>
-                        <div class="project-icon"><i data-lucide="landmark"></i></div>
-                    </div>
-                    <h3 class="project-title">Deh-Sabz LMS / Land Management System</h3>
-                    <p class="project-desc">A production-focused land and ownership management system built with structured backend architecture, authentication, registry workflows, and scalable data modeling.</p>
-                    <div class="tags-container">
-                        <span class="tag">NestJS</span>
-                        <span class="tag">Prisma</span>
-                        <span class="tag">PostgreSQL</span>
-                        <span class="tag">Redis</span>
-                        <span class="tag">JWT</span>
-                    </div>
-                </div>
-                <div class="project-card reveal delay-3">
-                    <div class="project-header">
-                        <p class="project-number">02</p>
-                        <div class="project-icon"><i data-lucide="brain"></i></div>
-                    </div>
-                    <h3 class="project-title">Leitner Learning System</h3>
-                    <p class="project-desc">A web application based on the Leitner method to help users memorize information more effectively, especially for language learning and structured study.</p>
-                    <div class="tags-container">
-                        <span class="tag">Backend Architecture</span>
-                        <span class="tag">Authentication</span>
-                        <span class="tag">Learning System</span>
-                    </div>
-                </div>
-                <div class="project-card reveal delay-4">
-                    <div class="project-header">
-                        <p class="project-number">03</p>
-                        <div class="project-icon"><i data-lucide="graduation-cap"></i></div>
-                    </div>
-                    <h3 class="project-title">Educational Management System</h3>
-                    <p class="project-desc">A database system for managing students, teachers, courses, enrollments, salaries, costs, and reports for an educational center.</p>
-                    <div class="tags-container">
-                        <span class="tag">Microsoft Access</span>
-                        <span class="tag">VBA</span>
-                        <span class="tag">Database Design</span>
-                    </div>
-                </div>
-                <div class="project-card reveal delay-5">
-                    <div class="project-header">
-                        <p class="project-number">04</p>
-                        <div class="project-icon"><i data-lucide="pen-line"></i></div>
-                    </div>
-                    <h3 class="project-title">Blog Web Application</h3>
-                    <p class="project-desc">A blog system built with Node.js, Express.js, and EJS, focused on routing, dynamic rendering, and clean UI structure.</p>
-                    <div class="tags-container">
-                        <span class="tag">Node.js</span>
-                        <span class="tag">Express.js</span>
-                        <span class="tag">EJS</span>
-                    </div>
-                </div>
-                <div class="project-card reveal delay-6">
-                    <div class="project-header">
-                        <p class="project-number">05</p>
-                        <div class="project-icon"><i data-lucide="users"></i></div>
-                    </div>
-                    <h3 class="project-title">Student Management System</h3>
-                    <p class="project-desc">A PHP and MySQL-based system for managing student records with CRUD operations, validation, and dynamic table display.</p>
-                    <div class="tags-container">
-                        <span class="tag">PHP</span>
-                        <span class="tag">MySQL</span>
-                        <span class="tag">JavaScript</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Current Focus -->
-    <section id="focus">
-        <div class="section-max">
-            <p class="section-label reveal">Current Focus</p>
-            <h2 class="section-heading reveal delay-1">What I'm Focused On</h2>
-            <div class="focus-grid">
-                <div class="focus-card reveal delay-2">
-                    <div class="focus-icon"><i data-lucide="layers"></i></div>
-                    <h3 class="focus-title">Clean Architecture</h3>
-                    <p class="focus-desc">Designing systems with clear separation of concerns, modular boundaries, and decisions that remain valid as the codebase grows.</p>
-                </div>
-                <div class="focus-card reveal delay-3">
-                    <div class="focus-icon"><i data-lucide="shield-check"></i></div>
-                    <h3 class="focus-title">Auth & Security</h3>
-                    <p class="focus-desc">Implementing JWT, OTP, MFA, and session management patterns that protect data without overcomplicating the user experience.</p>
-                </div>
-                <div class="focus-card reveal delay-4">
-                    <div class="focus-icon"><i data-lucide="database"></i></div>
-                    <h3 class="focus-title">Scalable Data Models</h3>
-                    <p class="focus-desc">Building database schemas with Prisma and PostgreSQL that handle complex relationships, migrations, and performance at scale.</p>
-                </div>
-                <div class="focus-card reveal delay-5">
-                    <div class="focus-icon"><i data-lucide="zap"></i></div>
-                    <h3 class="focus-title">Performance & Caching</h3>
-                    <p class="focus-desc">Using Redis and optimized query patterns to reduce latency and handle concurrent requests in production environments.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Experience -->
-    <section id="experience">
-        <div class="section-max-narrow">
-            <p class="section-label reveal">Experience</p>
-            <h2 class="section-heading reveal delay-1">My Experience</h2>
-            <div class="timeline">
-                <div class="timeline-item reveal delay-2">
-                    <p class="timeline-date">2024 — Present</p>
-                    <h3 class="timeline-role">Backend Developer</h3>
-                    <p class="timeline-company">Deh-Sabz LMS Project</p>
-                    <p class="timeline-desc">Building a production land management system with NestJS, Prisma, PostgreSQL, Redis, and JWT authentication. Designing scalable data models and registry workflows.</p>
-                </div>
-                <div class="timeline-item reveal delay-3">
-                    <p class="timeline-date">2023 — 2024</p>
-                    <h3 class="timeline-role">Full-Stack Developer</h3>
-                    <p class="timeline-company">Freelance Projects</p>
-                    <p class="timeline-desc">Developed learning systems, blog platforms, and student management tools using Node.js, Express, PHP, and MySQL with a focus on backend architecture.</p>
-                </div>
-                <div class="timeline-item reveal delay-4">
-                    <p class="timeline-date">2022 — 2023</p>
-                    <h3 class="timeline-role">Database Developer</h3>
-                    <p class="timeline-company">Educational Management System</p>
-                    <p class="timeline-desc">Designed and implemented a comprehensive educational management database using Microsoft Access and VBA, handling students, courses, salaries, and reporting.</p>
-                </div>
-                <div class="timeline-item reveal delay-5">
-                    <p class="timeline-date">2019 — 2023</p>
-                    <h3 class="timeline-role">Computer Science Student</h3>
-                    <p class="timeline-company">University</p>
-                    <p class="timeline-desc">Studied core CS fundamentals including data structures, algorithms, software engineering, database systems, and object-oriented programming in Java, C++, and Python.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Approach & Goals -->
-    <section id="approach">
-        <div class="section-max-narrow" style="text-align: center;">
-            <p class="section-label reveal">Approach & Goals</p>
-            <h2 class="section-heading reveal delay-1">My Approach</h2>
-            <p class="approach-quote reveal delay-2">Backend engineering is not just about writing code — it is about designing systems that remain clear, reliable, and maintainable as they grow.</p>
-            <div class="principles-grid">
-                <div class="principle-card reveal delay-3">
-                    <p class="principle-num">01</p>
-                    <h4 class="principle-title">Build Incrementally</h4>
-                    <p class="principle-desc">Start with what's necessary. Add complexity only when the system demands it, not when curiosity suggests it.</p>
-                </div>
-                <div class="principle-card reveal delay-4">
-                    <p class="principle-num">02</p>
-                    <h4 class="principle-title">Keep Architecture Clean</h4>
-                    <p class="principle-desc">Separation of concerns isn't a theory — it's a practice. Every module should have one reason to change.</p>
-                </div>
-                <div class="principle-card reveal delay-5">
-                    <p class="principle-num">03</p>
-                    <h4 class="principle-title">Make Systems Easy to Evolve</h4>
-                    <p class="principle-desc">Code is read more than it's written. Prioritize clarity, naming, and structure that a new developer can follow.</p>
-                </div>
-            </div>
-            <p class="goals-text reveal delay-6">My goal is to <strong>grow as a backend engineer</strong> who designs systems that teams can rely on — systems that are not just functional today, but built to remain clear and maintainable for years.</p>
-        </div>
-    </section>
-
-    <!-- Services -->
-    <section id="services">
-        <div class="section-max">
-            <p class="section-label reveal">Services</p>
-            <h2 class="section-heading reveal delay-1">What I Offer</h2>
-            <div class="services-grid">
-                <div class="service-card reveal delay-2">
-                    <div class="service-icon"><i data-lucide="layout-dashboard"></i></div>
-                    <h3 class="service-title">Backend System Design</h3>
-                    <p class="service-desc">Designing scalable, well-structured backend architectures with clear module boundaries and production-ready patterns.</p>
-                </div>
-                <div class="service-card reveal delay-3">
-                    <div class="service-icon"><i data-lucide="plug"></i></div>
-                    <h3 class="service-title">API Development</h3>
-                    <p class="service-desc">Building RESTful APIs with NestJS or Express.js, including authentication, validation, error handling, and documentation.</p>
-                </div>
-                <div class="service-card reveal delay-4">
-                    <div class="service-icon"><i data-lucide="hard-drive"></i></div>
-                    <h3 class="service-title">Database Design & Optimization</h3>
-                    <p class="service-desc">Creating normalized schemas with Prisma or raw SQL, writing efficient queries, and planning for scale from the start.</p>
-                </div>
-                <div class="service-card reveal delay-5">
-                    <div class="service-icon"><i data-lucide="lock"></i></div>
-                    <h3 class="service-title">Auth & Security Implementation</h3>
-                    <p class="service-desc">Implementing JWT, OTP, MFA, role-based access, and secure session management for production applications.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact -->
-    <section id="contact">
-        <div class="section-max-narrow" style="text-align: center;">
-            <p class="section-label reveal">Contact</p>
-            <h2 class="contact-heading reveal delay-1">Let's build something reliable.</h2>
-            <p class="contact-sub reveal delay-2">If you have a project in mind or want to discuss backend architecture, feel free to reach out.</p>
-            <div class="contact-links reveal delay-3">
-                <a href="mailto:hello@sajadtavakoli.com" class="contact-link">
-                    <i data-lucide="mail" style="width:16px;height:16px;"></i>
-                    Email
-                </a>
-                <a href="https://github.com" target="_blank" rel="noopener" class="contact-link">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg>
-                    GitHub
-                </a>
-                <a href="https://gitlab.com" target="_blank" rel="noopener" class="contact-link">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.65 14.39L12 22.13 1.35 14.39a.84.84 0 0 1-.3-.94l1.22-3.78 2.44-7.51A.42.42 0 0 1 4.82 2a.43.43 0 0 1 .58 0 .42.42 0 0 1 .11.18l2.44 7.49h8.1l2.44-7.51A.42.42 0 0 1 18.6 2a.43.43 0 0 1 .58 0 .42.42 0 0 1 .11.18l2.44 7.51L23 13.45a.84.84 0 0 1-.35.94z"></path><path d="m6.09 9.67 5.91 12.46 5.91-12.46"></path></svg>
-                    GitLab
-                </a>
-                <a href="https://linkedin.com" target="_blank" rel="noopener" class="contact-link">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-                    LinkedIn
-                </a>
-                <a href="#" class="contact-link">
-                    <i data-lucide="file-text" style="width:16px;height:16px;"></i>
-                    Resume
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <p class="footer-text">© 2025 Sajad Ali Tavakoli <span>·</span> Backend Developer</p>
-        <div class="footer-links">
-            <a href="#hero">Top</a>
-            <a href="https://github.com" target="_blank" rel="noopener">GitHub</a>
-            <a href="https://gitlab.com" target="_blank" rel="noopener">GitLab</a>
-            <a href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn</a>
-        </div>
-    </footer>
-
-    </div><!-- end #page-content -->
-
-    <script src="./data.js"></script>
-
-    <script>
-        (function() {
-            const preloader = document.getElementById('preloader');
-            const pageContent = document.getElementById('page-content');
-            const heroImg = document.querySelector('.hero-bg img');
-            let imagesLoaded = false;
-            let minimumTimePassed = false;
-            const MIN_DISPLAY = 1200;
-
-            if (heroImg && heroImg.complete) {
-                imagesLoaded = true;
-                tryDismiss();
-            } else if (heroImg) {
-                heroImg.addEventListener('load', function() {
-                    imagesLoaded = true;
-                    tryDismiss();
-                });
-                heroImg.addEventListener('error', function() {
-                    imagesLoaded = true;
-                    tryDismiss();
-                });
-            } else {
-                imagesLoaded = true;
-                tryDismiss();
+    `;
             }
 
-            setTimeout(function() {
-                minimumTimePassed = true;
-                tryDismiss();
-            }, MIN_DISPLAY);
+            renderHero();
 
-            function tryDismiss() {
-                if (!imagesLoaded || !minimumTimePassed) return;
-                preloader.classList.add('loaded');
-                pageContent.classList.add('visible');
-                setTimeout(initReveals, 100);
-            }
+            (function () {
+                const preloader = document.getElementById("preloader");
+                const pageContent = document.getElementById("page-content");
+                const heroImg = document.querySelector(".hero-bg img");
+                let imagesLoaded = false;
+                let minimumTimePassed = false;
+                const MIN_DISPLAY = 1200;
 
-            setTimeout(function() {
-                if (!preloader.classList.contains('loaded')) {
-                    preloader.classList.add('loaded');
-                    pageContent.classList.add('visible');
+                if (heroImg && heroImg.complete) {
+                    imagesLoaded = true;
+                    tryDismiss();
+                } else if (heroImg) {
+                    heroImg.addEventListener("load", function () {
+                        imagesLoaded = true;
+                        tryDismiss();
+                    });
+                    heroImg.addEventListener("error", function () {
+                        imagesLoaded = true;
+                        tryDismiss();
+                    });
+                } else {
+                    imagesLoaded = true;
+                    tryDismiss();
+                }
+
+                setTimeout(function () {
+                    minimumTimePassed = true;
+                    tryDismiss();
+                }, MIN_DISPLAY);
+
+                function tryDismiss() {
+                    if (!imagesLoaded || !minimumTimePassed) return;
+                    preloader.classList.add("loaded");
+                    pageContent.classList.add("visible");
                     setTimeout(initReveals, 100);
                 }
-            }, 5000);
-        })();
 
-        lucide.createIcons();
-
-        const navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', () => {
-            navbar.classList.toggle('scrolled', window.scrollY > 40);
-        });
-
-        const mobileToggle = document.getElementById('mobileToggle');
-        const mobileMenu = document.getElementById('mobileMenu');
-        let menuOpen = false;
-
-        mobileToggle.addEventListener('click', () => {
-            menuOpen = !menuOpen;
-            mobileMenu.classList.toggle('active', menuOpen);
-            mobileToggle.innerHTML = menuOpen
-                ? '<i data-lucide="x" style="width:20px;height:20px;"></i>'
-                : '<i data-lucide="menu" style="width:20px;height:20px;"></i>';
-            lucide.createIcons();
-        });
-
-        function closeMobile() {
-            menuOpen = false;
-            mobileMenu.classList.remove('active');
-            mobileToggle.innerHTML = '<i data-lucide="menu" style="width:20px;height:20px;"></i>';
-            lucide.createIcons();
-        }
-
-        function initReveals() {
-            const revealObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                        revealObserver.unobserve(entry.target);
+                setTimeout(function () {
+                    if (!preloader.classList.contains("loaded")) {
+                        preloader.classList.add("loaded");
+                        pageContent.classList.add("visible");
+                        setTimeout(initReveals, 100);
                     }
-                });
-            }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+                }, 5000);
+            })();
 
-            document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
-        }
+            lucide.createIcons();
 
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            const navbar = document.getElementById("navbar");
+            window.addEventListener("scroll", () => {
+                navbar.classList.toggle("scrolled", window.scrollY > 40);
             });
-        });
-    </script>
 
-</body>
+            const mobileToggle = document.getElementById("mobileToggle");
+            const mobileMenu = document.getElementById("mobileMenu");
+            let menuOpen = false;
+
+            mobileToggle.addEventListener("click", () => {
+                menuOpen = !menuOpen;
+                mobileMenu.classList.toggle("active", menuOpen);
+                mobileToggle.innerHTML = menuOpen
+                    ? '<i data-lucide="x" style="width:20px;height:20px;"></i>'
+                    : '<i data-lucide="menu" style="width:20px;height:20px;"></i>';
+                lucide.createIcons();
+            });
+
+            function closeMobile() {
+                menuOpen = false;
+                mobileMenu.classList.remove("active");
+                mobileToggle.innerHTML =
+                    '<i data-lucide="menu" style="width:20px;height:20px;"></i>';
+                lucide.createIcons();
+            }
+
+            function initReveals() {
+                const revealObserver = new IntersectionObserver(
+                    (entries) => {
+                        entries.forEach((entry) => {
+                            if (entry.isIntersecting) {
+                                entry.target.classList.add("visible");
+                                revealObserver.unobserve(entry.target);
+                            }
+                        });
+                    },
+                    { threshold: 0.1, rootMargin: "0px 0px -40px 0px" },
+                );
+
+                document.querySelectorAll(".reveal").forEach((el) => revealObserver.observe(el));
+            }
+
+            document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+                anchor.addEventListener("click", function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute("href"));
+                    if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
+                });
+            });
+        </script>
+    </body>
 </html>
