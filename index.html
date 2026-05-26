@@ -4,1194 +4,1451 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sajad Ali Tavakoli — Backend Developer</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#222831',
-                        secondary: '#393E46',
-                        accent: '#00ADB5',
-                        'accent-dark': '#008C93',
-                        light: '#EEEEEE',
-                        surface: '#F5F5F5',
-                        card: '#FFFFFF',
-                        'dark-light': '#393E46',
-                        dark: '#222831',
-                    },
-                    fontFamily: {
-                        inter: ['Inter', 'sans-serif'],
-                    }
-                }
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0b0b0c;
+            color: #d0d0d4;
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ===== PRELOADER ===== */
+        #preloader {
+            position: fixed;
+            inset: 0;
+            z-index: 99999;
+            background-color: #0b0b0c;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        #preloader.loaded {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        .preloader-code {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 45px;
+            font-weight: 400;
+            color: #2a2a32;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            letter-spacing: 0.05em;
+        }
+
+        .preloader-code .bracket {
+            color: #3a3a44;
+        }
+
+        .preloader-dots {
+            display: flex;
+            align-items: center;
+            gap: 11px;
+            margin: 0 9px;
+        }
+
+        .preloader-dot {
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            background: #00ADB5;
+            animation: dotBounce 1.4s ease-in-out infinite;
+        }
+
+        .preloader-dot:nth-child(1) { animation-delay: 0s; }
+        .preloader-dot:nth-child(2) { animation-delay: 0.15s; }
+        .preloader-dot:nth-child(3) { animation-delay: 0.3s; }
+
+        @keyframes dotBounce {
+            0%, 60%, 100% {
+                transform: translateY(0);
+                opacity: 0.3;
+            }
+            30% {
+                transform: translateY(-18px);
+                opacity: 1;
             }
         }
-    </script>
-    <style>
-        * { font-family: 'Inter', sans-serif; }
-        html { scroll-behavior: smooth; }
 
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: #222831; }
-        ::-webkit-scrollbar-thumb { background: #393E46; border-radius: 3px; }
-        ::-webkit-scrollbar-thumb:hover { background: #00ADB5; }
-
-        .geo-element {
+        /* Page hidden until loaded */
+        #page-content {
             opacity: 0;
-            animation: geoFade 1s ease-out forwards;
-        }
-        .geo-element:nth-child(1) { animation-delay: 0.2s; }
-        .geo-element:nth-child(2) { animation-delay: 0.4s; }
-        .geo-element:nth-child(3) { animation-delay: 0.6s; }
-        .geo-element:nth-child(4) { animation-delay: 0.8s; }
-        .geo-element:nth-child(5) { animation-delay: 1.0s; }
-        .geo-element:nth-child(6) { animation-delay: 1.2s; }
-        .geo-element:nth-child(7) { animation-delay: 1.4s; }
-        .geo-element:nth-child(8) { animation-delay: 1.6s; }
-        .geo-element:nth-child(9) { animation-delay: 1.8s; }
-        .geo-element:nth-child(10) { animation-delay: 2.0s; }
-        .geo-element:nth-child(11) { animation-delay: 2.2s; }
-        .geo-element:nth-child(12) { animation-delay: 2.4s; }
-        .geo-element:nth-child(13) { animation-delay: 2.6s; }
-        .geo-element:nth-child(14) { animation-delay: 2.8s; }
-        .geo-element:nth-child(15) { animation-delay: 3.0s; }
-        .geo-element:nth-child(16) { animation-delay: 3.2s; }
-        .geo-element:nth-child(17) { animation-delay: 3.4s; }
-        .geo-element:nth-child(18) { animation-delay: 3.6s; }
-        .geo-element:nth-child(19) { animation-delay: 3.8s; }
-        .geo-element:nth-child(20) { animation-delay: 4.0s; }
-        .geo-element:nth-child(21) { animation-delay: 4.2s; }
-
-        @keyframes geoFade {
-            0% { opacity: 0; transform: scale(0.92); }
-            100% { opacity: 1; transform: scale(1); }
+            transition: opacity 0.5s ease 0.1s;
         }
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-        @keyframes float-slow {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
-        }
-        @keyframes rotate-slow {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        .animate-float { animation: float 4s ease-in-out infinite; }
-        .animate-float-slow { animation: float-slow 6s ease-in-out infinite; }
-        .animate-rotate-slow { animation: rotate-slow 20s linear infinite; }
-
-        .fade-up {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
-        }
-        .fade-up.visible {
+        #page-content.visible {
             opacity: 1;
-            transform: translateY(0);
         }
 
-        .skill-card { transition: all 0.3s ease; }
-        .skill-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 12px 40px rgba(0, 173, 181, 0.12);
-        }
-
-        .project-card { transition: all 0.4s ease; }
-        .project-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
-        }
-        .project-card:hover .project-image { transform: scale(1.05); }
-        .project-image { transition: transform 0.6s ease; }
-
-        .nav-link { position: relative; }
-        .nav-link::after {
+        body::before {
             content: '';
-            position: absolute;
-            bottom: -4px;
+            position: fixed;
+            top: 0;
             left: 0;
-            width: 0;
-            height: 2px;
-            background: #00ADB5;
-            transition: width 0.3s ease;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.032;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+            background-repeat: repeat;
+            background-size: 256px 256px;
         }
-        .nav-link:hover::after { width: 100%; }
 
-        .grid-bg {
-            background-image:
-                linear-gradient(rgba(34,40,49,0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(34,40,49,0.03) 1px, transparent 1px);
-            background-size: 60px 60px;
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: #0b0b0c; }
+        ::-webkit-scrollbar-thumb { background: #2a2a2e; border-radius: 2px; }
+        ::-webkit-scrollbar-thumb:hover { background: #3a3a3e; }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 0 48px;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(11, 11, 12, 0.6);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            transition: all 0.4s ease;
         }
+
+        nav.scrolled { background: rgba(11, 11, 12, 0.92); }
+
+        .nav-logo {
+            font-weight: 700;
+            font-size: 15px;
+            color: #e8e8ea;
+            letter-spacing: -0.03em;
+            text-decoration: none;
+        }
+
+        .nav-logo span { color: #00ADB5; font-weight: 400; }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-size: 11px;
+            font-weight: 500;
+            color: #5a5a64;
+            text-decoration: none;
+            letter-spacing: 0.07em;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover { color: #00ADB5; }
+
+        .nav-mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: #5a5a64;
+            cursor: pointer;
+            padding: 4px;
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 64px;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(11, 11, 12, 0.97);
+            backdrop-filter: blur(24px);
+            z-index: 999;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 28px;
+        }
+
+        .mobile-menu.active { display: flex; }
+
+        .mobile-menu a {
+            font-size: 13px;
+            font-weight: 500;
+            color: #5a5a64;
+            text-decoration: none;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+        }
+
+        .mobile-menu a:hover { color: #00ADB5; }
+
+        section { padding: 0 48px; }
+
+        .section-label {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: #00ADB5;
+            margin-bottom: 12px;
+            opacity: 0.75;
+        }
+
+        .section-heading {
+            font-size: clamp(26px, 3.5vw, 38px);
+            font-weight: 800;
+            color: #e8e8ea;
+            letter-spacing: -0.035em;
+            line-height: 1.15;
+            margin-bottom: 48px;
+        }
+
+        .section-max { max-width: 960px; margin: 0 auto; }
+        .section-max-narrow { max-width: 680px; margin: 0 auto; }
 
         .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 32px;
             background: linear-gradient(135deg, #00ADB5, #008C93);
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            text-decoration: none;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
             transition: all 0.3s ease;
         }
+
         .btn-primary:hover {
             box-shadow: 0 8px 30px rgba(0, 173, 181, 0.35);
             transform: translateY(-2px);
         }
 
         .btn-outline {
-            border: 1.5px solid #00ADB5;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 32px;
+            background: transparent;
             color: #00ADB5;
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            text-decoration: none;
+            border: 1.5px solid #00ADB5;
+            border-radius: 4px;
+            cursor: pointer;
             transition: all 0.3s ease;
         }
+
         .btn-outline:hover {
             background: rgba(0, 173, 181, 0.08);
             box-shadow: 0 8px 30px rgba(0, 173, 181, 0.12);
             transform: translateY(-2px);
         }
 
-        .contact-icon-link { transition: all 0.3s ease; }
-        .contact-icon-link:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 25px rgba(34, 40, 49, 0.12);
-        }
-        .contact-icon-link:hover .contact-icon-circle {
-            background: #00ADB5;
-        }
-        .contact-icon-link:hover .contact-icon-circle iconify-icon {
-            color: #FFFFFF !important;
-        }
-
-        .service-card { transition: all 0.3s ease; }
-        .service-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 40px rgba(34, 40, 49, 0.1);
+        /* ===== HERO ===== */
+        #hero {
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            align-items: flex-end;
+            padding: 0 48px 80px;
+            overflow: hidden;
         }
 
-        .focus-card { transition: all 0.3s ease; }
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+        }
+
+        .hero-bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 20%;
+            filter: grayscale(25%) contrast(1.05) brightness(0.88);
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            background:
+                linear-gradient(to top, #0b0b0c 0%, rgba(11,11,12,0.6) 32%, rgba(11,11,12,0.12) 62%, rgba(11,11,12,0.25) 100%),
+                linear-gradient(to right, rgba(11,11,12,0.3) 0%, transparent 65%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 700px;
+        }
+
+        .hero-label {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: #00ADB5;
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+
+        .hero-name {
+            font-size: clamp(40px, 6vw, 72px);
+            font-weight: 900;
+            color: #f0f0f2;
+            letter-spacing: -0.045em;
+            line-height: 1.02;
+            margin-bottom: 14px;
+        }
+
+        .hero-role {
+            font-size: clamp(20px, 2.8vw, 32px);
+            font-weight: 300;
+            color: #9a9aa4;
+            letter-spacing: -0.02em;
+            line-height: 1.3;
+            margin-bottom: 24px;
+        }
+
+        .hero-desc {
+            font-size: 15px;
+            font-weight: 400;
+            color: #7a7a84;
+            line-height: 1.75;
+            margin-bottom: 36px;
+            max-width: 540px;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        /* ===== ABOUT ===== */
+        #about { padding-top: 140px; padding-bottom: 140px; }
+
+        .about-text {
+            font-size: 17px;
+            font-weight: 400;
+            color: #8a8a94;
+            line-height: 1.85;
+            margin-bottom: 20px;
+        }
+
+        .about-text em { font-style: normal; color: #b8b8c2; }
+        .about-text strong { font-weight: 700; color: #d0d0d8; }
+
+        /* ===== SKILLS ===== */
+        #skills { padding-top: 100px; padding-bottom: 140px; }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 16px;
+        }
+
+        .skill-card {
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            padding: 28px;
+            background: rgba(255, 255, 255, 0.018);
+            transition: all 0.35s ease;
+        }
+
+        .skill-card:hover {
+            background: rgba(255, 255, 255, 0.035);
+            border-color: rgba(0, 173, 181, 0.12);
+        }
+
+        .skill-card-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 18px;
+        }
+
+        .skill-card-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            background: rgba(0, 173, 181, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #00ADB5;
+            flex-shrink: 0;
+        }
+
+        .skill-card-icon i { width: 18px; height: 18px; }
+
+        .skill-category {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: #5a5a64;
+        }
+
+        .skill-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .skill-list li {
+            font-size: 14px;
+            font-weight: 400;
+            color: #7a7a84;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.3s ease;
+        }
+
+        .skill-list li::before {
+            content: '';
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: #2e2e36;
+            flex-shrink: 0;
+            transition: background 0.3s ease;
+        }
+
+        .skill-card:hover .skill-list li { color: #a8a8b2; }
+        .skill-card:hover .skill-list li::before { background: #00ADB5; opacity: 0.5; }
+
+        /* ===== PROJECTS ===== */
+        #projects { padding-top: 100px; padding-bottom: 140px; }
+
+        .projects-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .project-card {
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.015);
+            transition: all 0.35s ease;
+            cursor: default;
+        }
+
+        .project-card:hover {
+            background: rgba(255, 255, 255, 0.03);
+            border-color: rgba(0, 173, 181, 0.12);
+        }
+
+        .project-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            margin-bottom: 14px;
+        }
+
+        .project-number {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 11px;
+            font-weight: 600;
+            color: #2a2a32;
+            letter-spacing: 0.1em;
+            transition: color 0.3s ease;
+        }
+
+        .project-card:hover .project-number { color: #00ADB5; opacity: 0.6; }
+
+        .project-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 6px;
+            background: rgba(0, 173, 181, 0.06);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #3a3a42;
+            transition: all 0.3s ease;
+        }
+
+        .project-icon i { width: 16px; height: 16px; }
+
+        .project-card:hover .project-icon {
+            color: #00ADB5;
+            background: rgba(0, 173, 181, 0.1);
+        }
+
+        .project-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #d8d8dc;
+            letter-spacing: -0.02em;
+            margin-bottom: 12px;
+        }
+
+        .project-desc {
+            font-size: 15px;
+            font-weight: 400;
+            color: #5e5e68;
+            line-height: 1.7;
+            margin-bottom: 24px;
+            max-width: 640px;
+        }
+
+        .tags-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tag {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 11px;
+            font-weight: 500;
+            color: #5a5a64;
+            letter-spacing: 0.03em;
+            padding: 5px 12px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 4px;
+            background: rgba(255, 255, 255, 0.02);
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover .tag {
+            color: #6a7a7c;
+            border-color: rgba(0, 173, 181, 0.12);
+            background: rgba(0, 173, 181, 0.04);
+        }
+
+        /* ===== CURRENT FOCUS ===== */
+        #focus { padding-top: 100px; padding-bottom: 140px; }
+
+        .focus-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 16px;
+        }
+
+        .focus-card {
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            padding: 32px;
+            background: rgba(255, 255, 255, 0.015);
+            transition: all 0.35s ease;
+        }
+
         .focus-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 40px rgba(34, 40, 49, 0.1);
+            background: rgba(255, 255, 255, 0.03);
+            border-color: rgba(0, 173, 181, 0.12);
         }
 
-        .competency-card { transition: all 0.3s ease; }
-        .competency-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(34, 40, 49, 0.08);
+        .focus-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            background: rgba(0, 173, 181, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            color: #00ADB5;
         }
 
-        .content-card { transition: all 0.3s ease; }
-        .content-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 40px rgba(34, 40, 49, 0.1);
+        .focus-icon i { width: 20px; height: 20px; }
+
+        .focus-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: #c8c8d0;
+            letter-spacing: -0.01em;
+            margin-bottom: 10px;
         }
 
-        .exp-card { transition: all 0.3s ease; }
-        .exp-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 40px rgba(34, 40, 49, 0.1);
+        .focus-desc {
+            font-size: 14px;
+            font-weight: 400;
+            color: #5e5e68;
+            line-height: 1.7;
         }
 
-        .pill-tag { transition: all 0.2s ease; }
-        .pill-tag:hover {
-            background: rgba(34, 40, 49, 0.06);
+        /* ===== EXPERIENCE ===== */
+        #experience { padding-top: 100px; padding-bottom: 140px; }
+
+        .timeline {
+            position: relative;
+            padding-left: 36px;
         }
 
-        .mobile-menu {
-            transform: translateX(100%);
-            transition: transform 0.3s ease;
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            bottom: 8px;
+            width: 1px;
+            background: rgba(255, 255, 255, 0.06);
         }
-        .mobile-menu.open { transform: translateX(0); }
+
+        .timeline-item {
+            position: relative;
+            padding-bottom: 44px;
+        }
+
+        .timeline-item:last-child { padding-bottom: 0; }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -36px;
+            top: 8px;
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            background: #141418;
+            border: 2px solid #2e2e36;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-item:hover::before {
+            background: #00ADB5;
+            border-color: #00ADB5;
+            box-shadow: 0 0 14px rgba(0, 173, 181, 0.35);
+        }
+
+        .timeline-date {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: #3e3e46;
+            margin-bottom: 8px;
+        }
+
+        .timeline-role {
+            font-size: 17px;
+            font-weight: 700;
+            color: #d0d0d8;
+            letter-spacing: -0.01em;
+            margin-bottom: 4px;
+        }
+
+        .timeline-company {
+            font-size: 14px;
+            font-weight: 500;
+            color: #00ADB5;
+            opacity: 0.7;
+            margin-bottom: 12px;
+        }
+
+        .timeline-desc {
+            font-size: 14px;
+            font-weight: 400;
+            color: #5e5e68;
+            line-height: 1.7;
+            max-width: 580px;
+        }
+
+        /* ===== APPROACH & GOALS ===== */
+        #approach { padding-top: 100px; padding-bottom: 140px; }
+
+        .approach-quote {
+            font-size: clamp(21px, 2.8vw, 28px);
+            font-weight: 400;
+            color: #9a9aa4;
+            line-height: 1.6;
+            letter-spacing: -0.02em;
+            margin-bottom: 56px;
+            position: relative;
+            padding: 0 24px;
+        }
+
+        .approach-quote::before {
+            content: '';
+            display: block;
+            width: 36px;
+            height: 2px;
+            background: rgba(0, 173, 181, 0.5);
+            margin: 0 auto 28px;
+            border-radius: 1px;
+        }
+
+        .principles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 16px;
+            margin-bottom: 56px;
+        }
+
+        .principle-card {
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            padding: 32px;
+            background: rgba(255, 255, 255, 0.015);
+            transition: all 0.35s ease;
+            text-align: left;
+        }
+
+        .principle-card:hover {
+            border-color: rgba(0, 173, 181, 0.12);
+            background: rgba(255, 255, 255, 0.028);
+        }
+
+        .principle-num {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 11px;
+            font-weight: 700;
+            color: #2a2a32;
+            letter-spacing: 0.1em;
+            margin-bottom: 14px;
+            transition: color 0.3s ease;
+        }
+
+        .principle-card:hover .principle-num { color: #00ADB5; opacity: 0.6; }
+
+        .principle-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: #b8b8c2;
+            margin-bottom: 10px;
+        }
+
+        .principle-desc {
+            font-size: 14px;
+            font-weight: 400;
+            color: #5a5a64;
+            line-height: 1.7;
+        }
+
+        .goals-text {
+            font-size: 16px;
+            font-weight: 400;
+            color: #6a6a74;
+            line-height: 1.8;
+            max-width: 660px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .goals-text strong { font-weight: 700; color: #a0a0aa; }
+
+        /* ===== SERVICES ===== */
+        #services { padding-top: 100px; padding-bottom: 140px; }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 16px;
+        }
+
+        .service-card {
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            padding: 32px;
+            background: rgba(255, 255, 255, 0.015);
+            transition: all 0.35s ease;
+        }
+
+        .service-card:hover {
+            background: rgba(255, 255, 255, 0.03);
+            border-color: rgba(0, 173, 181, 0.12);
+            transform: translateY(-2px);
+        }
+
+        .service-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            background: rgba(0, 173, 181, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            color: #00ADB5;
+        }
+
+        .service-icon i { width: 20px; height: 20px; }
+
+        .service-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: #c8c8d0;
+            letter-spacing: -0.01em;
+            margin-bottom: 10px;
+        }
+
+        .service-desc {
+            font-size: 14px;
+            font-weight: 400;
+            color: #5e5e68;
+            line-height: 1.7;
+        }
+
+        /* ===== CONTACT ===== */
+        #contact { padding-top: 120px; padding-bottom: 100px; }
+
+        .contact-heading {
+            font-size: clamp(30px, 4vw, 46px);
+            font-weight: 800;
+            color: #e8e8ea;
+            letter-spacing: -0.035em;
+            line-height: 1.15;
+            margin-bottom: 16px;
+        }
+
+        .contact-sub {
+            font-size: 15px;
+            color: #5a5a64;
+            margin-bottom: 44px;
+            max-width: 460px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.7;
+        }
+
+        .contact-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+        }
+
+        .contact-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 26px;
+            background: transparent;
+            color: #5a5a64;
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            text-decoration: none;
+            border: 1.5px solid rgba(255, 255, 255, 0.08);
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-link:hover {
+            color: #00ADB5;
+            border-color: rgba(0, 173, 181, 0.35);
+            background: rgba(0, 173, 181, 0.06);
+        }
+
+        .contact-link svg {
+            width: 16px;
+            height: 16px;
+            flex-shrink: 0;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            padding: 36px 48px;
+            border-top: 1px solid rgba(255, 255, 255, 0.04);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .footer-text {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 11px;
+            color: #5a5a64;
+            letter-spacing: 0.1em;
+        }
+
+        .footer-text span { color: #00ADB5; opacity: 0.5; }
+
+        .footer-links { display: flex; gap: 24px; }
+
+        .footer-links a {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 11px;
+            color: #5a5a64;
+            text-decoration: none;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover { color: #00ADB5; }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        .delay-1 { transition-delay: 0.1s; }
+        .delay-2 { transition-delay: 0.2s; }
+        .delay-3 { transition-delay: 0.3s; }
+        .delay-4 { transition-delay: 0.4s; }
+        .delay-5 { transition-delay: 0.5s; }
+        .delay-6 { transition-delay: 0.6s; }
+
+        @media (max-width: 768px) {
+            nav { padding: 0 24px; }
+            .nav-links { display: none; }
+            .nav-mobile-toggle { display: block; }
+            section { padding: 0 24px; }
+            #hero { padding: 0 24px 60px; min-height: 100svh; }
+            .hero-bg img { object-position: center 30%; }
+            #about, #skills, #projects, #focus, #experience, #approach, #services { padding-top: 80px; padding-bottom: 100px; }
+            .skills-grid { grid-template-columns: 1fr 1fr; }
+            .project-card { padding: 28px 24px; }
+            .focus-grid, .principles-grid, .services-grid { grid-template-columns: 1fr; }
+            #contact { padding-top: 80px; padding-bottom: 60px; }
+            .contact-links { flex-direction: column; align-items: center; }
+            .contact-link { width: 100%; max-width: 280px; justify-content: center; }
+            footer { padding: 24px; flex-direction: column; gap: 16px; text-align: center; }
+            .preloader-code { font-size: 36px; }
+            .preloader-dots { gap: 8px; margin: 0 7px; }
+            .preloader-dot { width: 7px; height: 7px; }
+        }
+
+        @media (max-width: 480px) {
+            .hero-name { font-size: 36px; }
+            .hero-role { font-size: 20px; }
+            .hero-cta { flex-direction: column; align-items: flex-start; }
+            .btn-primary, .btn-outline { width: 100%; max-width: 240px; justify-content: center; }
+            .skills-grid { grid-template-columns: 1fr; }
+            .timeline { padding-left: 28px; }
+            .timeline::before { left: 0; }
+            .timeline-item::before { left: -28px; }
+            .section-heading { font-size: 24px; }
+            .preloader-code { font-size: 30px; }
+            .preloader-dots { gap: 7px; margin: 0 6px; }
+            .preloader-dot { width: 6px; height: 6px; }
+        }
     </style>
 </head>
-<body class="bg-surface text-primary">
+<body>
 
-    <!-- Navigation -->
-    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white/80" style="backdrop-filter: blur(16px);">
-        <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-            <a href="#hero" class="text-xl font-semibold tracking-tight text-primary">
-                <span class="text-accent">S</span>ajad<span class="text-accent">.</span>
-            </a>
-            <div class="hidden md:flex items-center gap-8">
-                <a href="#about" class="nav-link text-sm font-medium text-secondary hover:text-primary transition-colors">About</a>
-                <a href="#skills" class="nav-link text-sm font-medium text-secondary hover:text-primary transition-colors">Skills</a>
-                <a href="#projects" class="nav-link text-sm font-medium text-secondary hover:text-primary transition-colors">Projects</a>
-                <a href="#current-work" class="nav-link text-sm font-medium text-secondary hover:text-primary transition-colors">Focus</a>
-                <a href="#experience" class="nav-link text-sm font-medium text-secondary hover:text-primary transition-colors">Experience</a>
-                <a href="#approach" class="nav-link text-sm font-medium text-secondary hover:text-primary transition-colors">Approach</a>
-                <a href="#contact" class="nav-link text-sm font-medium text-secondary hover:text-primary transition-colors">Contact</a>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="preloader-code">
+            <span class="bracket">&lt;</span>
+            <div class="preloader-dots">
+                <div class="preloader-dot"></div>
+                <div class="preloader-dot"></div>
+                <div class="preloader-dot"></div>
             </div>
-            <button id="menuBtn" class="md:hidden text-secondary hover:text-primary transition-colors" aria-label="Open menu">
-                <iconify-icon icon="lucide:menu" width="24"></iconify-icon>
-            </button>
+            <span class="bracket">&gt;</span>
         </div>
-    </nav>
-
-    <!-- Mobile Menu -->
-    <div id="mobileMenu" class="mobile-menu fixed inset-0 z-[60] bg-white/95 flex flex-col items-center justify-center gap-8" style="backdrop-filter: blur(20px);">
-        <button id="closeMenuBtn" class="absolute top-5 right-6 text-secondary hover:text-primary transition-colors" aria-label="Close menu">
-            <iconify-icon icon="lucide:x" width="28"></iconify-icon>
-        </button>
-        <a href="#about" class="mobile-nav-link text-2xl font-medium text-secondary hover:text-accent transition-colors">About</a>
-        <a href="#skills" class="mobile-nav-link text-2xl font-medium text-secondary hover:text-accent transition-colors">Skills</a>
-        <a href="#projects" class="mobile-nav-link text-2xl font-medium text-secondary hover:text-accent transition-colors">Projects</a>
-        <a href="#current-work" class="mobile-nav-link text-2xl font-medium text-secondary hover:text-accent transition-colors">Focus</a>
-        <a href="#experience" class="mobile-nav-link text-2xl font-medium text-secondary hover:text-accent transition-colors">Experience</a>
-        <a href="#approach" class="mobile-nav-link text-2xl font-medium text-secondary hover:text-accent transition-colors">Approach</a>
-        <a href="#contact" class="mobile-nav-link text-2xl font-medium text-secondary hover:text-accent transition-colors">Contact</a>
     </div>
 
-    <!-- Hero Section -->
-    <section id="hero" class="relative min-h-screen flex items-center overflow-hidden grid-bg pt-16">
-        <div class="geo-right-panel geo-element absolute inset-0 pointer-events-none">
-            <svg class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-[0.06]" width="420" height="420" viewBox="0 0 420 420" fill="none">
-                <circle cx="210" cy="210" r="200" stroke="#222831" stroke-width="1.5"/>
-            </svg>
-            <svg class="absolute top-1/2 left-1/2 -translate-x-[30%] -translate-y-[35%] opacity-[0.08] animate-float" width="160" height="160" viewBox="0 0 160 160" fill="none">
-                <circle cx="80" cy="80" r="75" stroke="#00ADB5" stroke-width="1.2"/>
-            </svg>
-            <div class="absolute top-[16%] right-[20%] w-4 h-4 rounded-full bg-accent opacity-[0.08] animate-float-slow"></div>
-            <div class="absolute top-[62%] right-[12%] w-3 h-3 rounded-full bg-dark opacity-[0.06] animate-float" style="animation-delay:-2s"></div>
-            <div class="absolute top-[38%] right-[6%] w-2.5 h-2.5 rounded-full bg-accent opacity-[0.1] animate-float" style="animation-delay:-4s"></div>
-            <div class="absolute top-[78%] right-[32%] w-2 h-2 rounded-full bg-dark opacity-[0.05] animate-float-slow" style="animation-delay:-1s"></div>
-            <div class="absolute top-[10%] left-[10%] w-2 h-2 rounded-full bg-accent opacity-[0.06] animate-float" style="animation-delay:-3s"></div>
-            <svg class="absolute top-[12%] right-[8%] opacity-[0.05] animate-rotate-slow" width="140" height="140" viewBox="0 0 140 140" fill="none">
-                <polygon points="70,5 130,35 130,105 70,135 10,105 10,35" stroke="#222831" stroke-width="1.3" fill="none"/>
-            </svg>
-            <svg class="absolute bottom-[15%] right-[22%] opacity-[0.05] animate-float-slow" width="110" height="110" viewBox="0 0 110 110" fill="none">
-                <polygon points="55,5 105,105 5,105" stroke="#00ADB5" stroke-width="1.3" fill="none"/>
-            </svg>
-            <svg class="absolute bottom-[8%] left-[2%] opacity-[0.06]" width="220" height="170" viewBox="0 0 220 170" fill="none">
-                <line x1="25" y1="145" x2="200" y2="145" stroke="#222831" stroke-width="1.2"/>
-                <line x1="25" y1="145" x2="25" y2="10" stroke="#222831" stroke-width="1.2"/>
-                <polyline points="35,125 60,90 85,100 110,50 135,60 160,28 185,20" stroke="#00ADB5" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-                <circle cx="60" cy="90" r="3.5" fill="#00ADB5" opacity="0.7"/>
-                <circle cx="110" cy="50" r="3.5" fill="#00ADB5" opacity="0.7"/>
-                <circle cx="160" cy="28" r="3.5" fill="#00ADB5" opacity="0.7"/>
-            </svg>
-            <span class="absolute top-[8%] left-[15%] text-dark opacity-[0.04] text-7xl font-light select-none leading-none">π</span>
-            <span class="absolute top-[52%] left-[5%] text-dark opacity-[0.03] text-6xl font-light select-none leading-none">∑</span>
-            <span class="absolute bottom-[22%] left-[18%] text-accent opacity-[0.05] text-5xl font-light select-none leading-none">∫</span>
-            <span class="absolute top-[28%] left-[40%] text-dark opacity-[0.03] text-4xl font-light select-none leading-none">φ</span>
-            <span class="absolute top-[72%] left-[28%] text-accent opacity-[0.04] text-4xl font-light select-none leading-none">∞</span>
-            <span class="absolute top-[18%] right-[36%] text-dark opacity-[0.03] text-4xl font-light select-none leading-none">Δ</span>
-            <span class="absolute bottom-[6%] right-[8%] text-dark opacity-[0.04] text-5xl font-light select-none leading-none">λ</span>
-            <span class="absolute top-[6%] right-[40%] text-accent opacity-[0.04] text-3xl font-light select-none leading-none">∂</span>
-            <span class="absolute bottom-[40%] right-[2%] text-dark opacity-[0.03] text-3xl font-light select-none leading-none">θ</span>
-            <svg class="absolute top-[40%] right-[0%] opacity-[0.05]" width="200" height="70" viewBox="0 0 200 70" fill="none">
-                <path d="M0,35 Q25,0 50,35 Q75,70 100,35 Q125,0 150,35 Q175,70 200,35" stroke="#222831" stroke-width="1.5" fill="none"/>
-            </svg>
-            <svg class="absolute top-[2%] left-[2%] opacity-[0.04]" width="110" height="110" viewBox="0 0 110 110" fill="none">
-                <circle cx="55" cy="55" r="15" stroke="#00ADB5" stroke-width="1"/>
-                <circle cx="55" cy="55" r="35" stroke="#00ADB5" stroke-width="1"/>
-                <circle cx="55" cy="55" r="52" stroke="#00ADB5" stroke-width="1"/>
-            </svg>
-            <div class="absolute bottom-[30%] right-[6%] grid grid-cols-4 gap-6 opacity-[0.04]">
-                <div class="w-1.5 h-1.5 rounded-full bg-dark"></div><div class="w-1.5 h-1.5 rounded-full bg-dark"></div><div class="w-1.5 h-1.5 rounded-full bg-dark"></div><div class="w-1.5 h-1.5 rounded-full bg-dark"></div>
-                <div class="w-1.5 h-1.5 rounded-full bg-dark"></div><div class="w-1.5 h-1.5 rounded-full bg-dark"></div><div class="w-1.5 h-1.5 rounded-full bg-dark"></div><div class="w-1.5 h-1.5 rounded-full bg-dark"></div>
-                <div class="w-1.5 h-1.5 rounded-full bg-dark"></div><div class="w-1.5 h-1.5 rounded-full bg-dark"></div><div class="w-1.5 h-1.5 rounded-full bg-dark"></div><div class="w-1.5 h-1.5 rounded-full bg-dark"></div>
-                <div class="w-1.5 h-1.5 rounded-full bg-dark"></div><div class="w-1.5 h-1.5 rounded-full bg-dark"></div><div class="w-1.5 h-1.5 rounded-full bg-dark"></div><div class="w-1.5 h-1.5 rounded-full bg-dark"></div>
-            </div>
-            <svg class="absolute top-[25%] left-[20%] opacity-[0.03]" width="120" height="120" viewBox="0 0 120 120" fill="none">
-                <line x1="0" y1="60" x2="120" y2="60" stroke="#00ADB5" stroke-width="1" stroke-dasharray="6 6"/>
-                <line x1="60" y1="0" x2="60" y2="120" stroke="#00ADB5" stroke-width="1" stroke-dasharray="6 6"/>
-            </svg>
-            <svg class="absolute top-[58%] left-[38%] opacity-[0.03]" width="150" height="150" viewBox="0 0 150 150" fill="none">
-                <line x1="0" y1="0" x2="150" y2="150" stroke="#222831" stroke-width="1" stroke-dasharray="8 8"/>
-            </svg>
-            <svg class="absolute top-[46%] left-[10%] opacity-[0.04]" width="28" height="28" viewBox="0 0 28 28" fill="none">
-                <line x1="14" y1="3" x2="14" y2="25" stroke="#00ADB5" stroke-width="1.5"/>
-                <line x1="3" y1="14" x2="25" y2="14" stroke="#00ADB5" stroke-width="1.5"/>
-            </svg>
-            <svg class="absolute top-[14%] left-[52%] opacity-[0.03]" width="22" height="22" viewBox="0 0 22 22" fill="none">
-                <line x1="11" y1="2" x2="11" y2="20" stroke="#222831" stroke-width="1.2"/>
-                <line x1="2" y1="11" x2="20" y2="11" stroke="#222831" stroke-width="1.2"/>
-            </svg>
-            <svg class="absolute bottom-[12%] left-[45%] opacity-[0.03] animate-float" style="animation-delay:-5s" width="40" height="40" viewBox="0 0 40 40" fill="none">
-                <rect x="2" y="2" width="36" height="36" rx="2" stroke="#00ADB5" stroke-width="1" fill="none"/>
-            </svg>
-        </div>
+    <!-- Page Content (hidden until loaded) -->
+    <div id="page-content">
 
-        <div class="max-w-6xl mx-auto px-6 w-full relative z-10">
-            <div class="max-w-2xl space-y-8">
-                <div class="space-y-4">
-                    <p class="text-accent text-sm font-medium tracking-widest uppercase">Hello, I'm</p>
-                    <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.08] text-primary">
-                        Sajad Ali<br>
-                        <span class="text-accent">Tavakoli</span>
-                    </h1>
-                    <p class="text-xl md:text-2xl text-secondary font-light">Backend Developer</p>
-                </div>
-                <p class="text-secondary/70 text-base md:text-lg leading-relaxed">
-                    Computer Science graduate specializing in backend technologies, database systems, and web development. Building scalable, maintainable systems with clean architecture.
-                </p>
-                <div class="flex flex-wrap gap-4">
-                    <a href="#projects" class="btn-primary inline-flex items-center gap-2 px-7 py-3.5 rounded-xl text-sm font-semibold text-white">
-                        View Projects
-                        <iconify-icon icon="lucide:arrow-right" width="16"></iconify-icon>
-                    </a>
-                    <a href="#contact" class="btn-outline inline-flex items-center gap-2 px-7 py-3.5 rounded-xl text-sm font-semibold">
-                        Contact Me
-                        <iconify-icon icon="lucide:mail" width="16"></iconify-icon>
-                    </a>
-                </div>
-                <div class="flex gap-10 pt-4">
-                    <div class="bg-primary/[0.04] px-5 py-3 rounded-xl">
-                        <p class="text-2xl font-bold text-primary">6+</p>
-                        <p class="text-xs text-secondary/60 mt-1">Projects</p>
+    <nav id="navbar">
+        <a href="#hero" class="nav-logo">sajad<span>.</span>dev</a>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#focus">Focus</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#approach">Approach</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <button class="nav-mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
+            <i data-lucide="menu" style="width:20px;height:20px;"></i>
+        </button>
+    </nav>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#about" onclick="closeMobile()">About</a>
+        <a href="#skills" onclick="closeMobile()">Skills</a>
+        <a href="#projects" onclick="closeMobile()">Projects</a>
+        <a href="#focus" onclick="closeMobile()">Focus</a>
+        <a href="#experience" onclick="closeMobile()">Experience</a>
+        <a href="#approach" onclick="closeMobile()">Approach</a>
+        <a href="#contact" onclick="closeMobile()">Contact</a>
+    </div>
+
+    <!-- Hero -->
+    <section id="hero">
+        <div class="hero-bg">
+            <img src="https://z-cdn-media.chatglm.cn/files/a1dfa643-4b54-41cd-b5e2-4c4c6afef2b2.png?auth_key=1879830464-2aef707ed3f4436fb53b7ca5cac76063-0-829314f964dae523e19ceaf37e86bfee" alt="Sajad Ali Tavakoli" loading="eager">
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <p class="hero-label reveal">Backend Developer</p>
+            <h1 class="hero-name reveal delay-1">Sajad Ali<br>Tavakoli</h1>
+            <p class="hero-role reveal delay-2">Building clean, scalable systems.</p>
+            <p class="hero-desc reveal delay-3">Computer Science graduate and backend developer focused on designing secure, maintainable systems with clean architecture, production-ready workflows, and scalable data modeling.</p>
+            <div class="hero-cta reveal delay-4">
+                <a href="#projects" class="btn-primary">View Projects</a>
+                <a href="#contact" class="btn-outline">Contact Me</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section id="about">
+        <div class="section-max-narrow">
+            <p class="section-label reveal">About</p>
+            <h2 class="section-heading reveal delay-1">About Me</h2>
+            <p class="about-text reveal delay-2">I'm a backend engineer focused on building <em>scalable, maintainable systems</em> with clean architecture and production-ready solutions. I enjoy breaking complex problems into clear, manageable steps and designing systems that are secure, modular, and easy to evolve.</p>
+            <p class="about-text reveal delay-3">With a <strong>Computer Science degree</strong> and hands-on experience in full-stack backend development, I've worked on systems ranging from land management platforms to learning applications and educational management tools.</p>
+            <p class="about-text reveal delay-4">I prefer <em>step-by-step implementation</em>, separation of concerns, and clear architectural decisions over quick fixes and technical debt. Every line of code should serve the system's clarity, not just its functionality.</p>
+        </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills">
+        <div class="section-max">
+            <p class="section-label reveal">Skills</p>
+            <h2 class="section-heading reveal delay-1">My Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-card reveal delay-2">
+                    <div class="skill-card-header">
+                        <div class="skill-card-icon"><i data-lucide="server"></i></div>
+                        <p class="skill-category">Backend</p>
                     </div>
-                    <div class="bg-primary/[0.04] px-5 py-3 rounded-xl">
-                        <p class="text-2xl font-bold text-primary">5+</p>
-                        <p class="text-xs text-secondary/60 mt-1">Languages</p>
+                    <ul class="skill-list">
+                        <li>NestJS</li>
+                        <li>Node.js</li>
+                        <li>Express.js</li>
+                        <li>PHP</li>
+                    </ul>
+                </div>
+                <div class="skill-card reveal delay-3">
+                    <div class="skill-card-header">
+                        <div class="skill-card-icon"><i data-lucide="database"></i></div>
+                        <p class="skill-category">Database</p>
                     </div>
-                    <div class="bg-primary/[0.04] px-5 py-3 rounded-xl">
-                        <p class="text-2xl font-bold text-primary">3+</p>
-                        <p class="text-xs text-secondary/60 mt-1">Years Learning</p>
+                    <ul class="skill-list">
+                        <li>Prisma</li>
+                        <li>MySQL</li>
+                        <li>PostgreSQL</li>
+                        <li>Microsoft Access</li>
+                    </ul>
+                </div>
+                <div class="skill-card reveal delay-4">
+                    <div class="skill-card-header">
+                        <div class="skill-card-icon"><i data-lucide="shield-check"></i></div>
+                        <p class="skill-category">Auth & Performance</p>
+                    </div>
+                    <ul class="skill-list">
+                        <li>JWT</li>
+                        <li>OTP</li>
+                        <li>MFA</li>
+                        <li>Redis</li>
+                    </ul>
+                </div>
+                <div class="skill-card reveal delay-5">
+                    <div class="skill-card-header">
+                        <div class="skill-card-icon"><i data-lucide="code-2"></i></div>
+                        <p class="skill-category">Languages</p>
+                    </div>
+                    <ul class="skill-list">
+                        <li>JavaScript</li>
+                        <li>Python</li>
+                        <li>Java</li>
+                        <li>C++</li>
+                    </ul>
+                </div>
+                <div class="skill-card reveal delay-6">
+                    <div class="skill-card-header">
+                        <div class="skill-card-icon"><i data-lucide="wrench"></i></div>
+                        <p class="skill-category">Tools</p>
+                    </div>
+                    <ul class="skill-list">
+                        <li>Git</li>
+                        <li>VS Code</li>
+                        <li>Figma</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects">
+        <div class="section-max">
+            <p class="section-label reveal">Projects</p>
+            <h2 class="section-heading reveal delay-1">Featured Projects</h2>
+            <div class="projects-list">
+                <div class="project-card reveal delay-2">
+                    <div class="project-header">
+                        <p class="project-number">01</p>
+                        <div class="project-icon"><i data-lucide="landmark"></i></div>
+                    </div>
+                    <h3 class="project-title">Deh-Sabz LMS / Land Management System</h3>
+                    <p class="project-desc">A production-focused land and ownership management system built with structured backend architecture, authentication, registry workflows, and scalable data modeling.</p>
+                    <div class="tags-container">
+                        <span class="tag">NestJS</span>
+                        <span class="tag">Prisma</span>
+                        <span class="tag">PostgreSQL</span>
+                        <span class="tag">Redis</span>
+                        <span class="tag">JWT</span>
+                    </div>
+                </div>
+                <div class="project-card reveal delay-3">
+                    <div class="project-header">
+                        <p class="project-number">02</p>
+                        <div class="project-icon"><i data-lucide="brain"></i></div>
+                    </div>
+                    <h3 class="project-title">Leitner Learning System</h3>
+                    <p class="project-desc">A web application based on the Leitner method to help users memorize information more effectively, especially for language learning and structured study.</p>
+                    <div class="tags-container">
+                        <span class="tag">Backend Architecture</span>
+                        <span class="tag">Authentication</span>
+                        <span class="tag">Learning System</span>
+                    </div>
+                </div>
+                <div class="project-card reveal delay-4">
+                    <div class="project-header">
+                        <p class="project-number">03</p>
+                        <div class="project-icon"><i data-lucide="graduation-cap"></i></div>
+                    </div>
+                    <h3 class="project-title">Educational Management System</h3>
+                    <p class="project-desc">A database system for managing students, teachers, courses, enrollments, salaries, costs, and reports for an educational center.</p>
+                    <div class="tags-container">
+                        <span class="tag">Microsoft Access</span>
+                        <span class="tag">VBA</span>
+                        <span class="tag">Database Design</span>
+                    </div>
+                </div>
+                <div class="project-card reveal delay-5">
+                    <div class="project-header">
+                        <p class="project-number">04</p>
+                        <div class="project-icon"><i data-lucide="pen-line"></i></div>
+                    </div>
+                    <h3 class="project-title">Blog Web Application</h3>
+                    <p class="project-desc">A blog system built with Node.js, Express.js, and EJS, focused on routing, dynamic rendering, and clean UI structure.</p>
+                    <div class="tags-container">
+                        <span class="tag">Node.js</span>
+                        <span class="tag">Express.js</span>
+                        <span class="tag">EJS</span>
+                    </div>
+                </div>
+                <div class="project-card reveal delay-6">
+                    <div class="project-header">
+                        <p class="project-number">05</p>
+                        <div class="project-icon"><i data-lucide="users"></i></div>
+                    </div>
+                    <h3 class="project-title">Student Management System</h3>
+                    <p class="project-desc">A PHP and MySQL-based system for managing student records with CRUD operations, validation, and dynamic table display.</p>
+                    <div class="tags-container">
+                        <span class="tag">PHP</span>
+                        <span class="tag">MySQL</span>
+                        <span class="tag">JavaScript</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- About Me Section -->
-    <section id="about" class="py-24 md:py-32 bg-white">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="fade-up grid md:grid-cols-5 gap-12 md:gap-16 items-start">
-                <div class="md:col-span-2">
-                    <div class="inline-flex items-center gap-2 text-accent text-xs font-semibold uppercase tracking-widest mb-4">
-                        <div class="w-6 h-px bg-accent/40"></div>
-                        About Me
-                    </div>
-                    <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-primary leading-tight">
-                        Focused on building reliable backends
-                    </h2>
+    <!-- Current Focus -->
+    <section id="focus">
+        <div class="section-max">
+            <p class="section-label reveal">Current Focus</p>
+            <h2 class="section-heading reveal delay-1">What I'm Focused On</h2>
+            <div class="focus-grid">
+                <div class="focus-card reveal delay-2">
+                    <div class="focus-icon"><i data-lucide="layers"></i></div>
+                    <h3 class="focus-title">Clean Architecture</h3>
+                    <p class="focus-desc">Designing systems with clear separation of concerns, modular boundaries, and decisions that remain valid as the codebase grows.</p>
                 </div>
-                <div class="md:col-span-3 space-y-5">
-                    <p class="text-secondary leading-relaxed text-base">
-                        I'm a backend engineer focused on building scalable, maintainable systems with a strong emphasis on clean architecture and production-ready solutions. My primary stack includes NestJS, Prisma, Redis, and JWT-based authentication, and I enjoy designing systems that are both robust and easy to evolve over time.
-                    </p>
-                    <p class="text-secondary leading-relaxed text-base">
-                        I'm a Computer Science graduate specializing in software engineering, with a strong foundation across <span class="text-primary font-medium">Python, PHP, JavaScript, Java,</span> and <span class="text-primary font-medium">C++</span>. My core stack revolves around <span class="text-primary font-medium">Node.js with NestJS and Express</span> for building scalable REST APIs, paired with <span class="text-primary font-medium">PostgreSQL and MySQL</span> for data persistence and <span class="text-primary font-medium">Docker</span> for containerization.
-                    </p>
-                    <p class="text-secondary leading-relaxed text-base">
-                        I approach development incrementally—breaking down complex problems into manageable steps. I value clarity in architecture decisions and always consider trade-offs before implementing solutions. Beyond coding, I've worked on educational content and tools, including designing structured learning materials and planning user-focused experiences with Figma.
-                    </p>
-                    <div class="flex flex-wrap gap-3 pt-3">
-                        <span class="inline-flex items-center gap-1.5 text-xs font-medium text-secondary bg-primary/[0.04] border border-secondary/10 px-3 py-1.5 rounded-lg">
-                            <iconify-icon icon="lucide:map-pin" width="12" class="text-secondary/50"></iconify-icon>
-                            Afghanistan
-                        </span>
-                        <span class="inline-flex items-center gap-1.5 text-xs font-medium text-secondary bg-primary/[0.04] border border-secondary/10 px-3 py-1.5 rounded-lg">
-                            <iconify-icon icon="lucide:briefcase" width="12" class="text-secondary/50"></iconify-icon>
-                            Open to Freelance
-                        </span>
-                        <span class="inline-flex items-center gap-1.5 text-xs font-medium text-secondary bg-primary/[0.04] border border-secondary/10 px-3 py-1.5 rounded-lg">
-                            <iconify-icon icon="lucide:clock" width="12" class="text-secondary/50"></iconify-icon>
-                            Full-time / Freelance
-                        </span>
-                    </div>
+                <div class="focus-card reveal delay-3">
+                    <div class="focus-icon"><i data-lucide="shield-check"></i></div>
+                    <h3 class="focus-title">Auth & Security</h3>
+                    <p class="focus-desc">Implementing JWT, OTP, MFA, and session management patterns that protect data without overcomplicating the user experience.</p>
+                </div>
+                <div class="focus-card reveal delay-4">
+                    <div class="focus-icon"><i data-lucide="database"></i></div>
+                    <h3 class="focus-title">Scalable Data Models</h3>
+                    <p class="focus-desc">Building database schemas with Prisma and PostgreSQL that handle complex relationships, migrations, and performance at scale.</p>
+                </div>
+                <div class="focus-card reveal delay-5">
+                    <div class="focus-icon"><i data-lucide="zap"></i></div>
+                    <h3 class="focus-title">Performance & Caching</h3>
+                    <p class="focus-desc">Using Redis and optimized query patterns to reduce latency and handle concurrent requests in production environments.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Skills Section -->
-    <section id="skills" class="py-24 md:py-32 bg-surface">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="fade-up text-center mb-16">
-                <div class="inline-flex items-center gap-2 text-accent text-xs font-semibold uppercase tracking-widest mb-4 justify-center">
-                    <div class="w-6 h-px bg-secondary/30"></div>
-                    Tech Stack
-                    <div class="w-6 h-px bg-secondary/30"></div>
+    <!-- Experience -->
+    <section id="experience">
+        <div class="section-max-narrow">
+            <p class="section-label reveal">Experience</p>
+            <h2 class="section-heading reveal delay-1">My Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item reveal delay-2">
+                    <p class="timeline-date">2024 — Present</p>
+                    <h3 class="timeline-role">Backend Developer</h3>
+                    <p class="timeline-company">Deh-Sabz LMS Project</p>
+                    <p class="timeline-desc">Building a production land management system with NestJS, Prisma, PostgreSQL, Redis, and JWT authentication. Designing scalable data models and registry workflows.</p>
                 </div>
-                <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-primary">Skills & Technologies</h2>
-                <p class="text-secondary/60 mt-4 max-w-lg mx-auto">The tools and technologies I use to build server-side applications.</p>
-            </div>
-
-            <div class="fade-up grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-5 max-w-4xl mx-auto">
-                <div class="skill-card bg-card border border-secondary/8 rounded-2xl p-5 text-center cursor-default shadow-sm">
-                    <div class="w-12 h-12 mx-auto mb-3 rounded-xl bg-primary/[0.04] flex items-center justify-center">
-                        <iconify-icon icon="logos:nestjs" width="26"></iconify-icon>
-                    </div>
-                    <h3 class="font-semibold text-xs text-primary">NestJS</h3>
-                    <p class="text-[10px] text-secondary/50 mt-0.5">Backend</p>
+                <div class="timeline-item reveal delay-3">
+                    <p class="timeline-date">2023 — 2024</p>
+                    <h3 class="timeline-role">Full-Stack Developer</h3>
+                    <p class="timeline-company">Freelance Projects</p>
+                    <p class="timeline-desc">Developed learning systems, blog platforms, and student management tools using Node.js, Express, PHP, and MySQL with a focus on backend architecture.</p>
                 </div>
-                <div class="skill-card bg-card border border-secondary/8 rounded-2xl p-5 text-center cursor-default shadow-sm">
-                    <div class="w-12 h-12 mx-auto mb-3 rounded-xl bg-primary/[0.04] flex items-center justify-center">
-                        <iconify-icon icon="skill-icons:expressjs-dark" width="26"></iconify-icon>
-                    </div>
-                    <h3 class="font-semibold text-xs text-primary">Express.js</h3>
-                    <p class="text-[10px] text-secondary/50 mt-0.5">Web Framework</p>
+                <div class="timeline-item reveal delay-4">
+                    <p class="timeline-date">2022 — 2023</p>
+                    <h3 class="timeline-role">Database Developer</h3>
+                    <p class="timeline-company">Educational Management System</p>
+                    <p class="timeline-desc">Designed and implemented a comprehensive educational management database using Microsoft Access and VBA, handling students, courses, salaries, and reporting.</p>
                 </div>
-                <div class="skill-card bg-card border border-secondary/8 rounded-2xl p-5 text-center cursor-default shadow-sm">
-                    <div class="w-12 h-12 mx-auto mb-3 rounded-xl bg-primary/[0.04] flex items-center justify-center">
-                        <iconify-icon icon="logos:postgresql" width="26"></iconify-icon>
-                    </div>
-                    <h3 class="font-semibold text-xs text-primary">PostgreSQL</h3>
-                    <p class="text-[10px] text-secondary/50 mt-0.5">Database</p>
-                </div>
-                <div class="skill-card bg-card border border-secondary/8 rounded-2xl p-5 text-center cursor-default shadow-sm">
-                    <div class="w-12 h-12 mx-auto mb-3 rounded-xl bg-primary/[0.04] flex items-center justify-center">
-                        <iconify-icon icon="logos:mysql-icon" width="26"></iconify-icon>
-                    </div>
-                    <h3 class="font-semibold text-xs text-primary">MySQL</h3>
-                    <p class="text-[10px] text-secondary/50 mt-0.5">Database</p>
-                </div>
-                <div class="skill-card bg-card border border-secondary/8 rounded-2xl p-5 text-center cursor-default shadow-sm">
-                    <div class="w-12 h-12 mx-auto mb-3 rounded-xl bg-primary/[0.04] flex items-center justify-center">
-                        <iconify-icon icon="logos:typescript-icon" width="26"></iconify-icon>
-                    </div>
-                    <h3 class="font-semibold text-xs text-primary">TypeScript</h3>
-                    <p class="text-[10px] text-secondary/50 mt-0.5">Type Safety</p>
-                </div>
-                <div class="skill-card bg-card border border-secondary/8 rounded-2xl p-5 text-center cursor-default shadow-sm">
-                    <div class="w-12 h-12 mx-auto mb-3 rounded-xl bg-primary/[0.04] flex items-center justify-center">
-                        <iconify-icon icon="logos:docker-icon" width="26"></iconify-icon>
-                    </div>
-                    <h3 class="font-semibold text-xs text-primary">Docker</h3>
-                    <p class="text-[10px] text-secondary/50 mt-0.5">Containerization</p>
-                </div>
-            </div>
-
-            <div class="fade-up mt-12">
-                <p class="text-xs text-secondary/50 uppercase tracking-wider font-semibold text-center mb-5">Programming Languages</p>
-                <div class="flex flex-wrap justify-center gap-2.5">
-                    <span class="pill-tag text-xs font-medium text-primary bg-primary/[0.05] border border-secondary/10 px-3.5 py-2 rounded-lg">Python</span>
-                    <span class="pill-tag text-xs font-medium text-primary bg-primary/[0.05] border border-secondary/10 px-3.5 py-2 rounded-lg">PHP</span>
-                    <span class="pill-tag text-xs font-medium text-primary bg-primary/[0.05] border border-secondary/10 px-3.5 py-2 rounded-lg">JavaScript</span>
-                    <span class="pill-tag text-xs font-medium text-primary bg-primary/[0.05] border border-secondary/10 px-3.5 py-2 rounded-lg">Java</span>
-                    <span class="pill-tag text-xs font-medium text-primary bg-primary/[0.05] border border-secondary/10 px-3.5 py-2 rounded-lg">C++</span>
-                </div>
-            </div>
-
-            <div class="fade-up mt-8">
-                <p class="text-xs text-secondary/50 uppercase tracking-wider font-semibold text-center mb-5">Also Familiar With</p>
-                <div class="flex flex-wrap justify-center gap-2.5">
-                    <span class="pill-tag text-xs font-medium text-secondary bg-primary/[0.04] border border-secondary/8 px-3.5 py-2 rounded-lg">HTML5 & CSS3</span>
-                    <span class="pill-tag text-xs font-medium text-secondary bg-primary/[0.04] border border-secondary/8 px-3.5 py-2 rounded-lg">Bootstrap 5</span>
-                    <span class="pill-tag text-xs font-medium text-secondary bg-primary/[0.04] border border-secondary/8 px-3.5 py-2 rounded-lg">EJS Templating</span>
-                    <span class="pill-tag text-xs font-medium text-secondary bg-primary/[0.04] border border-secondary/8 px-3.5 py-2 rounded-lg">REST API</span>
-                    <span class="pill-tag text-xs font-medium text-secondary bg-primary/[0.04] border border-secondary/8 px-3.5 py-2 rounded-lg">Prisma ORM</span>
-                    <span class="pill-tag text-xs font-medium text-secondary bg-primary/[0.04] border border-secondary/8 px-3.5 py-2 rounded-lg">TypeORM</span>
-                    <span class="pill-tag text-xs font-medium text-secondary bg-primary/[0.04] border border-secondary/8 px-3.5 py-2 rounded-lg">JWT Auth</span>
-                    <span class="pill-tag text-xs font-medium text-secondary bg-primary/[0.04] border border-secondary/8 px-3.5 py-2 rounded-lg">Redis</span>
-                    <span class="pill-tag text-xs font-medium text-secondary bg-primary/[0.04] border border-secondary/8 px-3.5 py-2 rounded-lg">Git</span>
-                    <span class="pill-tag text-xs font-medium text-secondary bg-primary/[0.04] border border-secondary/8 px-3.5 py-2 rounded-lg">VS Code</span>
-                    <span class="pill-tag text-xs font-medium text-secondary bg-primary/[0.04] border border-secondary/8 px-3.5 py-2 rounded-lg">Linux</span>
-                    <span class="pill-tag text-xs font-medium text-secondary bg-primary/[0.04] border border-secondary/8 px-3.5 py-2 rounded-lg">Postman</span>
-                    <span class="pill-tag text-xs font-medium text-secondary bg-primary/[0.04] border border-secondary/8 px-3.5 py-2 rounded-lg">MS Access</span>
-                    <span class="pill-tag text-xs font-medium text-secondary bg-primary/[0.04] border border-secondary/8 px-3.5 py-2 rounded-lg">VBA</span>
-                    <span class="pill-tag text-xs font-medium text-secondary bg-primary/[0.04] border border-secondary/8 px-3.5 py-2 rounded-lg">MS Office</span>
-                    <span class="pill-tag text-xs font-medium text-secondary bg-primary/[0.04] border border-secondary/8 px-3.5 py-2 rounded-lg">Figma</span>
-                </div>
-            </div>
-
-            <div class="fade-up mt-8">
-                <p class="text-xs text-secondary/50 uppercase tracking-wider font-semibold text-center mb-5">Core Competencies</p>
-                <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 max-w-3xl mx-auto">
-                    <div class="competency-card flex items-center gap-2.5 bg-card border border-secondary/8 rounded-xl px-4 py-3 cursor-default">
-                        <iconify-icon icon="lucide:server" width="14" class="text-accent shrink-0"></iconify-icon>
-                        <span class="text-xs font-medium text-primary">Backend Fundamentals</span>
-                    </div>
-                    <div class="competency-card flex items-center gap-2.5 bg-card border border-secondary/8 rounded-xl px-4 py-3 cursor-default">
-                        <iconify-icon icon="lucide:database" width="14" class="text-accent shrink-0"></iconify-icon>
-                        <span class="text-xs font-medium text-primary">Database Design & Normalization</span>
-                    </div>
-                    <div class="competency-card flex items-center gap-2.5 bg-card border border-secondary/8 rounded-xl px-4 py-3 cursor-default">
-                        <iconify-icon icon="lucide:shield-check" width="14" class="text-accent shrink-0"></iconify-icon>
-                        <span class="text-xs font-medium text-primary">Form Validation & Input Handling</span>
-                    </div>
-                    <div class="competency-card flex items-center gap-2.5 bg-card border border-secondary/8 rounded-xl px-4 py-3 cursor-default">
-                        <iconify-icon icon="lucide:bug" width="14" class="text-accent shrink-0"></iconify-icon>
-                        <span class="text-xs font-medium text-primary">Problem-Solving & Debugging</span>
-                    </div>
-                    <div class="competency-card flex items-center gap-2.5 bg-card border border-secondary/8 rounded-xl px-4 py-3 cursor-default">
-                        <iconify-icon icon="lucide:scan-search" width="14" class="text-accent shrink-0"></iconify-icon>
-                        <span class="text-xs font-medium text-primary">System Analysis & Structured Thinking</span>
-                    </div>
-                    <div class="competency-card flex items-center gap-2.5 bg-card border border-secondary/8 rounded-xl px-4 py-3 cursor-default">
-                        <iconify-icon icon="lucide:presentation" width="14" class="text-accent shrink-0"></iconify-icon>
-                        <span class="text-xs font-medium text-primary">Teaching & Simplifying Concepts</span>
-                    </div>
+                <div class="timeline-item reveal delay-5">
+                    <p class="timeline-date">2019 — 2023</p>
+                    <h3 class="timeline-role">Computer Science Student</h3>
+                    <p class="timeline-company">University</p>
+                    <p class="timeline-desc">Studied core CS fundamentals including data structures, algorithms, software engineering, database systems, and object-oriented programming in Java, C++, and Python.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="py-24 md:py-32 bg-white">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="fade-up text-center mb-16">
-                <div class="inline-flex items-center gap-2 text-accent text-xs font-semibold uppercase tracking-widest mb-4 justify-center">
-                    <div class="w-6 h-px bg-secondary/30"></div>
-                    Portfolio
-                    <div class="w-6 h-px bg-secondary/30"></div>
+    <!-- Approach & Goals -->
+    <section id="approach">
+        <div class="section-max-narrow" style="text-align: center;">
+            <p class="section-label reveal">Approach & Goals</p>
+            <h2 class="section-heading reveal delay-1">My Approach</h2>
+            <p class="approach-quote reveal delay-2">Backend engineering is not just about writing code — it is about designing systems that remain clear, reliable, and maintainable as they grow.</p>
+            <div class="principles-grid">
+                <div class="principle-card reveal delay-3">
+                    <p class="principle-num">01</p>
+                    <h4 class="principle-title">Build Incrementally</h4>
+                    <p class="principle-desc">Start with what's necessary. Add complexity only when the system demands it, not when curiosity suggests it.</p>
                 </div>
-                <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-primary">Projects & Practical Experience</h2>
-                <p class="text-secondary/60 mt-4 max-w-lg mx-auto">Real-world projects built through hands-on learning and practical application.</p>
+                <div class="principle-card reveal delay-4">
+                    <p class="principle-num">02</p>
+                    <h4 class="principle-title">Keep Architecture Clean</h4>
+                    <p class="principle-desc">Separation of concerns isn't a theory — it's a practice. Every module should have one reason to change.</p>
+                </div>
+                <div class="principle-card reveal delay-5">
+                    <p class="principle-num">03</p>
+                    <h4 class="principle-title">Make Systems Easy to Evolve</h4>
+                    <p class="principle-desc">Code is read more than it's written. Prioritize clarity, naming, and structure that a new developer can follow.</p>
+                </div>
             </div>
-            <div class="space-y-8">
-                <div class="fade-up project-card bg-card border border-secondary/8 rounded-2xl overflow-hidden shadow-sm">
-                    <div class="grid md:grid-cols-2">
-                        <div class="h-56 md:h-auto overflow-hidden">
-                            <img src="https://picsum.photos/seed/leitnersystem2024/800/500.jpg" alt="Leitner System" class="project-image w-full h-full object-cover">
-                        </div>
-                        <div class="p-8 md:p-10 flex flex-col justify-center space-y-5">
-                            <div class="flex items-center gap-2">
-                                <span class="px-3 py-1 rounded-full bg-primary/[0.05] text-primary text-xs font-semibold">Current Project</span>
-                                <span class="px-3 py-1 rounded-full bg-accent/8 text-accent text-xs font-medium">Education</span>
-                            </div>
-                            <h3 class="text-xl md:text-2xl font-bold tracking-tight text-primary">Leitner System Web App</h3>
-                            <p class="text-secondary/60 text-sm leading-relaxed">
-                                A web application based on the Leitner system, designed to help users memorize information more effectively—especially for language learning and structured study.
-                            </p>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="px-2.5 py-1 rounded-lg bg-primary/[0.04] text-secondary/70 text-xs">Node.js</span>
-                                <span class="px-2.5 py-1 rounded-lg bg-primary/[0.04] text-secondary/70 text-xs">Express.js</span>
-                                <span class="px-2.5 py-1 rounded-lg bg-primary/[0.04] text-secondary/70 text-xs">EJS</span>
-                                <span class="px-2.5 py-1 rounded-lg bg-primary/[0.04] text-secondary/70 text-xs">NestJS</span>
-                                <span class="px-2.5 py-1 rounded-lg bg-primary/[0.04] text-secondary/70 text-xs">Prisma</span>
-                                <span class="px-2.5 py-1 rounded-lg bg-primary/[0.04] text-secondary/70 text-xs">Redis</span>
-                            </div>
-                            <div class="flex gap-3 pt-1">
-                                <a href="#" class="btn-primary inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-semibold text-white">
-                                    <iconify-icon icon="lucide:external-link" width="14"></iconify-icon>
-                                    Live Demo
-                                </a>
-                                <a href="#" class="btn-outline inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-semibold">
-                                    <iconify-icon icon="lucide:github" width="14"></iconify-icon>
-                                    GitHub
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <p class="goals-text reveal delay-6">My goal is to <strong>grow as a backend engineer</strong> who designs systems that teams can rely on — systems that are not just functional today, but built to remain clear and maintainable for years.</p>
+        </div>
+    </section>
 
-                <div class="fade-up project-card bg-card border border-secondary/8 rounded-2xl overflow-hidden shadow-sm">
-                    <div class="grid md:grid-cols-2">
-                        <div class="h-56 md:h-auto overflow-hidden md:order-2">
-                            <img src="https://picsum.photos/seed/blogapp2024/800/500.jpg" alt="Blog Web App" class="project-image w-full h-full object-cover">
-                        </div>
-                        <div class="p-8 md:p-10 flex flex-col justify-center space-y-5 md:order-1">
-                            <div class="flex items-center gap-2">
-                                <span class="px-3 py-1 rounded-full bg-primary/[0.05] text-primary text-xs font-semibold">Web App</span>
-                                <span class="px-3 py-1 rounded-full bg-accent/8 text-accent text-xs font-medium">Full-Stack</span>
-                            </div>
-                            <h3 class="text-xl md:text-2xl font-bold tracking-tight text-primary">Blog Web Application</h3>
-                            <p class="text-secondary/60 text-sm leading-relaxed">
-                                Built a complete blog system with routing, dynamic content rendering, and clean UI/UX styling. Focused on understanding request-response cycles and template rendering.
-                            </p>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="px-2.5 py-1 rounded-lg bg-primary/[0.04] text-secondary/70 text-xs">Node.js</span>
-                                <span class="px-2.5 py-1 rounded-lg bg-primary/[0.04] text-secondary/70 text-xs">Express.js</span>
-                                <span class="px-2.5 py-1 rounded-lg bg-primary/[0.04] text-secondary/70 text-xs">EJS</span>
-                                <span class="px-2.5 py-1 rounded-lg bg-primary/[0.04] text-secondary/70 text-xs">CSS</span>
-                            </div>
-                            <div class="flex gap-3 pt-1">
-                                <a href="#" class="btn-primary inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-semibold text-white">
-                                    <iconify-icon icon="lucide:external-link" width="14"></iconify-icon>
-                                    Live Demo
-                                </a>
-                                <a href="#" class="btn-outline inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-semibold">
-                                    <iconify-icon icon="lucide:github" width="14"></iconify-icon>
-                                    GitHub
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+    <!-- Services -->
+    <section id="services">
+        <div class="section-max">
+            <p class="section-label reveal">Services</p>
+            <h2 class="section-heading reveal delay-1">What I Offer</h2>
+            <div class="services-grid">
+                <div class="service-card reveal delay-2">
+                    <div class="service-icon"><i data-lucide="layout-dashboard"></i></div>
+                    <h3 class="service-title">Backend System Design</h3>
+                    <p class="service-desc">Designing scalable, well-structured backend architectures with clear module boundaries and production-ready patterns.</p>
                 </div>
-
-                <div class="fade-up project-card bg-card border border-secondary/8 rounded-2xl overflow-hidden shadow-sm">
-                    <div class="grid md:grid-cols-2">
-                        <div class="h-56 md:h-auto overflow-hidden">
-                            <img src="https://picsum.photos/seed/phpstudentsystem/800/500.jpg" alt="Student Management" class="project-image w-full h-full object-cover">
-                        </div>
-                        <div class="p-8 md:p-10 flex flex-col justify-center space-y-5">
-                            <div class="flex items-center gap-2">
-                                <span class="px-3 py-1 rounded-full bg-primary/[0.05] text-primary text-xs font-semibold">CRUD App</span>
-                                <span class="px-3 py-1 rounded-full bg-accent/8 text-accent text-xs font-medium">PHP</span>
-                            </div>
-                            <h3 class="text-xl md:text-2xl font-bold tracking-tight text-primary">Student Management System</h3>
-                            <p class="text-secondary/60 text-sm leading-relaxed">
-                                Developed backend logic for managing student records with full CRUD operations. Implemented delete confirmation, dynamic table display, and a clean interface.
-                            </p>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="px-2.5 py-1 rounded-lg bg-primary/[0.04] text-secondary/70 text-xs">PHP</span>
-                                <span class="px-2.5 py-1 rounded-lg bg-primary/[0.04] text-secondary/70 text-xs">MySQL</span>
-                                <span class="px-2.5 py-1 rounded-lg bg-primary/[0.04] text-secondary/70 text-xs">JavaScript</span>
-                                <span class="px-2.5 py-1 rounded-lg bg-primary/[0.04] text-secondary/70 text-xs">CSS</span>
-                            </div>
-                            <div class="flex gap-3 pt-1">
-                                <a href="#" class="btn-outline inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-semibold">
-                                    <iconify-icon icon="lucide:github" width="14"></iconify-icon>
-                                    GitHub
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+                <div class="service-card reveal delay-3">
+                    <div class="service-icon"><i data-lucide="plug"></i></div>
+                    <h3 class="service-title">API Development</h3>
+                    <p class="service-desc">Building RESTful APIs with NestJS or Express.js, including authentication, validation, error handling, and documentation.</p>
                 </div>
-
-                <div class="fade-up project-card bg-card border border-secondary/8 rounded-2xl overflow-hidden shadow-sm">
-                    <div class="grid md:grid-cols-2">
-                        <div class="h-56 md:h-auto overflow-hidden md:order-2">
-                            <img src="https://picsum.photos/seed/edumanagementsystem/800/500.jpg" alt="Educational Management" class="project-image w-full h-full object-cover">
-                        </div>
-                        <div class="p-8 md:p-10 flex flex-col justify-center space-y-5 md:order-1">
-                            <div class="flex items-center gap-2">
-                                <span class="px-3 py-1 rounded-full bg-primary/[0.05] text-primary text-xs font-semibold">Database</span>
-                                <span class="px-3 py-1 rounded-full bg-accent/8 text-accent text-xs font-medium">MS Access</span>
-                            </div>
-                            <h3 class="text-xl md:text-2xl font-bold tracking-tight text-primary">Educational Management System</h3>
-                            <p class="text-secondary/60 text-sm leading-relaxed">
-                                Full database system for an educational center—students, teachers, courses, enrollments, salaries, costs, and reporting. Implemented with validation rules and structured relationships.
-                            </p>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="px-2.5 py-1 rounded-lg bg-primary/[0.04] text-secondary/70 text-xs">MS Access</span>
-                                <span class="px-2.5 py-1 rounded-lg bg-primary/[0.04] text-secondary/70 text-xs">VBA</span>
-                                <span class="px-2.5 py-1 rounded-lg bg-primary/[0.04] text-secondary/70 text-xs">Database Design</span>
-                                <span class="px-2.5 py-1 rounded-lg bg-primary/[0.04] text-secondary/70 text-xs">SQL</span>
-                            </div>
-                            <div class="flex gap-3 pt-1">
-                                <a href="#" class="btn-outline inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-semibold">
-                                    <iconify-icon icon="lucide:github" width="14"></iconify-icon>
-                                    GitHub
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+                <div class="service-card reveal delay-4">
+                    <div class="service-icon"><i data-lucide="hard-drive"></i></div>
+                    <h3 class="service-title">Database Design & Optimization</h3>
+                    <p class="service-desc">Creating normalized schemas with Prisma or raw SQL, writing efficient queries, and planning for scale from the start.</p>
                 </div>
-
-                <div class="fade-up project-card bg-card border border-secondary/8 rounded-2xl overflow-hidden shadow-sm">
-                    <div class="grid md:grid-cols-2">
-                        <div class="h-56 md:h-auto overflow-hidden">
-                            <img src="https://picsum.photos/seed/vbaforms2024/800/500.jpg" alt="Student Management Forms" class="project-image w-full h-full object-cover">
-                        </div>
-                        <div class="p-8 md:p-10 flex flex-col justify-center space-y-5">
-                            <div class="flex items-center gap-2">
-                                <span class="px-3 py-1 rounded-full bg-primary/[0.05] text-primary text-xs font-semibold">VBA</span>
-                                <span class="px-3 py-1 rounded-full bg-accent/8 text-accent text-xs font-medium">Validation</span>
-                            </div>
-                            <h3 class="text-xl md:text-2xl font-bold tracking-tight text-primary">Student Management Forms</h3>
-                            <p class="text-secondary/60 text-sm leading-relaxed">
-                                Interactive forms with required field validation, custom date input format (yyyy/mm/dd), and data integrity constraints using MS Access and VBA automation.
-                            </p>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="px-2.5 py-1 rounded-lg bg-primary/[0.04] text-secondary/70 text-xs">VBA</span>
-                                <span class="px-2.5 py-1 rounded-lg bg-primary/[0.04] text-secondary/70 text-xs">MS Access</span>
-                                <span class="px-2.5 py-1 rounded-lg bg-primary/[0.04] text-secondary/70 text-xs">Form Design</span>
-                            </div>
-                            <div class="flex gap-3 pt-1">
-                                <a href="#" class="btn-outline inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-semibold">
-                                    <iconify-icon icon="lucide:github" width="14"></iconify-icon>
-                                    GitHub
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="fade-up project-card bg-card border border-secondary/8 rounded-2xl overflow-hidden shadow-sm">
-                    <div class="grid md:grid-cols-2">
-                        <div class="h-56 md:h-auto overflow-hidden md:order-2">
-                            <img src="https://picsum.photos/seed/hrmsystem2024/800/500.jpg" alt="HR Management System" class="project-image w-full h-full object-cover">
-                        </div>
-                        <div class="p-8 md:p-10 flex flex-col justify-center space-y-5 md:order-1">
-                            <div class="flex items-center gap-2">
-                                <span class="px-3 py-1 rounded-full bg-primary/[0.05] text-primary text-xs font-semibold">Thesis</span>
-                                <span class="px-3 py-1 rounded-full bg-accent/8 text-accent text-xs font-medium">System Analysis</span>
-                            </div>
-                            <h3 class="text-xl md:text-2xl font-bold tracking-tight text-primary">HR Management System (Thesis)</h3>
-                            <p class="text-secondary/60 text-sm leading-relaxed">
-                                Comprehensive thesis on Human Resource Management System—system analysis, design methodology, testing approaches, requirement analysis, and implementation planning.
-                            </p>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="px-2.5 py-1 rounded-lg bg-primary/[0.04] text-secondary/70 text-xs">System Analysis</span>
-                                <span class="px-2.5 py-1 rounded-lg bg-primary/[0.04] text-secondary/70 text-xs">Database Design</span>
-                                <span class="px-2.5 py-1 rounded-lg bg-primary/[0.04] text-secondary/70 text-xs">Testing</span>
-                                <span class="px-2.5 py-1 rounded-lg bg-primary/[0.04] text-secondary/70 text-xs">UML</span>
-                            </div>
-                        </div>
-                    </div>
+                <div class="service-card reveal delay-5">
+                    <div class="service-icon"><i data-lucide="lock"></i></div>
+                    <h3 class="service-title">Auth & Security Implementation</h3>
+                    <p class="service-desc">Implementing JWT, OTP, MFA, role-based access, and secure session management for production applications.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Current Work & Focus Section -->
-    <section id="current-work" class="py-24 md:py-32 bg-surface">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="fade-up text-center mb-16">
-                <div class="inline-flex items-center gap-2 text-accent text-xs font-semibold uppercase tracking-widest mb-4 justify-center">
-                    <div class="w-6 h-px bg-secondary/30"></div>
-                    Current Focus
-                    <div class="w-6 h-px bg-secondary/30"></div>
-                </div>
-                <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-primary">What I Work On</h2>
-            </div>
-
-            <div class="fade-up grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                <div class="content-card bg-card border border-secondary/8 rounded-2xl p-8 shadow-sm cursor-default">
-                    <div class="w-12 h-12 rounded-xl bg-primary/[0.05] flex items-center justify-center mb-5">
-                        <iconify-icon icon="lucide:brain" width="22" class="text-accent"></iconify-icon>
-                    </div>
-                    <h3 class="text-lg font-bold text-primary mb-3">Leitner System App</h3>
-                    <p class="text-sm text-secondary/60 leading-relaxed mb-4">
-                        Currently developing a web application based on the Leitner spaced repetition system—designed to help users memorize information more effectively, especially for language learning and structured study.
-                    </p>
-                    <p class="text-xs text-secondary/50 leading-relaxed">
-                        Goal: Build a system that is practical for everyday learners and flexible enough to support different types of knowledge retention.
-                    </p>
-                </div>
-
-                <div class="space-y-4">
-                    <div class="focus-card bg-card border border-secondary/8 rounded-xl p-5 shadow-sm flex gap-4 items-start">
-                        <div class="w-9 h-9 rounded-lg bg-primary/[0.05] flex items-center justify-center shrink-0 mt-0.5">
-                            <iconify-icon icon="lucide:blocks" width="16" class="text-accent"></iconify-icon>
-                        </div>
-                        <div>
-                            <h4 class="text-sm font-semibold text-primary mb-1">Modular Backend Architecture</h4>
-                            <p class="text-xs text-secondary/60 leading-relaxed">Designing clean, modular backends that are easy to maintain and extend.</p>
-                        </div>
-                    </div>
-                    <div class="focus-card bg-card border border-secondary/8 rounded-xl p-5 shadow-sm flex gap-4 items-start">
-                        <div class="w-9 h-9 rounded-lg bg-primary/[0.05] flex items-center justify-center shrink-0 mt-0.5">
-                            <iconify-icon icon="lucide:key-round" width="16" class="text-accent"></iconify-icon>
-                        </div>
-                        <div>
-                            <h4 class="text-sm font-semibold text-primary mb-1">Secure Authentication Flows</h4>
-                            <p class="text-xs text-secondary/60 leading-relaxed">Implementing access tokens, refresh tokens, OTP, and MFA patterns.</p>
-                        </div>
-                    </div>
-                    <div class="focus-card bg-card border border-secondary/8 rounded-xl p-5 shadow-sm flex gap-4 items-start">
-                        <div class="w-9 h-9 rounded-lg bg-primary/[0.05] flex items-center justify-center shrink-0 mt-0.5">
-                            <iconify-icon icon="lucide:zap" width="16" class="text-accent"></iconify-icon>
-                        </div>
-                        <div>
-                            <h4 class="text-sm font-semibold text-primary mb-1">State & Performance with Redis</h4>
-                            <p class="text-xs text-secondary/60 leading-relaxed">Managing caching, sessions, and performance optimization with Redis.</p>
-                        </div>
-                    </div>
-                    <div class="focus-card bg-card border border-secondary/8 rounded-xl p-5 shadow-sm flex gap-4 items-start">
-                        <div class="w-9 h-9 rounded-lg bg-primary/[0.05] flex items-center justify-center shrink-0 mt-0.5">
-                            <iconify-icon icon="lucide:database" width="16" class="text-accent"></iconify-icon>
-                        </div>
-                        <div>
-                            <h4 class="text-sm font-semibold text-primary mb-1">Prisma & Database Services</h4>
-                            <p class="text-xs text-secondary/60 leading-relaxed">Structuring databases and services using Prisma ORM for type-safe data access.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="fade-up mt-10 max-w-4xl mx-auto">
-                <p class="text-xs text-secondary/50 uppercase tracking-wider font-semibold text-center mb-5">Currently Learning</p>
-                <div class="flex flex-wrap justify-center gap-2.5">
-                    <span class="pill-tag text-xs font-medium text-primary bg-primary/[0.05] border border-secondary/10 px-3.5 py-2 rounded-lg">Advanced Python</span>
-                    <span class="pill-tag text-xs font-medium text-primary bg-primary/[0.05] border border-secondary/10 px-3.5 py-2 rounded-lg">Java Spring Boot</span>
-                    <span class="pill-tag text-xs font-medium text-primary bg-primary/[0.05] border border-secondary/10 px-3.5 py-2 rounded-lg">System Design Principles</span>
-                    <span class="pill-tag text-xs font-medium text-primary bg-primary/[0.05] border border-secondary/10 px-3.5 py-2 rounded-lg">Advanced NestJS Patterns</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Experience & Teaching Section -->
-    <section id="experience" class="py-24 md:py-32 bg-white">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="fade-up text-center mb-14">
-                <div class="inline-flex items-center gap-2 text-accent text-xs font-semibold uppercase tracking-widest mb-4 justify-center">
-                    <div class="w-6 h-px bg-secondary/30"></div>
-                    Experience
-                    <div class="w-6 h-px bg-secondary/30"></div>
-                </div>
-                <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-primary">Where I've Worked</h2>
-            </div>
-
-            <div class="fade-up max-w-3xl mx-auto space-y-0">
-                <div class="relative pl-8 pb-10 border-l-2 border-secondary/10 group">
-                    <div class="absolute left-0 top-0 w-4 h-4 -translate-x-[9px] rounded-full border-2 border-accent bg-surface group-hover:bg-accent group-hover:border-accent transition-colors duration-300"></div>
-                    <div class="exp-card bg-surface border border-secondary/8 rounded-2xl p-6">
-                        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-3">
-                            <div>
-                                <h3 class="font-bold text-primary">Backend Developer</h3>
-                                <p class="text-sm text-[#E0234E] font-medium">TechVault Inc.</p>
-                            </div>
-                            <span class="text-xs text-secondary/50 font-medium bg-card px-3 py-1 rounded-md w-fit">2023 — Present</span>
-                        </div>
-                        <p class="text-sm text-secondary leading-relaxed">Developed and maintained REST APIs using NestJS and PostgreSQL. Designed database schemas, implemented authentication systems, and containerized services with Docker. Improved API response times by 40%.</p>
-                    </div>
-                </div>
-
-                <div class="relative pl-8 pb-10 border-l-2 border-secondary/10 group">
-                    <div class="absolute left-0 top-0 w-4 h-4 -translate-x-[9px] rounded-full border-2 border-secondary/20 bg-surface group-hover:bg-accent group-hover:border-accent transition-colors duration-300"></div>
-                    <div class="exp-card bg-surface border border-secondary/8 rounded-2xl p-6">
-                        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-3">
-                            <div>
-                                <h3 class="font-bold text-primary">Junior Backend Developer</h3>
-                                <p class="text-sm text-[#E0234E] font-medium">NovaSoft Solutions</p>
-                            </div>
-                            <span class="text-xs text-secondary/50 font-medium bg-card px-3 py-1 rounded-md w-fit">2022 — 2023</span>
-                        </div>
-                        <p class="text-sm text-secondary leading-relaxed">Built backend services with Express.js and MySQL. Wrote API endpoints, handled database migrations, set up Docker environments, and integrated third-party payment and notification services.</p>
-                    </div>
-                </div>
-
-                <div class="relative pl-8 pb-10 border-l-2 border-secondary/10 group">
-                    <div class="absolute left-0 top-0 w-4 h-4 -translate-x-[9px] rounded-full border-2 border-secondary/20 bg-surface group-hover:bg-accent group-hover:border-accent transition-colors duration-300"></div>
-                    <div class="exp-card bg-surface border border-secondary/8 rounded-2xl p-6">
-                        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-3">
-                            <div>
-                                <h3 class="font-bold text-primary">Backend Intern</h3>
-                                <p class="text-sm text-[#E0234E] font-medium">DigitalWave Agency</p>
-                            </div>
-                            <span class="text-xs text-secondary/50 font-medium bg-card px-3 py-1 rounded-md w-fit">2021 — 2022</span>
-                        </div>
-                        <p class="text-sm text-secondary leading-relaxed">Started my backend journey building simple APIs with Node.js and Express. Learned database fundamentals with PostgreSQL, wrote unit tests, and gained experience with Git workflows in agile teams.</p>
-                    </div>
-                </div>
-
-                <div class="relative pl-8 pb-0 border-l-2 border-secondary/10 group">
-                    <div class="absolute left-0 top-0 w-4 h-4 -translate-x-[9px] rounded-full border-2 border-secondary/20 bg-surface group-hover:bg-accent group-hover:border-accent transition-colors duration-300"></div>
-                    <div class="exp-card bg-surface border border-secondary/8 rounded-2xl p-6">
-                        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-3">
-                            <div>
-                                <h3 class="font-bold text-primary">ICDL Instructor</h3>
-                                <p class="text-sm text-[#E0234E] font-medium">Educational Center</p>
-                            </div>
-                            <span class="text-xs text-secondary/50 font-medium bg-card px-3 py-1 rounded-md w-fit">Teaching</span>
-                        </div>
-                        <p class="text-sm text-secondary leading-relaxed">Instructor in ICDL programs. Teaching Microsoft Word (Beginner to Advanced) and Microsoft Excel. Created structured lesson plans and practical assignments for students.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- My Approach & Career Goals Section -->
-    <section id="approach" class="py-24 md:py-32 bg-surface">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="fade-up text-center mb-16">
-                <div class="inline-flex items-center gap-2 text-accent text-xs font-semibold uppercase tracking-widest mb-4 justify-center">
-                    <div class="w-6 h-px bg-secondary/30"></div>
-                    Approach & Goals
-                    <div class="w-6 h-px bg-secondary/30"></div>
-                </div>
-                <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-primary">How I Think & Where I'm Going</h2>
-            </div>
-
-            <div class="fade-up grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                <div class="content-card bg-card border border-secondary/8 rounded-2xl p-8 shadow-sm cursor-default">
-                    <div class="w-12 h-12 rounded-xl bg-primary/[0.05] flex items-center justify-center mb-5">
-                        <iconify-icon icon="lucide:lightbulb" width="22" class="text-accent"></iconify-icon>
-                    </div>
-                    <h3 class="text-lg font-bold text-primary mb-4">How I Think</h3>
-                    <div class="space-y-3">
-                        <div class="flex gap-3 items-start">
-                            <div class="w-1.5 h-1.5 rounded-full bg-accent mt-2 shrink-0"></div>
-                            <p class="text-sm text-secondary/70 leading-relaxed">Backend engineering is about <span class="text-primary font-medium">designing systems</span>, not just writing code</p>
-                        </div>
-                        <div class="flex gap-3 items-start">
-                            <div class="w-1.5 h-1.5 rounded-full bg-accent mt-2 shrink-0"></div>
-                            <p class="text-sm text-secondary/70 leading-relaxed">Step-by-step implementation over large, risky rewrites</p>
-                        </div>
-                        <div class="flex gap-3 items-start">
-                            <div class="w-1.5 h-1.5 rounded-full bg-accent mt-2 shrink-0"></div>
-                            <p class="text-sm text-secondary/70 leading-relaxed">Clear <span class="text-primary font-medium">separation of concerns</span> in every layer</p>
-                        </div>
-                        <div class="flex gap-3 items-start">
-                            <div class="w-1.5 h-1.5 rounded-full bg-accent mt-2 shrink-0"></div>
-                            <p class="text-sm text-secondary/70 leading-relaxed">Explicit reasoning behind every architectural decision</p>
-                        </div>
-                        <div class="flex gap-3 items-start">
-                            <div class="w-1.5 h-1.5 rounded-full bg-accent mt-2 shrink-0"></div>
-                            <p class="text-sm text-secondary/70 leading-relaxed">Clean, maintainable, and <span class="text-primary font-medium">production-ready</span> code always</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="content-card bg-card border border-secondary/8 rounded-2xl p-8 shadow-sm cursor-default">
-                    <div class="w-12 h-12 rounded-xl bg-primary/[0.05] flex items-center justify-center mb-5">
-                        <iconify-icon icon="lucide:target" width="22" class="text-accent"></iconify-icon>
-                    </div>
-                    <h3 class="text-lg font-bold text-primary mb-4">Career Goals</h3>
-                    <div class="space-y-5">
-                        <div>
-                            <p class="text-xs font-semibold text-accent uppercase tracking-wider mb-2">Short-Term</p>
-                            <div class="space-y-2">
-                                <div class="flex gap-2.5 items-start">
-                                    <iconify-icon icon="lucide:check" width="14" class="text-accent mt-0.5 shrink-0"></iconify-icon>
-                                    <p class="text-sm text-secondary/70">Gain real-world freelance projects</p>
-                                </div>
-                                <div class="flex gap-2.5 items-start">
-                                    <iconify-icon icon="lucide:check" width="14" class="text-accent mt-0.5 shrink-0"></iconify-icon>
-                                    <p class="text-sm text-secondary/70">Strengthen backend and database skills</p>
-                                </div>
-                                <div class="flex gap-2.5 items-start">
-                                    <iconify-icon icon="lucide:check" width="14" class="text-accent mt-0.5 shrink-0"></iconify-icon>
-                                    <p class="text-sm text-secondary/70">Build portfolio-ready applications</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div>
-                            <p class="text-xs font-semibold text-accent uppercase tracking-wider mb-2">Long-Term</p>
-                            <div class="space-y-2">
-                                <div class="flex gap-2.5 items-start">
-                                    <iconify-icon icon="lucide:star" width="14" class="text-accent mt-0.5 shrink-0"></iconify-icon>
-                                    <p class="text-sm text-secondary/70">Establish a <span class="text-primary font-medium">software solutions company</span></p>
-                                </div>
-                                <div class="flex gap-2.5 items-start">
-                                    <iconify-icon icon="lucide:star" width="14" class="text-accent mt-0.5 shrink-0"></iconify-icon>
-                                    <p class="text-sm text-secondary/70">Develop HRMS & educational platforms</p>
-                                </div>
-                                <div class="flex gap-2.5 items-start">
-                                    <iconify-icon icon="lucide:star" width="14" class="text-accent mt-0.5 shrink-0"></iconify-icon>
-                                    <p class="text-sm text-secondary/70">Lead a team delivering scalable software</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="fade-up grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mt-8">
-                <div class="content-card bg-card border border-secondary/8 rounded-2xl p-8 shadow-sm cursor-default">
-                    <div class="w-12 h-12 rounded-xl bg-primary/[0.05] flex items-center justify-center mb-5">
-                        <iconify-icon icon="lucide:sparkles" width="22" class="text-accent"></iconify-icon>
-                    </div>
-                    <h3 class="text-lg font-bold text-primary mb-4">Strengths</h3>
-                    <div class="space-y-3">
-                        <div class="flex gap-3 items-start">
-                            <div class="w-1.5 h-1.5 rounded-full bg-accent mt-2 shrink-0"></div>
-                            <p class="text-sm text-secondary/70 leading-relaxed">Strong foundation across <span class="text-primary font-medium">multiple programming languages</span></p>
-                        </div>
-                        <div class="flex gap-3 items-start">
-                            <div class="w-1.5 h-1.5 rounded-full bg-accent mt-2 shrink-0"></div>
-                            <p class="text-sm text-secondary/70 leading-relaxed">Practical experience with real systems, not just theory</p>
-                        </div>
-                        <div class="flex gap-3 items-start">
-                            <div class="w-1.5 h-1.5 rounded-full bg-accent mt-2 shrink-0"></div>
-                            <p class="text-sm text-secondary/70 leading-relaxed">Ability to <span class="text-primary font-medium">teach and explain</span> concepts clearly</p>
-                        </div>
-                        <div class="flex gap-3 items-start">
-                            <div class="w-1.5 h-1.5 rounded-full bg-accent mt-2 shrink-0"></div>
-                            <p class="text-sm text-secondary/70 leading-relaxed">Consistent learner with structured goals</p>
-                        </div>
-                        <div class="flex gap-3 items-start">
-                            <div class="w-1.5 h-1.5 rounded-full bg-accent mt-2 shrink-0"></div>
-                            <p class="text-sm text-secondary/70 leading-relaxed">Focus on building <span class="text-primary font-medium">real-world solutions</span></p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="content-card bg-card border border-secondary/8 rounded-2xl p-8 shadow-sm cursor-default">
-                    <div class="w-12 h-12 rounded-xl bg-primary/[0.05] flex items-center justify-center mb-5">
-                        <iconify-icon icon="lucide:book-open" width="22" class="text-accent"></iconify-icon>
-                    </div>
-                    <h3 class="text-lg font-bold text-primary mb-4">Learning Approach</h3>
-                    <div class="space-y-3 mb-6">
-                        <div class="flex gap-3 items-start">
-                            <div class="w-1.5 h-1.5 rounded-full bg-accent mt-2 shrink-0"></div>
-                            <p class="text-sm text-secondary/70 leading-relaxed">Combines practical projects with theoretical understanding</p>
-                        </div>
-                        <div class="flex gap-3 items-start">
-                            <div class="w-1.5 h-1.5 rounded-full bg-accent mt-2 shrink-0"></div>
-                            <p class="text-sm text-secondary/70 leading-relaxed">Prefers <span class="text-primary font-medium">hands-on, project-based</span> learning</p>
-                        </div>
-                        <div class="flex gap-3 items-start">
-                            <div class="w-1.5 h-1.5 rounded-full bg-accent mt-2 shrink-0"></div>
-                            <p class="text-sm text-secondary/70 leading-relaxed">Values video-based explanations and guided tutorials</p>
-                        </div>
-                    </div>
-                    <div class="pt-4 border-t border-secondary/8">
-                        <p class="text-xs font-semibold text-accent uppercase tracking-wider mb-2">Work Context</p>
-                        <p class="text-sm text-secondary/70 leading-relaxed">
-                            Based in <span class="text-primary font-medium">Afghanistan</span>, actively preparing for both local and international freelancing opportunities. Interested in building solutions relevant to education and business management sectors.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Services Section -->
-    <section id="services" class="py-24 md:py-32 bg-white">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="fade-up text-center mb-16">
-                <div class="inline-flex items-center gap-2 text-accent text-xs font-semibold uppercase tracking-widest mb-4 justify-center">
-                    <div class="w-6 h-px bg-secondary/30"></div>
-                    Expertise
-                    <div class="w-6 h-px bg-secondary/30"></div>
-                </div>
-                <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-primary">What I Offer</h2>
-                <p class="text-secondary/60 mt-4 max-w-lg mx-auto">Services I can provide for your projects.</p>
-            </div>
-            <div class="fade-up grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-                <div class="service-card bg-card border border-secondary/8 rounded-2xl p-6 text-center shadow-sm">
-                    <div class="w-14 h-14 mx-auto mb-4 rounded-xl bg-primary/[0.05] flex items-center justify-center">
-                        <iconify-icon icon="lucide:server" width="24" class="text-accent"></iconify-icon>
-                    </div>
-                    <h4 class="font-semibold text-sm text-primary mb-2">API Development</h4>
-                    <p class="text-xs text-secondary/60 leading-relaxed">RESTful APIs with NestJS and Express.js, following clean architecture.</p>
-                </div>
-                <div class="service-card bg-card border border-secondary/8 rounded-2xl p-6 text-center shadow-sm">
-                    <div class="w-14 h-14 mx-auto mb-4 rounded-xl bg-primary/[0.05] flex items-center justify-center">
-                        <iconify-icon icon="lucide:database" width="24" class="text-accent"></iconify-icon>
-                    </div>
-                    <h4 class="font-semibold text-sm text-primary mb-2">Database Design</h4>
-                    <p class="text-xs text-secondary/60 leading-relaxed">Efficient schemas with PostgreSQL and MySQL, normalization and optimization.</p>
-                </div>
-                <div class="service-card bg-card border border-secondary/8 rounded-2xl p-6 text-center shadow-sm">
-                    <div class="w-14 h-14 mx-auto mb-4 rounded-xl bg-primary/[0.05] flex items-center justify-center">
-                        <iconify-icon icon="lucide:shield-check" width="24" class="text-accent"></iconify-icon>
-                    </div>
-                    <h4 class="font-semibold text-sm text-primary mb-2">Auth & Security</h4>
-                    <p class="text-xs text-secondary/60 leading-relaxed">JWT, OAuth 2.0, RBAC systems, rate limiting, and security best practices.</p>
-                </div>
-                <div class="service-card bg-card border border-secondary/8 rounded-2xl p-6 text-center shadow-sm">
-                    <div class="w-14 h-14 mx-auto mb-4 rounded-xl bg-primary/[0.05] flex items-center justify-center">
-                        <iconify-icon icon="lucide:container" width="24" class="text-accent"></iconify-icon>
-                    </div>
-                    <h4 class="font-semibold text-sm text-primary mb-2">DevOps & Deployment</h4>
-                    <p class="text-xs text-secondary/60 leading-relaxed">Docker containerization, CI/CD pipelines, and cloud deployment for production.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="py-24 md:py-32 bg-primary">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="fade-up max-w-2xl mx-auto text-center">
-                <div class="inline-flex items-center gap-2 text-accent text-xs font-semibold uppercase tracking-widest mb-4 justify-center">
-                    <div class="w-6 h-px bg-accent/40"></div>
-                    Get in Touch
-                    <div class="w-6 h-px bg-accent/40"></div>
-                </div>
-                <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-light mb-4">
-                    Let's work together
-                </h2>
-                <p class="text-light/50 mb-12">
-                    Have a project in mind or want to discuss an opportunity? I'd love to hear from you.
-                </p>
-
-                <div class="flex items-center justify-center gap-5 mb-12">
-                    <a href="mailto:sajad.tavakoli@email.com" class="contact-icon-link flex flex-col items-center gap-3 bg-secondary/40 border border-secondary/30 rounded-2xl p-6 w-36">
-                        <div class="contact-icon-circle w-12 h-12 rounded-xl bg-accent/15 flex items-center justify-center transition-all">
-                            <iconify-icon icon="lucide:mail" width="20" class="text-accent transition-colors"></iconify-icon>
-                        </div>
-                        <div>
-                            <p class="text-xs font-semibold text-light">Email</p>
-                            <p class="text-[10px] text-light/40 mt-0.5">sajad.tavakoli</p>
-                        </div>
-                    </a>
-                    <a href="https://github.com" target="_blank" rel="noopener" class="contact-icon-link flex flex-col items-center gap-3 bg-secondary/40 border border-secondary/30 rounded-2xl p-6 w-36">
-                        <div class="contact-icon-circle w-12 h-12 rounded-xl bg-light/10 flex items-center justify-center transition-all">
-                            <iconify-icon icon="lucide:github" width="20" class="text-light transition-colors"></iconify-icon>
-                        </div>
-                        <div>
-                            <p class="text-xs font-semibold text-light">GitHub</p>
-                            <p class="text-[10px] text-light/40 mt-0.5">@sajadtavakoli</p>
-                        </div>
-                    </a>
-                    <a href="https://linkedin.com" target="_blank" rel="noopener" class="contact-icon-link flex flex-col items-center gap-3 bg-secondary/40 border border-secondary/30 rounded-2xl p-6 w-36">
-                        <div class="contact-icon-circle w-12 h-12 rounded-xl bg-[#0A66C2]/15 flex items-center justify-center transition-all">
-                            <iconify-icon icon="lucide:linkedin" width="20" class="text-[#0A66C2] transition-colors"></iconify-icon>
-                        </div>
-                        <div>
-                            <p class="text-xs font-semibold text-light">LinkedIn</p>
-                            <p class="text-[10px] text-light/40 mt-0.5">Sajad Tavakoli</p>
-                        </div>
-                    </a>
-                </div>
-
-                <a href="mailto:sajad.tavakoli@email.com" class="btn-primary inline-flex items-center gap-3 px-8 py-4 rounded-xl text-sm font-semibold text-white">
-                    <iconify-icon icon="lucide:send" width="16"></iconify-icon>
-                    Send Me a Message
+    <!-- Contact -->
+    <section id="contact">
+        <div class="section-max-narrow" style="text-align: center;">
+            <p class="section-label reveal">Contact</p>
+            <h2 class="contact-heading reveal delay-1">Let's build something reliable.</h2>
+            <p class="contact-sub reveal delay-2">If you have a project in mind or want to discuss backend architecture, feel free to reach out.</p>
+            <div class="contact-links reveal delay-3">
+                <a href="mailto:hello@sajadtavakoli.com" class="contact-link">
+                    <i data-lucide="mail" style="width:16px;height:16px;"></i>
+                    Email
+                </a>
+                <a href="https://github.com" target="_blank" rel="noopener" class="contact-link">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg>
+                    GitHub
+                </a>
+                <a href="https://gitlab.com" target="_blank" rel="noopener" class="contact-link">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.65 14.39L12 22.13 1.35 14.39a.84.84 0 0 1-.3-.94l1.22-3.78 2.44-7.51A.42.42 0 0 1 4.82 2a.43.43 0 0 1 .58 0 .42.42 0 0 1 .11.18l2.44 7.49h8.1l2.44-7.51A.42.42 0 0 1 18.6 2a.43.43 0 0 1 .58 0 .42.42 0 0 1 .11.18l2.44 7.51L23 13.45a.84.84 0 0 1-.35.94z"></path><path d="m6.09 9.67 5.91 12.46 5.91-12.46"></path></svg>
+                    GitLab
+                </a>
+                <a href="https://linkedin.com" target="_blank" rel="noopener" class="contact-link">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                    LinkedIn
+                </a>
+                <a href="#" class="contact-link">
+                    <i data-lucide="file-text" style="width:16px;height:16px;"></i>
+                    Resume
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="border-t border-secondary/20 py-10 bg-secondary">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="flex flex-col md:flex-row items-center justify-between gap-6">
-                <div class="flex items-center gap-2">
-                    <span class="text-lg font-semibold text-light"><span class="text-accent">S</span>ajad<span class="text-accent">.</span></span>
-                </div>
-                <div class="flex items-center gap-6">
-                    <a href="https://github.com" target="_blank" rel="noopener" class="text-light/40 hover:text-accent transition-colors">
-                        <iconify-icon icon="lucide:github" width="18"></iconify-icon>
-                    </a>
-                    <a href="https://linkedin.com" target="_blank" rel="noopener" class="text-light/40 hover:text-accent transition-colors">
-                        <iconify-icon icon="lucide:linkedin" width="18"></iconify-icon>
-                    </a>
-                    <a href="mailto:sajad.tavakoli@email.com" class="text-light/40 hover:text-accent transition-colors">
-                        <iconify-icon icon="lucide:mail" width="18"></iconify-icon>
-                    </a>
-                </div>
-                <p class="text-xs text-light/30">
-                    &copy; 2024 Sajad Ali Tavakoli. All rights reserved.
-                </p>
-            </div>
+    <footer>
+        <p class="footer-text">© 2025 Sajad Ali Tavakoli <span>·</span> Backend Developer</p>
+        <div class="footer-links">
+            <a href="#hero">Top</a>
+            <a href="https://github.com" target="_blank" rel="noopener">GitHub</a>
+            <a href="https://gitlab.com" target="_blank" rel="noopener">GitLab</a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn</a>
         </div>
     </footer>
 
-    <script>
-        const menuBtn = document.getElementById('menuBtn');
-        const closeMenuBtn = document.getElementById('closeMenuBtn');
-        const mobileMenu = document.getElementById('mobileMenu');
-        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+    </div><!-- end #page-content -->
 
-        menuBtn.addEventListener('click', () => mobileMenu.classList.add('open'));
-        closeMenuBtn.addEventListener('click', () => mobileMenu.classList.remove('open'));
-        mobileNavLinks.forEach(link => {
-            link.addEventListener('click', () => mobileMenu.classList.remove('open'));
-        });
+    <script>
+        (function() {
+            const preloader = document.getElementById('preloader');
+            const pageContent = document.getElementById('page-content');
+            const heroImg = document.querySelector('.hero-bg img');
+            let imagesLoaded = false;
+            let minimumTimePassed = false;
+            const MIN_DISPLAY = 1200;
+
+            if (heroImg && heroImg.complete) {
+                imagesLoaded = true;
+                tryDismiss();
+            } else if (heroImg) {
+                heroImg.addEventListener('load', function() {
+                    imagesLoaded = true;
+                    tryDismiss();
+                });
+                heroImg.addEventListener('error', function() {
+                    imagesLoaded = true;
+                    tryDismiss();
+                });
+            } else {
+                imagesLoaded = true;
+                tryDismiss();
+            }
+
+            setTimeout(function() {
+                minimumTimePassed = true;
+                tryDismiss();
+            }, MIN_DISPLAY);
+
+            function tryDismiss() {
+                if (!imagesLoaded || !minimumTimePassed) return;
+                preloader.classList.add('loaded');
+                pageContent.classList.add('visible');
+                setTimeout(initReveals, 100);
+            }
+
+            setTimeout(function() {
+                if (!preloader.classList.contains('loaded')) {
+                    preloader.classList.add('loaded');
+                    pageContent.classList.add('visible');
+                    setTimeout(initReveals, 100);
+                }
+            }, 5000);
+        })();
+
+        lucide.createIcons();
 
         const navbar = document.getElementById('navbar');
         window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 50) {
-                navbar.style.borderBottom = '1px solid rgba(57,62,70,0.1)';
-                navbar.style.background = 'rgba(255,255,255,0.95)';
-                navbar.style.boxShadow = '0 1px 3px rgba(34,40,49,0.06)';
-            } else {
-                navbar.style.borderBottom = 'none';
-                navbar.style.background = 'rgba(255,255,255,0.8)';
-                navbar.style.boxShadow = 'none';
-            }
+            navbar.classList.toggle('scrolled', window.scrollY > 40);
         });
 
-        const fadeElements = document.querySelectorAll('.fade-up');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-        fadeElements.forEach(el => observer.observe(el));
+        const mobileToggle = document.getElementById('mobileToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+        let menuOpen = false;
 
-        const sections = document.querySelectorAll('section[id]');
-        const navLinks = document.querySelectorAll('.nav-link');
-        window.addEventListener('scroll', () => {
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop - 100;
-                if (window.pageYOffset >= sectionTop) {
-                    current = section.getAttribute('id');
-                }
-            });
-            navLinks.forEach(link => {
-                link.classList.remove('text-primary');
-                link.classList.add('text-secondary');
-                if (link.getAttribute('href') === `#${current}`) {
-                    link.classList.remove('text-secondary');
-                    link.classList.add('text-primary');
-                }
+        mobileToggle.addEventListener('click', () => {
+            menuOpen = !menuOpen;
+            mobileMenu.classList.toggle('active', menuOpen);
+            mobileToggle.innerHTML = menuOpen
+                ? '<i data-lucide="x" style="width:20px;height:20px;"></i>'
+                : '<i data-lucide="menu" style="width:20px;height:20px;"></i>';
+            lucide.createIcons();
+        });
+
+        function closeMobile() {
+            menuOpen = false;
+            mobileMenu.classList.remove('active');
+            mobileToggle.innerHTML = '<i data-lucide="menu" style="width:20px;height:20px;"></i>';
+            lucide.createIcons();
+        }
+
+        function initReveals() {
+            const revealObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        revealObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+            document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+        }
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
             });
         });
     </script>
+
 </body>
 </html>
