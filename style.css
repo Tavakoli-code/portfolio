@@ -233,7 +233,6 @@ html[dir="rtl"] .language-toggle {
 }
 
 /* ===== RTL / DARI MODE ===== */
-
 html[dir="rtl"] body {
     direction: rtl;
     text-align: right;
