@@ -65,9 +65,23 @@ const portfolioData = {
                     "A production-focused land and ownership management system built with structured backend architecture, authentication, registry workflows, and scalable data modeling.",
                 tags: ["NestJS", "Prisma", "PostgreSQL", "Redis", "JWT"],
                 order: 1,
-                github: "",
-                gitlab: "",
-                demo: "",
+                links: {
+                    github: {
+                        url: "https://github.com/your-username/project-name",
+                        icon: "github",
+                        label: "GitHub",
+                    },
+                    gitlab: {
+                        url: "",
+                        icon: "gitlab",
+                        label: "GitLab",
+                    },
+                    demo: {
+                        url: "",
+                        icon: "external-link",
+                        label: "Live Demo",
+                    },
+                },
             },
             {
                 title: "Leitner Learning System",
@@ -76,9 +90,23 @@ const portfolioData = {
                     "A web application based on the Leitner method to help users memorize information more effectively, especially for language learning and structured study.",
                 tags: ["Backend Architecture", "Authentication", "Learning System"],
                 order: 2,
-                github: "",
-                gitlab: "",
-                demo: "",
+                links: {
+                    github: {
+                        url: "",
+                        icon: "github",
+                        label: "GitHub",
+                    },
+                    gitlab: {
+                        url: "",
+                        icon: "gitlab",
+                        label: "GitLab",
+                    },
+                    demo: {
+                        url: "",
+                        icon: "external-link",
+                        label: "Live Demo",
+                    },
+                },
             },
             {
                 title: "Educational Management System",
@@ -87,9 +115,23 @@ const portfolioData = {
                     "A database system for managing students, teachers, courses, enrollments, salaries, costs, and reports for an educational center.",
                 tags: ["Microsoft Access", "VBA", "Database Design"],
                 order: 3,
-                github: "",
-                gitlab: "",
-                demo: "",
+                links: {
+                    github: {
+                        url: "",
+                        icon: "github",
+                        label: "GitHub",
+                    },
+                    gitlab: {
+                        url: "",
+                        icon: "gitlab",
+                        label: "GitLab",
+                    },
+                    demo: {
+                        url: "",
+                        icon: "external-link",
+                        label: "Live Demo",
+                    },
+                },
             },
             {
                 title: "Blog Web Application",
@@ -98,9 +140,23 @@ const portfolioData = {
                     "A blog system built with Node.js, Express.js, and EJS, focused on routing, dynamic rendering, and clean UI structure.",
                 tags: ["Node.js", "Express.js", "EJS"],
                 order: 4,
-                github: "",
-                gitlab: "",
-                demo: "",
+                links: {
+                    github: {
+                        url: "",
+                        icon: "github",
+                        label: "GitHub",
+                    },
+                    gitlab: {
+                        url: "",
+                        icon: "gitlab",
+                        label: "GitLab",
+                    },
+                    demo: {
+                        url: "",
+                        icon: "external-link",
+                        label: "Live Demo",
+                    },
+                },
             },
             {
                 title: "Student Management System",
@@ -108,10 +164,23 @@ const portfolioData = {
                 description:
                     "A PHP and MySQL-based system for managing student records with CRUD operations, validation, and dynamic table display.",
                 tags: ["PHP", "MySQL", "JavaScript"],
-                order: 5,
-                github: "",
-                gitlab: "",
-                demo: "",
+                links: {
+                    github: {
+                        url: "",
+                        icon: "github",
+                        label: "GitHub",
+                    },
+                    gitlab: {
+                        url: "",
+                        icon: "gitlab",
+                        label: "GitLab",
+                    },
+                    demo: {
+                        url: "",
+                        icon: "external-link",
+                        label: "Live Demo",
+                    },
+                },
             },
         ],
     },

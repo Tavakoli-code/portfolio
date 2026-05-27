@@ -640,6 +640,43 @@ section {
     background: rgba(0, 173, 181, 0.04);
 }
 
+.project-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 22px;
+}
+
+.project-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 4px;
+    color: #5a5a64;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.project-link:hover {
+    color: #00adb5;
+    border-color: rgba(0, 173, 181, 0.35);
+    background: rgba(0, 173, 181, 0.06);
+}
+
+.project-link i,
+.project-link svg {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+}
+
 /* ===== CURRENT FOCUS ===== */
 #focus {
     padding-top: 100px;
