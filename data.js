@@ -285,4 +285,35 @@ const portfolioData = {
             },
         ],
     },
+
+    services: {
+        label: "Services",
+        heading: "What I Offer",
+        items: [
+            {
+                title: "Backend System Design",
+                icon: "layout-dashboard",
+                description:
+                    "Designing scalable, well-structured backend architectures with clear module boundaries and production-ready patterns.",
+            },
+            {
+                title: "API Development",
+                icon: "plug",
+                description:
+                    "Building RESTful APIs with NestJS or Express.js, including authentication, validation, error handling, and documentation.",
+            },
+            {
+                title: "Database Design & Optimization",
+                icon: "hard-drive",
+                description:
+                    "Creating normalized schemas with Prisma or raw SQL, writing efficient queries, and planning for scale from the start.",
+            },
+            {
+                title: "Auth & Security Implementation",
+                icon: "lock",
+                description:
+                    "Implementing JWT, OTP, MFA, role-based access, and secure session management for production applications.",
+            },
+        ],
+    },
 };

@@ -98,46 +98,7 @@
             <section id="approach"></section>
 
             <!-- Services -->
-            <section id="services">
-                <div class="section-max">
-                    <p class="section-label reveal">Services</p>
-                    <h2 class="section-heading reveal delay-1">What I Offer</h2>
-                    <div class="services-grid">
-                        <div class="service-card reveal delay-2">
-                            <div class="service-icon"><i data-lucide="layout-dashboard"></i></div>
-                            <h3 class="service-title">Backend System Design</h3>
-                            <p class="service-desc">
-                                Designing scalable, well-structured backend architectures with clear
-                                module boundaries and production-ready patterns.
-                            </p>
-                        </div>
-                        <div class="service-card reveal delay-3">
-                            <div class="service-icon"><i data-lucide="plug"></i></div>
-                            <h3 class="service-title">API Development</h3>
-                            <p class="service-desc">
-                                Building RESTful APIs with NestJS or Express.js, including
-                                authentication, validation, error handling, and documentation.
-                            </p>
-                        </div>
-                        <div class="service-card reveal delay-4">
-                            <div class="service-icon"><i data-lucide="hard-drive"></i></div>
-                            <h3 class="service-title">Database Design & Optimization</h3>
-                            <p class="service-desc">
-                                Creating normalized schemas with Prisma or raw SQL, writing
-                                efficient queries, and planning for scale from the start.
-                            </p>
-                        </div>
-                        <div class="service-card reveal delay-5">
-                            <div class="service-icon"><i data-lucide="lock"></i></div>
-                            <h3 class="service-title">Auth & Security Implementation</h3>
-                            <p class="service-desc">
-                                Implementing JWT, OTP, MFA, role-based access, and secure session
-                                management for production applications.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </section>
+            <section id="services"></section>
 
             <!-- Contact -->
             <section id="contact">
@@ -538,12 +499,49 @@
     `;
             }
 
+            function renderServices() {
+                const services = portfolioData.services;
+                const servicesSection = document.getElementById("services");
+
+                if (!servicesSection || !services) return;
+
+                const serviceCardsHtml = services.items
+                    .map((service, index) => {
+                        const delayClass = `delay-${Math.min(index + 2, 6)}`;
+                        const icon = service.icon || "circle";
+
+                        return `
+                <div class="service-card reveal ${delayClass}">
+                    <div class="service-icon">
+                        <i data-lucide="${icon}"></i>
+                    </div>
+
+                    <h3 class="service-title">${service.title}</h3>
+                    <p class="service-desc">${service.description}</p>
+                </div>
+            `;
+                    })
+                    .join("");
+
+                servicesSection.innerHTML = `
+        <div class="section-max">
+            <p class="section-label reveal">${services.label}</p>
+            <h2 class="section-heading reveal delay-1">${services.heading}</h2>
+
+            <div class="services-grid">
+                ${serviceCardsHtml}
+            </div>
+        </div>
+    `;
+            }
+
             renderHero();
             renderSkills();
             renderProjects();
             renderFocus();
             renderExperience();
             renderApproach();
+            renderServices();
 
             lucide.createIcons();
 
