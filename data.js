@@ -1,5 +1,19 @@
 const portfolioData = {
     en: {
+        nav: {
+            logo: "sajad",
+            logoAccent: ".",
+            links: [
+                { label: "About", url: "#about" },
+                { label: "Skills", url: "#skills" },
+                { label: "Projects", url: "#projects" },
+                { label: "Focus", url: "#focus" },
+                { label: "Experience", url: "#experience" },
+                { label: "Approach", url: "#approach" },
+                { label: "Contact", url: "#contact" },
+            ],
+        },
+
         hero: {
             image: "./assets/images/hero_background.png",
             imageAlt: "Sajad Ali Tavakoli",
@@ -397,6 +411,20 @@ const portfolioData = {
     },
 
     fa: {
+        nav: {
+            logo: "sajad",
+            logoAccent: ".",
+            links: [
+                { label: "درباره من", url: "#about" },
+                { label: "مهارت‌ها", url: "#skills" },
+                { label: "پروژه‌ها", url: "#projects" },
+                { label: "تمرکز", url: "#focus" },
+                { label: "تجربه", url: "#experience" },
+                { label: "روش کار", url: "#approach" },
+                { label: "تماس", url: "#contact" },
+            ],
+        },
+
         hero: {
             image: "./assets/images/hero_background.png",
             imageAlt: "سجاد علی توکلی",

@@ -77,6 +77,44 @@ function getIconHtml(iconName) {
     return customIcons[iconName] || renderLucideIcon(iconName, "circle");
 }
 
+function renderNavigation() {
+    const nav = getPortfolioData().nav;
+    const navLogo = document.getElementById("navLogo");
+    const navLinks = document.getElementById("navLinks");
+    const mobileMenu = document.getElementById("mobileMenu");
+
+    if (!nav) return;
+
+    if (navLogo) {
+        navLogo.innerHTML = `${nav.logo}<span>${nav.logoAccent || "."}</span>dev`;
+    }
+
+    const linksHtml = (nav.links || [])
+        .filter((link) => link.label && link.url)
+        .map(
+            (link) => `
+                <li>
+                    <a href="${link.url}">${link.label}</a>
+                </li>
+            `,
+        )
+        .join("");
+
+    const mobileLinksHtml = (nav.links || [])
+        .filter((link) => link.label && link.url)
+        .map(
+            (link) => `
+                <a href="${link.url}" onclick="closeMobile()">
+                    ${link.label}
+                </a>
+            `,
+        )
+        .join("");
+
+    if (navLinks) navLinks.innerHTML = linksHtml;
+    if (mobileMenu) mobileMenu.innerHTML = mobileLinksHtml;
+}
+
 function renderSectionHeader(section) {
     return `
         <p class="section-label reveal">${section.label}</p>
@@ -466,6 +504,7 @@ function renderFooter() {
 }
 
 function renderPortfolio() {
+    renderNavigation();
     renderHero();
     renderAbout();
     renderSkills();
