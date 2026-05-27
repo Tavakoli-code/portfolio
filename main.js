@@ -532,14 +532,19 @@ function initMobileMenu() {
     window.closeMobile = function closeMobile() {
         menuOpen = false;
         mobileMenu.classList.remove("active");
+        mobileToggle.classList.remove("active");
         mobileToggle.innerHTML = renderLucideIcon("menu");
         lucide.createIcons();
     };
 
     mobileToggle.addEventListener("click", () => {
         menuOpen = !menuOpen;
+
         mobileMenu.classList.toggle("active", menuOpen);
+        mobileToggle.classList.toggle("active", menuOpen);
+
         mobileToggle.innerHTML = menuOpen ? renderLucideIcon("x") : renderLucideIcon("menu");
+
         lucide.createIcons();
     });
 }
