@@ -1,105 +1,13 @@
-function renderHero() {
-    const hero = portfolioData.hero;
-    const heroSection = document.getElementById("hero");
-
-    if (!heroSection || !hero) return;
-
-    const buttonsHtml = hero.buttons
-        .filter((button) => button.text && button.link)
-        .map((button) => {
-            const className = button.type === "outline" ? "btn-outline" : "btn-primary";
-
-            return `
-                <a href="${button.link}" class="${className}">
-                    ${button.text}
-                </a>
-            `;
-        })
-        .join("");
-
-    heroSection.innerHTML = `
-        <div class="hero-bg">
-            <img src="${hero.image}" alt="${hero.imageAlt || "Portfolio hero image"}" loading="eager">
-        </div>
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
-            <p class="hero-label reveal">${hero.label}</p>
-            <h1 class="hero-name reveal delay-1">${hero.name}</h1>
-            <p class="hero-role reveal delay-2">${hero.role}</p>
-            <p class="hero-desc reveal delay-3">${hero.description}</p>
-            <div class="hero-cta reveal delay-4">
-                ${buttonsHtml}
-            </div>
-        </div>
-    `;
+function getDelayClass(index, start = 2) {
+    return `delay-${Math.min(index + start, 6)}`;
 }
 
-function renderAbout() {
-    const about = portfolioData.about;
-    const aboutSection = document.getElementById("about");
-
-    if (!aboutSection || !about) return;
-
-    const paragraphsHtml = about.paragraphs
-        .map(
-            (paragraph, index) => `
-                <p class="about-text reveal delay-${Math.min(index + 2, 6)}">
-                    ${paragraph}
-                </p>
-            `,
-        )
-        .join("");
-
-    aboutSection.innerHTML = `
-        <div class="section-max-narrow">
-            <p class="section-label reveal">${about.label}</p>
-            <h2 class="section-heading reveal delay-1">${about.heading}</h2>
-
-            ${paragraphsHtml}
-        </div>
-    `;
+function isExternalLink(url) {
+    return Boolean(url && !url.startsWith("#") && !url.startsWith("mailto:"));
 }
 
-function renderSkills() {
-    const skills = portfolioData.skills;
-    const skillsSection = document.getElementById("skills");
-
-    if (!skillsSection || !skills) return;
-
-    const skillCardsHtml = skills.items
-        .map((skill, index) => {
-            const delayClass = `delay-${Math.min(index + 2, 6)}`;
-            const icon = skill.icon || "circle";
-
-            const bulletsHtml = skill.bullets.map((bullet) => `<li>${bullet}</li>`).join("");
-
-            return `
-                <div class="skill-card reveal ${delayClass}">
-                    <div class="skill-card-header">
-                        <div class="skill-card-icon">
-                            <i data-lucide="${icon}"></i>
-                        </div>
-                        <p class="skill-category">${skill.title}</p>
-                    </div>
-
-                    <ul class="skill-list">
-                        ${bulletsHtml}
-                    </ul>
-                </div>
-            `;
-        })
-        .join("");
-
-    skillsSection.innerHTML = `
-        <div class="section-max">
-            <p class="section-label reveal">${skills.label}</p>
-            <h2 class="section-heading reveal delay-1">${skills.heading}</h2>
-
-            <div class="skills-grid">
-                ${skillCardsHtml}
-            </div>
-        </div>
-    `;
+function renderLucideIcon(iconName, fallback = "circle") {
+    return `<i data-lucide="${iconName || fallback}"></i>`;
 }
 
 function getIconHtml(iconName) {
@@ -128,7 +36,121 @@ function getIconHtml(iconName) {
         `,
     };
 
-    return customIcons[iconName] || `<i data-lucide="${iconName || "circle"}"></i>`;
+    return customIcons[iconName] || renderLucideIcon(iconName, "circle");
+}
+
+function renderSectionHeader(section) {
+    return `
+        <p class="section-label reveal">${section.label}</p>
+        <h2 class="section-heading reveal delay-1">${section.heading}</h2>
+    `;
+}
+
+function renderExternalAttributes(url, type = "external") {
+    return type === "external" && isExternalLink(url) ? 'target="_blank" rel="noopener"' : "";
+}
+
+function renderHero() {
+    const hero = portfolioData.hero;
+    const heroSection = document.getElementById("hero");
+
+    if (!heroSection || !hero) return;
+
+    const buttonsHtml = (hero.buttons || [])
+        .filter((button) => button.text && button.link)
+        .map((button) => {
+            const className = button.type === "outline" ? "btn-outline" : "btn-primary";
+
+            return `
+                <a href="${button.link}" class="${className}">
+                    ${button.text}
+                </a>
+            `;
+        })
+        .join("");
+
+    heroSection.innerHTML = `
+        <div class="hero-bg">
+            <img src="${hero.image}" alt="${hero.imageAlt || "Portfolio hero image"}" loading="eager">
+        </div>
+
+        <div class="hero-overlay"></div>
+
+        <div class="hero-content">
+            <p class="hero-label reveal">${hero.label}</p>
+            <h1 class="hero-name reveal delay-1">${hero.name}</h1>
+            <p class="hero-role reveal delay-2">${hero.role}</p>
+            <p class="hero-desc reveal delay-3">${hero.description}</p>
+
+            <div class="hero-cta reveal delay-4">
+                ${buttonsHtml}
+            </div>
+        </div>
+    `;
+}
+
+function renderAbout() {
+    const about = portfolioData.about;
+    const aboutSection = document.getElementById("about");
+
+    if (!aboutSection || !about) return;
+
+    const paragraphsHtml = (about.paragraphs || [])
+        .map(
+            (paragraph, index) => `
+                <p class="about-text reveal ${getDelayClass(index)}">
+                    ${paragraph}
+                </p>
+            `,
+        )
+        .join("");
+
+    aboutSection.innerHTML = `
+        <div class="section-max-narrow">
+            ${renderSectionHeader(about)}
+            ${paragraphsHtml}
+        </div>
+    `;
+}
+
+function renderSkills() {
+    const skills = portfolioData.skills;
+    const skillsSection = document.getElementById("skills");
+
+    if (!skillsSection || !skills) return;
+
+    const skillCardsHtml = (skills.items || [])
+        .map((skill, index) => {
+            const bulletsHtml = (skill.bullets || [])
+                .map((bullet) => `<li>${bullet}</li>`)
+                .join("");
+
+            return `
+                <div class="skill-card reveal ${getDelayClass(index)}">
+                    <div class="skill-card-header">
+                        <div class="skill-card-icon">
+                            ${renderLucideIcon(skill.icon)}
+                        </div>
+                        <p class="skill-category">${skill.title}</p>
+                    </div>
+
+                    <ul class="skill-list">
+                        ${bulletsHtml}
+                    </ul>
+                </div>
+            `;
+        })
+        .join("");
+
+    skillsSection.innerHTML = `
+        <div class="section-max">
+            ${renderSectionHeader(skills)}
+
+            <div class="skills-grid">
+                ${skillCardsHtml}
+            </div>
+        </div>
+    `;
 }
 
 function renderProjects() {
@@ -137,42 +159,40 @@ function renderProjects() {
 
     if (!projectsSection || !projects) return;
 
-    const sortedProjects = [...projects.items]
-        .sort((a, b) => a.order - b.order)
+    const sortedProjects = [...(projects.items || [])]
+        .sort((a, b) => (a.order || 0) - (b.order || 0))
         .slice(0, projects.maxVisible || 5);
 
     const projectCardsHtml = sortedProjects
         .map((project, index) => {
             const number = String(index + 1).padStart(2, "0");
-            const delayClass = `delay-${Math.min(index + 2, 6)}`;
-            const icon = project.icon || "circle";
 
-            const tagsHtml = project.tags.map((tag) => `<span class="tag">${tag}</span>`).join("");
+            const tagsHtml = (project.tags || [])
+                .map((tag) => `<span class="tag">${tag}</span>`)
+                .join("");
 
-            const links = Object.values(project.links || {}).filter((link) => link && link.url);
-
-            const linksHtml = links
+            const linksHtml = Object.values(project.links || {})
+                .filter((link) => link && link.label && link.url)
                 .map(
                     (link) => `
-            <a href="${link.url}" class="project-link" target="_blank" rel="noopener">
-                ${getIconHtml(link.icon || "external-link")}
-                ${link.label}
-            </a>
-        `,
+                        <a href="${link.url}" class="project-link" ${renderExternalAttributes(link.url)}>
+                            ${getIconHtml(link.icon || "external-link")}
+                            ${link.label}
+                        </a>
+                    `,
                 )
                 .join("");
 
             return `
-                <div class="project-card reveal ${delayClass}">
+                <div class="project-card reveal ${getDelayClass(index)}">
                     <div class="project-header">
                         <p class="project-number">${number}</p>
                         <div class="project-icon">
-                            <i data-lucide="${icon}"></i>
+                            ${renderLucideIcon(project.icon)}
                         </div>
                     </div>
 
                     <h3 class="project-title">${project.title}</h3>
-
                     <p class="project-desc">${project.description}</p>
 
                     <div class="tags-container">
@@ -195,8 +215,7 @@ function renderProjects() {
 
     projectsSection.innerHTML = `
         <div class="section-max">
-            <p class="section-label reveal">${projects.label}</p>
-            <h2 class="section-heading reveal delay-1">${projects.heading}</h2>
+            ${renderSectionHeader(projects)}
 
             <div class="projects-list">
                 ${projectCardsHtml}
@@ -211,28 +230,24 @@ function renderFocus() {
 
     if (!focusSection || !focus) return;
 
-    const focusCardsHtml = focus.items
-        .map((item, index) => {
-            const delayClass = `delay-${Math.min(index + 2, 6)}`;
-            const icon = item.icon || "circle";
-
-            return `
-                <div class="focus-card reveal ${delayClass}">
+    const focusCardsHtml = (focus.items || [])
+        .map(
+            (item, index) => `
+                <div class="focus-card reveal ${getDelayClass(index)}">
                     <div class="focus-icon">
-                        <i data-lucide="${icon}"></i>
+                        ${renderLucideIcon(item.icon)}
                     </div>
 
                     <h3 class="focus-title">${item.title}</h3>
                     <p class="focus-desc">${item.description}</p>
                 </div>
-            `;
-        })
+            `,
+        )
         .join("");
 
     focusSection.innerHTML = `
         <div class="section-max">
-            <p class="section-label reveal">${focus.label}</p>
-            <h2 class="section-heading reveal delay-1">${focus.heading}</h2>
+            ${renderSectionHeader(focus)}
 
             <div class="focus-grid">
                 ${focusCardsHtml}
@@ -247,29 +262,26 @@ function renderExperience() {
 
     if (!experienceSection || !experience) return;
 
-    const sortedItems = [...experience.items].sort(
+    const sortedItems = [...(experience.items || [])].sort(
         (a, b) => new Date(b.sortDate) - new Date(a.sortDate),
     );
 
     const experienceItemsHtml = sortedItems
-        .map((item, index) => {
-            const delayClass = `delay-${Math.min(index + 2, 6)}`;
-
-            return `
-                <div class="timeline-item reveal ${delayClass}">
+        .map(
+            (item, index) => `
+                <div class="timeline-item reveal ${getDelayClass(index)}">
                     <p class="timeline-date">${item.date}</p>
                     <h3 class="timeline-role">${item.title}</h3>
                     <p class="timeline-company">${item.subtitle}</p>
                     <p class="timeline-desc">${item.description}</p>
                 </div>
-            `;
-        })
+            `,
+        )
         .join("");
 
     experienceSection.innerHTML = `
         <div class="section-max-narrow">
-            <p class="section-label reveal">${experience.label}</p>
-            <h2 class="section-heading reveal delay-1">${experience.heading}</h2>
+            ${renderSectionHeader(experience)}
 
             <div class="timeline">
                 ${experienceItemsHtml}
@@ -284,15 +296,14 @@ function renderApproach() {
 
     if (!approachSection || !approach) return;
 
-    const sortedItems = [...approach.items].sort((a, b) => a.order - b.order);
+    const sortedItems = [...(approach.items || [])].sort((a, b) => (a.order || 0) - (b.order || 0));
 
     const approachCardsHtml = sortedItems
         .map((item, index) => {
             const number = String(index + 1).padStart(2, "0");
-            const delayClass = `delay-${Math.min(index + 3, 6)}`;
 
             return `
-                <div class="principle-card reveal ${delayClass}">
+                <div class="principle-card reveal ${getDelayClass(index, 3)}">
                     <p class="principle-num">${number}</p>
                     <h4 class="principle-title">${item.title}</h4>
                     ${item.subtitle ? `<p class="principle-subtitle">${item.subtitle}</p>` : ""}
@@ -304,8 +315,7 @@ function renderApproach() {
 
     approachSection.innerHTML = `
         <div class="section-max-narrow" style="text-align: center;">
-            <p class="section-label reveal">${approach.label}</p>
-            <h2 class="section-heading reveal delay-1">${approach.heading}</h2>
+            ${renderSectionHeader(approach)}
 
             <p class="approach-quote reveal delay-2">${approach.quote}</p>
 
@@ -326,28 +336,24 @@ function renderServices() {
 
     if (!servicesSection || !services) return;
 
-    const serviceCardsHtml = services.items
-        .map((service, index) => {
-            const delayClass = `delay-${Math.min(index + 2, 6)}`;
-            const icon = service.icon || "circle";
-
-            return `
-                <div class="service-card reveal ${delayClass}">
+    const serviceCardsHtml = (services.items || [])
+        .map(
+            (service, index) => `
+                <div class="service-card reveal ${getDelayClass(index)}">
                     <div class="service-icon">
-                        <i data-lucide="${icon}"></i>
+                        ${renderLucideIcon(service.icon)}
                     </div>
 
                     <h3 class="service-title">${service.title}</h3>
                     <p class="service-desc">${service.description}</p>
                 </div>
-            `;
-        })
+            `,
+        )
         .join("");
 
     servicesSection.innerHTML = `
         <div class="section-max">
-            <p class="section-label reveal">${services.label}</p>
-            <h2 class="section-heading reveal delay-1">${services.heading}</h2>
+            ${renderSectionHeader(services)}
 
             <div class="services-grid">
                 ${serviceCardsHtml}
@@ -362,22 +368,20 @@ function renderContact() {
 
     if (!contactSection || !contact) return;
 
-    const linksHtml = contact.links
+    const linksHtml = (contact.links || [])
         .filter((link) => link.label && link.url)
-        .map((link) => {
-            const isExternal = link.type === "external" && !link.url.startsWith("#");
-
-            return `
+        .map(
+            (link) => `
                 <a
                     href="${link.url}"
                     class="contact-link"
-                    ${isExternal ? 'target="_blank" rel="noopener"' : ""}
+                    ${renderExternalAttributes(link.url, link.type)}
                 >
                     ${getIconHtml(link.icon || "circle")}
                     ${link.label}
                 </a>
-            `;
-        })
+            `,
+        )
         .join("");
 
     contactSection.innerHTML = `
@@ -397,25 +401,17 @@ function renderFooter() {
     const footer = portfolioData.footer;
     const footerElement = document.getElementById("footer");
 
-    if (!footerElement || !footer) {
-        console.warn("Footer element or footer data not found.");
-        return;
-    }
+    if (!footerElement || !footer) return;
 
     const linksHtml = (footer.links || [])
         .filter((link) => link.label && link.url)
-        .map((link) => {
-            const isExternal = link.type === "external" && !link.url.startsWith("#");
-
-            return `
-                <a
-                    href="${link.url}"
-                    ${isExternal ? 'target="_blank" rel="noopener"' : ""}
-                >
+        .map(
+            (link) => `
+                <a href="${link.url}" ${renderExternalAttributes(link.url, link.type)}>
                     ${link.label}
                 </a>
-            `;
-        })
+            `,
+        )
         .join("");
 
     footerElement.innerHTML = `
@@ -431,90 +427,121 @@ function renderFooter() {
     `;
 }
 
-renderHero();
-renderAbout();
-renderSkills();
-renderProjects();
-renderFocus();
-renderExperience();
-renderApproach();
-renderServices();
-renderContact();
-renderFooter();
+function renderPortfolio() {
+    renderHero();
+    renderAbout();
+    renderSkills();
+    renderProjects();
+    renderFocus();
+    renderExperience();
+    renderApproach();
+    renderServices();
+    renderContact();
+    renderFooter();
 
-lucide.createIcons();
+    lucide.createIcons();
+}
 
-(function () {
+function initPreloader() {
     const preloader = document.getElementById("preloader");
     const pageContent = document.getElementById("page-content");
     const heroImg = document.querySelector(".hero-bg img");
-    let imagesLoaded = false;
+    const minDisplayTime = 1200;
+
+    let imageReady = false;
     let minimumTimePassed = false;
-    const MIN_DISPLAY = 1200;
 
-    if (heroImg && heroImg.complete) {
-        imagesLoaded = true;
-        tryDismiss();
-    } else if (heroImg) {
-        heroImg.addEventListener("load", function () {
-            imagesLoaded = true;
-            tryDismiss();
+    if (!preloader || !pageContent) return;
+
+    function revealPage() {
+        if (!imageReady || !minimumTimePassed) return;
+
+        // Give browser one paint frame before removing preloader
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+                preloader.classList.add("loaded");
+                pageContent.classList.add("visible");
+                setTimeout(initReveals, 100);
+            });
         });
-        heroImg.addEventListener("error", function () {
-            imagesLoaded = true;
-            tryDismiss();
-        });
-    } else {
-        imagesLoaded = true;
-        tryDismiss();
     }
 
-    setTimeout(function () {
+    async function waitForHeroImage() {
+        if (!heroImg) {
+            imageReady = true;
+            revealPage();
+            return;
+        }
+
+        try {
+            if (!heroImg.complete) {
+                await new Promise((resolve, reject) => {
+                    heroImg.addEventListener("load", resolve, { once: true });
+                    heroImg.addEventListener("error", reject, { once: true });
+                });
+            }
+
+            if (heroImg.decode) {
+                await heroImg.decode();
+            }
+
+            imageReady = true;
+            revealPage();
+        } catch (error) {
+            console.warn("Hero image could not be fully loaded or decoded.", error);
+            imageReady = true;
+            revealPage();
+        }
+    }
+
+    waitForHeroImage();
+
+    setTimeout(() => {
         minimumTimePassed = true;
-        tryDismiss();
-    }, MIN_DISPLAY);
+        revealPage();
+    }, minDisplayTime);
 
-    function tryDismiss() {
-        if (!imagesLoaded || !minimumTimePassed) return;
-        preloader.classList.add("loaded");
-        pageContent.classList.add("visible");
-        setTimeout(initReveals, 100);
-    }
-
-    setTimeout(function () {
+    // Safety fallback
+    setTimeout(() => {
         if (!preloader.classList.contains("loaded")) {
             preloader.classList.add("loaded");
             pageContent.classList.add("visible");
             setTimeout(initReveals, 100);
         }
-    }, 5000);
-})();
+    }, 8000);
+}
 
-lucide.createIcons();
+function initNavbar() {
+    const navbar = document.getElementById("navbar");
 
-const navbar = document.getElementById("navbar");
-window.addEventListener("scroll", () => {
-    navbar.classList.toggle("scrolled", window.scrollY > 40);
-});
+    if (!navbar) return;
 
-const mobileToggle = document.getElementById("mobileToggle");
-const mobileMenu = document.getElementById("mobileMenu");
-let menuOpen = false;
+    window.addEventListener("scroll", () => {
+        navbar.classList.toggle("scrolled", window.scrollY > 40);
+    });
+}
 
-mobileToggle.addEventListener("click", () => {
-    menuOpen = !menuOpen;
-    mobileMenu.classList.toggle("active", menuOpen);
-    mobileToggle.innerHTML = menuOpen
-        ? '<i data-lucide="x" style="width:20px;height:20px;"></i>'
-        : '<i data-lucide="menu" style="width:20px;height:20px;"></i>';
-    lucide.createIcons();
-});
+function initMobileMenu() {
+    const mobileToggle = document.getElementById("mobileToggle");
+    const mobileMenu = document.getElementById("mobileMenu");
 
-function closeMobile() {
-    menuOpen = false;
-    mobileMenu.classList.remove("active");
-    mobileToggle.innerHTML = '<i data-lucide="menu" style="width:20px;height:20px;"></i>';
-    lucide.createIcons();
+    if (!mobileToggle || !mobileMenu) return;
+
+    let menuOpen = false;
+
+    window.closeMobile = function closeMobile() {
+        menuOpen = false;
+        mobileMenu.classList.remove("active");
+        mobileToggle.innerHTML = renderLucideIcon("menu");
+        lucide.createIcons();
+    };
+
+    mobileToggle.addEventListener("click", () => {
+        menuOpen = !menuOpen;
+        mobileMenu.classList.toggle("active", menuOpen);
+        mobileToggle.innerHTML = menuOpen ? renderLucideIcon("x") : renderLucideIcon("menu");
+        lucide.createIcons();
+    });
 }
 
 function initReveals() {
@@ -530,13 +557,30 @@ function initReveals() {
         { threshold: 0.1, rootMargin: "0px 0px -40px 0px" },
     );
 
-    document.querySelectorAll(".reveal").forEach((el) => revealObserver.observe(el));
+    document.querySelectorAll(".reveal").forEach((element) => {
+        revealObserver.observe(element);
+    });
 }
 
-document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-    anchor.addEventListener("click", function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute("href"));
-        if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
+function initSmoothScroll() {
+    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (event) {
+            event.preventDefault();
+
+            const target = document.querySelector(this.getAttribute("href"));
+            if (target) {
+                target.scrollIntoView({ behavior: "smooth", block: "start" });
+            }
+        });
     });
-});
+}
+
+function initPortfolio() {
+    renderPortfolio();
+    initPreloader();
+    initNavbar();
+    initMobileMenu();
+    initSmoothScroll();
+}
+
+initPortfolio();

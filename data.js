@@ -1,6 +1,6 @@
 const portfolioData = {
     hero: {
-        image: "https://z-cdn-media.chatglm.cn/files/a1dfa643-4b54-41cd-b5e2-4c4c6afef2b2.png?auth_key=1879830464-2aef707ed3f4436fb53b7ca5cac76063-0-829314f964dae523e19ceaf37e86bfee",
+        image: "./hero_background.png",
         imageAlt: "Sajad Ali Tavakoli",
         label: "Backend Developer",
         name: "Sajad Ali<br>Tavakoli",
