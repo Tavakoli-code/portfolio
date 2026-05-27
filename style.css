@@ -677,6 +677,14 @@ section {
     flex-shrink: 0;
 }
 
+.principle-subtitle {
+    font-size: 13px;
+    font-weight: 500;
+    color: #00adb5;
+    opacity: 0.65;
+    margin-bottom: 8px;
+}
+
 /* ===== CURRENT FOCUS ===== */
 #focus {
     padding-top: 100px;

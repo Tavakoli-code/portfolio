@@ -254,4 +254,35 @@ const portfolioData = {
             },
         ],
     },
+
+    approach: {
+        label: "Approach & Goals",
+        heading: "My Approach",
+        quote: "Backend engineering is not just about writing code — it is about designing systems that remain clear, reliable, and maintainable as they grow.",
+        goalsText:
+            "My goal is to grow as a backend engineer who designs systems that teams can rely on — systems that are not just functional today, but built to remain clear and maintainable for years.",
+        items: [
+            {
+                title: "Build Incrementally",
+                subtitle: "",
+                description:
+                    "Start with what is necessary. Add complexity only when the system demands it, not when curiosity suggests it.",
+                order: 1,
+            },
+            {
+                title: "Keep Architecture Clean",
+                subtitle: "",
+                description:
+                    "Separation of concerns is not a theory — it is a practice. Every module should have one reason to change.",
+                order: 2,
+            },
+            {
+                title: "Make Systems Easy to Evolve",
+                subtitle: "",
+                description:
+                    "Code is read more than it is written. Prioritize clarity, naming, and structure that a new developer can follow.",
+                order: 3,
+            },
+        ],
+    },
 };

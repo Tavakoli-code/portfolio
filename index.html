@@ -95,47 +95,7 @@
             <section id="experience"></section>
 
             <!-- Approach & Goals -->
-            <section id="approach">
-                <div class="section-max-narrow" style="text-align: center">
-                    <p class="section-label reveal">Approach & Goals</p>
-                    <h2 class="section-heading reveal delay-1">My Approach</h2>
-                    <p class="approach-quote reveal delay-2">
-                        Backend engineering is not just about writing code — it is about designing
-                        systems that remain clear, reliable, and maintainable as they grow.
-                    </p>
-                    <div class="principles-grid">
-                        <div class="principle-card reveal delay-3">
-                            <p class="principle-num">01</p>
-                            <h4 class="principle-title">Build Incrementally</h4>
-                            <p class="principle-desc">
-                                Start with what's necessary. Add complexity only when the system
-                                demands it, not when curiosity suggests it.
-                            </p>
-                        </div>
-                        <div class="principle-card reveal delay-4">
-                            <p class="principle-num">02</p>
-                            <h4 class="principle-title">Keep Architecture Clean</h4>
-                            <p class="principle-desc">
-                                Separation of concerns isn't a theory — it's a practice. Every
-                                module should have one reason to change.
-                            </p>
-                        </div>
-                        <div class="principle-card reveal delay-5">
-                            <p class="principle-num">03</p>
-                            <h4 class="principle-title">Make Systems Easy to Evolve</h4>
-                            <p class="principle-desc">
-                                Code is read more than it's written. Prioritize clarity, naming, and
-                                structure that a new developer can follow.
-                            </p>
-                        </div>
-                    </div>
-                    <p class="goals-text reveal delay-6">
-                        My goal is to <strong>grow as a backend engineer</strong> who designs
-                        systems that teams can rely on — systems that are not just functional today,
-                        but built to remain clear and maintainable for years.
-                    </p>
-                </div>
-            </section>
+            <section id="approach"></section>
 
             <!-- Services -->
             <section id="services">
@@ -536,11 +496,54 @@
     `;
             }
 
+            function renderApproach() {
+                const approach = portfolioData.approach;
+                const approachSection = document.getElementById("approach");
+
+                if (!approachSection || !approach) return;
+
+                const sortedItems = [...approach.items].sort((a, b) => a.order - b.order);
+
+                const approachCardsHtml = sortedItems
+                    .map((item, index) => {
+                        const number = String(index + 1).padStart(2, "0");
+                        const delayClass = `delay-${Math.min(index + 3, 6)}`;
+
+                        return `
+                <div class="principle-card reveal ${delayClass}">
+                    <p class="principle-num">${number}</p>
+                    <h4 class="principle-title">${item.title}</h4>
+                    ${item.subtitle ? `<p class="principle-subtitle">${item.subtitle}</p>` : ""}
+                    <p class="principle-desc">${item.description}</p>
+                </div>
+            `;
+                    })
+                    .join("");
+
+                approachSection.innerHTML = `
+        <div class="section-max-narrow" style="text-align: center;">
+            <p class="section-label reveal">${approach.label}</p>
+            <h2 class="section-heading reveal delay-1">${approach.heading}</h2>
+
+            <p class="approach-quote reveal delay-2">${approach.quote}</p>
+
+            <div class="principles-grid">
+                ${approachCardsHtml}
+            </div>
+
+            <p class="goals-text reveal delay-6">
+                ${approach.goalsText}
+            </p>
+        </div>
+    `;
+            }
+
             renderHero();
             renderSkills();
             renderProjects();
             renderFocus();
             renderExperience();
+            renderApproach();
 
             lucide.createIcons();
 
