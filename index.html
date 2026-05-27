@@ -89,46 +89,7 @@
             <section id="projects"></section>
 
             <!-- Current Focus -->
-            <section id="focus">
-                <div class="section-max">
-                    <p class="section-label reveal">Current Focus</p>
-                    <h2 class="section-heading reveal delay-1">What I'm Focused On</h2>
-                    <div class="focus-grid">
-                        <div class="focus-card reveal delay-2">
-                            <div class="focus-icon"><i data-lucide="layers"></i></div>
-                            <h3 class="focus-title">Clean Architecture</h3>
-                            <p class="focus-desc">
-                                Designing systems with clear separation of concerns, modular
-                                boundaries, and decisions that remain valid as the codebase grows.
-                            </p>
-                        </div>
-                        <div class="focus-card reveal delay-3">
-                            <div class="focus-icon"><i data-lucide="shield-check"></i></div>
-                            <h3 class="focus-title">Auth & Security</h3>
-                            <p class="focus-desc">
-                                Implementing JWT, OTP, MFA, and session management patterns that
-                                protect data without overcomplicating the user experience.
-                            </p>
-                        </div>
-                        <div class="focus-card reveal delay-4">
-                            <div class="focus-icon"><i data-lucide="database"></i></div>
-                            <h3 class="focus-title">Scalable Data Models</h3>
-                            <p class="focus-desc">
-                                Building database schemas with Prisma and PostgreSQL that handle
-                                complex relationships, migrations, and performance at scale.
-                            </p>
-                        </div>
-                        <div class="focus-card reveal delay-5">
-                            <div class="focus-icon"><i data-lucide="zap"></i></div>
-                            <h3 class="focus-title">Performance & Caching</h3>
-                            <p class="focus-desc">
-                                Using Redis and optimized query patterns to reduce latency and
-                                handle concurrent requests in production environments.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </section>
+            <section id="focus"></section>
 
             <!-- Experience -->
             <section id="experience">
@@ -549,9 +510,46 @@
     `;
             }
 
+            function renderFocus() {
+                const focus = portfolioData.focus;
+                const focusSection = document.getElementById("focus");
+
+                if (!focusSection || !focus) return;
+
+                const focusCardsHtml = focus.items
+                    .map((item, index) => {
+                        const delayClass = `delay-${Math.min(index + 2, 6)}`;
+                        const icon = item.icon || "circle";
+
+                        return `
+                <div class="focus-card reveal ${delayClass}">
+                    <div class="focus-icon">
+                        <i data-lucide="${icon}"></i>
+                    </div>
+
+                    <h3 class="focus-title">${item.title}</h3>
+                    <p class="focus-desc">${item.description}</p>
+                </div>
+            `;
+                    })
+                    .join("");
+
+                focusSection.innerHTML = `
+        <div class="section-max">
+            <p class="section-label reveal">${focus.label}</p>
+            <h2 class="section-heading reveal delay-1">${focus.heading}</h2>
+
+            <div class="focus-grid">
+                ${focusCardsHtml}
+            </div>
+        </div>
+    `;
+            }
+
             renderHero();
             renderSkills();
             renderProjects();
+            renderFocus();
 
             lucide.createIcons();
 

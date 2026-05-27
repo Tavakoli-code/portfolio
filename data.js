@@ -184,4 +184,35 @@ const portfolioData = {
             },
         ],
     },
+
+    focus: {
+        label: "Current Focus",
+        heading: "What I'm Focused On",
+        items: [
+            {
+                title: "Clean Architecture",
+                icon: "layers",
+                description:
+                    "Designing systems with clear separation of concerns, modular boundaries, and decisions that remain valid as the codebase grows.",
+            },
+            {
+                title: "Auth & Security",
+                icon: "shield-check",
+                description:
+                    "Implementing JWT, OTP, MFA, and session management patterns that protect data without overcomplicating the user experience.",
+            },
+            {
+                title: "Scalable Data Models",
+                icon: "database",
+                description:
+                    "Building database schemas with Prisma and PostgreSQL that handle complex relationships, migrations, and performance at scale.",
+            },
+            {
+                title: "Performance & Caching",
+                icon: "zap",
+                description:
+                    "Using Redis and optimized query patterns to reduce latency and handle concurrent requests in production environments.",
+            },
+        ],
+    },
 };
