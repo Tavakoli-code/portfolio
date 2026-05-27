@@ -103,17 +103,8 @@
             <!-- Contact -->
             <section id="contact"></section>
 
-            <footer>
-                <p class="footer-text">
-                    © 2025 Sajad Ali Tavakoli <span>·</span> Backend Developer
-                </p>
-                <div class="footer-links">
-                    <a href="#hero">Top</a>
-                    <a href="https://github.com" target="_blank" rel="noopener">GitHub</a>
-                    <a href="https://gitlab.com" target="_blank" rel="noopener">GitLab</a>
-                    <a href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn</a>
-                </div>
-            </footer>
+            <!-- Footer -->
+            <footer id="footer"></footer>
         </div>
         <!-- end #page-content -->
 
@@ -495,6 +486,44 @@
     `;
             }
 
+            function renderFooter() {
+                const footer = portfolioData.footer;
+                const footerElement = document.getElementById("footer");
+
+                if (!footerElement || !footer) {
+                    console.warn("Footer element or footer data not found.");
+                    return;
+                }
+
+                const linksHtml = (footer.links || [])
+                    .filter((link) => link.label && link.url)
+                    .map((link) => {
+                        const isExternal = link.type === "external" && !link.url.startsWith("#");
+
+                        return `
+                <a
+                    href="${link.url}"
+                    ${isExternal ? 'target="_blank" rel="noopener"' : ""}
+                >
+                    ${link.label}
+                </a>
+            `;
+                    })
+                    .join("");
+
+                footerElement.innerHTML = `
+        <p class="footer-text">
+            ${footer.text || ""}
+            <span>${footer.highlight || "·"}</span>
+            ${footer.role || ""}
+        </p>
+
+        <div class="footer-links">
+            ${linksHtml}
+        </div>
+    `;
+            }
+
             renderHero();
             renderSkills();
             renderProjects();
@@ -503,6 +532,7 @@
             renderApproach();
             renderServices();
             renderContact();
+            renderFooter();
 
             lucide.createIcons();
 

@@ -355,4 +355,32 @@ const portfolioData = {
             },
         ],
     },
+
+    footer: {
+        text: "© 2026 Sajad Ali Tavakoli",
+        highlight: "·",
+        role: "Software Engineer",
+        links: [
+            {
+                label: "Top",
+                url: "#hero",
+                type: "internal",
+            },
+            {
+                label: "GitHub",
+                url: "https://github.com",
+                type: "external",
+            },
+            {
+                label: "GitLab",
+                url: "https://gitlab.com",
+                type: "external",
+            },
+            {
+                label: "LinkedIn",
+                url: "https://linkedin.com",
+                type: "external",
+            },
+        ],
+    },
 };
