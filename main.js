@@ -19,6 +19,10 @@ function updateLanguageToggle() {
     if (!languageToggle) return;
 
     languageToggle.textContent = currentLang === "fa" ? "EN" : "دری";
+    languageToggle.setAttribute(
+        "aria-label",
+        currentLang === "fa" ? "Switch to English" : "تبدیل به دری",
+    );
 }
 
 function initLanguageToggle() {
