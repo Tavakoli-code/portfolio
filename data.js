@@ -215,4 +215,43 @@ const portfolioData = {
             },
         ],
     },
+
+    experience: {
+        label: "Experience",
+        heading: "My Experience",
+        items: [
+            {
+                title: "Backend Developer",
+                subtitle: "Deh-Sabz LMS Project",
+                date: "2024 — Present",
+                sortDate: "2024-01-01",
+                description:
+                    "Building a production land management system with NestJS, Prisma, PostgreSQL, Redis, and JWT authentication. Designing scalable data models and registry workflows.",
+            },
+            {
+                title: "Full-Stack Developer",
+                subtitle: "Freelance Projects",
+                date: "2023 — 2024",
+                sortDate: "2023-01-01",
+                description:
+                    "Developed learning systems, blog platforms, and student management tools using Node.js, Express, PHP, and MySQL with a focus on backend architecture.",
+            },
+            {
+                title: "Database Developer",
+                subtitle: "Educational Management System",
+                date: "2022 — 2023",
+                sortDate: "2022-01-01",
+                description:
+                    "Designed and implemented a comprehensive educational management database using Microsoft Access and VBA, handling students, courses, salaries, and reporting.",
+            },
+            {
+                title: "Computer Science Student",
+                subtitle: "University",
+                date: "2019 — 2023",
+                sortDate: "2019-01-01",
+                description:
+                    "Studied core CS fundamentals including data structures, algorithms, software engineering, database systems, and object-oriented programming in Java, C++, and Python.",
+            },
+        ],
+    },
 };

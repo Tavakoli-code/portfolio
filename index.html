@@ -92,54 +92,7 @@
             <section id="focus"></section>
 
             <!-- Experience -->
-            <section id="experience">
-                <div class="section-max-narrow">
-                    <p class="section-label reveal">Experience</p>
-                    <h2 class="section-heading reveal delay-1">My Experience</h2>
-                    <div class="timeline">
-                        <div class="timeline-item reveal delay-2">
-                            <p class="timeline-date">2024 — Present</p>
-                            <h3 class="timeline-role">Backend Developer</h3>
-                            <p class="timeline-company">Deh-Sabz LMS Project</p>
-                            <p class="timeline-desc">
-                                Building a production land management system with NestJS, Prisma,
-                                PostgreSQL, Redis, and JWT authentication. Designing scalable data
-                                models and registry workflows.
-                            </p>
-                        </div>
-                        <div class="timeline-item reveal delay-3">
-                            <p class="timeline-date">2023 — 2024</p>
-                            <h3 class="timeline-role">Full-Stack Developer</h3>
-                            <p class="timeline-company">Freelance Projects</p>
-                            <p class="timeline-desc">
-                                Developed learning systems, blog platforms, and student management
-                                tools using Node.js, Express, PHP, and MySQL with a focus on backend
-                                architecture.
-                            </p>
-                        </div>
-                        <div class="timeline-item reveal delay-4">
-                            <p class="timeline-date">2022 — 2023</p>
-                            <h3 class="timeline-role">Database Developer</h3>
-                            <p class="timeline-company">Educational Management System</p>
-                            <p class="timeline-desc">
-                                Designed and implemented a comprehensive educational management
-                                database using Microsoft Access and VBA, handling students, courses,
-                                salaries, and reporting.
-                            </p>
-                        </div>
-                        <div class="timeline-item reveal delay-5">
-                            <p class="timeline-date">2019 — 2023</p>
-                            <h3 class="timeline-role">Computer Science Student</h3>
-                            <p class="timeline-company">University</p>
-                            <p class="timeline-desc">
-                                Studied core CS fundamentals including data structures, algorithms,
-                                software engineering, database systems, and object-oriented
-                                programming in Java, C++, and Python.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </section>
+            <section id="experience"></section>
 
             <!-- Approach & Goals -->
             <section id="approach">
@@ -546,10 +499,48 @@
     `;
             }
 
+            function renderExperience() {
+                const experience = portfolioData.experience;
+                const experienceSection = document.getElementById("experience");
+
+                if (!experienceSection || !experience) return;
+
+                const sortedItems = [...experience.items].sort(
+                    (a, b) => new Date(b.sortDate) - new Date(a.sortDate),
+                );
+
+                const experienceItemsHtml = sortedItems
+                    .map((item, index) => {
+                        const delayClass = `delay-${Math.min(index + 2, 6)}`;
+
+                        return `
+                <div class="timeline-item reveal ${delayClass}">
+                    <p class="timeline-date">${item.date}</p>
+                    <h3 class="timeline-role">${item.title}</h3>
+                    <p class="timeline-company">${item.subtitle}</p>
+                    <p class="timeline-desc">${item.description}</p>
+                </div>
+            `;
+                    })
+                    .join("");
+
+                experienceSection.innerHTML = `
+        <div class="section-max-narrow">
+            <p class="section-label reveal">${experience.label}</p>
+            <h2 class="section-heading reveal delay-1">${experience.heading}</h2>
+
+            <div class="timeline">
+                ${experienceItemsHtml}
+            </div>
+        </div>
+    `;
+            }
+
             renderHero();
             renderSkills();
             renderProjects();
             renderFocus();
+            renderExperience();
 
             lucide.createIcons();
 
