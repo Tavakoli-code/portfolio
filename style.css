@@ -264,9 +264,16 @@ html[dir="rtl"] .project-header {
     direction: rtl;
 }
 
+html[dir="rtl"] .skill-list {
+    direction: ltr;
+    text-align: left;
+}
+
 html[dir="rtl"] .skill-list li {
-    flex-direction: row-reverse;
-    justify-content: flex-end;
+    direction: ltr;
+    text-align: left;
+    flex-direction: row;
+    justify-content: flex-start;
 }
 
 html[dir="rtl"] .tags-container,
