@@ -1,3 +1,41 @@
+let currentLang = localStorage.getItem("portfolioLang") || "en";
+
+function getPortfolioData() {
+    return portfolioData[currentLang] || portfolioData.en;
+}
+
+function updateDocumentLanguage() {
+    const html = document.documentElement;
+
+    html.lang = currentLang === "fa" ? "fa" : "en";
+    html.dir = currentLang === "fa" ? "rtl" : "ltr";
+
+    document.body.classList.toggle("rtl", currentLang === "fa");
+}
+
+function updateLanguageToggle() {
+    const languageToggle = document.getElementById("languageToggle");
+
+    if (!languageToggle) return;
+
+    languageToggle.textContent = currentLang === "fa" ? "EN" : "دری";
+}
+
+function initLanguageToggle() {
+    const languageToggle = document.getElementById("languageToggle");
+
+    if (!languageToggle) return;
+
+    languageToggle.addEventListener("click", () => {
+        currentLang = currentLang === "en" ? "fa" : "en";
+        localStorage.setItem("portfolioLang", currentLang);
+
+        updateDocumentLanguage();
+        updateLanguageToggle();
+        renderPortfolio();
+    });
+}
+
 function getDelayClass(index, start = 2) {
     return `delay-${Math.min(index + start, 6)}`;
 }
@@ -51,7 +89,7 @@ function renderExternalAttributes(url, type = "external") {
 }
 
 function renderHero() {
-    const hero = portfolioData.hero;
+    const hero = getPortfolioData().hero;
     const heroSection = document.getElementById("hero");
 
     if (!heroSection || !hero) return;
@@ -90,7 +128,7 @@ function renderHero() {
 }
 
 function renderAbout() {
-    const about = portfolioData.about;
+    const about = getPortfolioData().about;
     const aboutSection = document.getElementById("about");
 
     if (!aboutSection || !about) return;
@@ -114,7 +152,7 @@ function renderAbout() {
 }
 
 function renderSkills() {
-    const skills = portfolioData.skills;
+    const skills = getPortfolioData().skills;
     const skillsSection = document.getElementById("skills");
 
     if (!skillsSection || !skills) return;
@@ -154,7 +192,7 @@ function renderSkills() {
 }
 
 function renderProjects() {
-    const projects = portfolioData.projects;
+    const projects = getPortfolioData().projects;
     const projectsSection = document.getElementById("projects");
 
     if (!projectsSection || !projects) return;
@@ -225,7 +263,7 @@ function renderProjects() {
 }
 
 function renderFocus() {
-    const focus = portfolioData.focus;
+    const focus = getPortfolioData().focus;
     const focusSection = document.getElementById("focus");
 
     if (!focusSection || !focus) return;
@@ -257,7 +295,7 @@ function renderFocus() {
 }
 
 function renderExperience() {
-    const experience = portfolioData.experience;
+    const experience = getPortfolioData().experience;
     const experienceSection = document.getElementById("experience");
 
     if (!experienceSection || !experience) return;
@@ -291,7 +329,7 @@ function renderExperience() {
 }
 
 function renderApproach() {
-    const approach = portfolioData.approach;
+    const approach = getPortfolioData().approach;
     const approachSection = document.getElementById("approach");
 
     if (!approachSection || !approach) return;
@@ -331,7 +369,7 @@ function renderApproach() {
 }
 
 function renderServices() {
-    const services = portfolioData.services;
+    const services = getPortfolioData().services;
     const servicesSection = document.getElementById("services");
 
     if (!servicesSection || !services) return;
@@ -363,7 +401,7 @@ function renderServices() {
 }
 
 function renderContact() {
-    const contact = portfolioData.contact;
+    const contact = getPortfolioData().contact;
     const contactSection = document.getElementById("contact");
 
     if (!contactSection || !contact) return;
@@ -398,7 +436,7 @@ function renderContact() {
 }
 
 function renderFooter() {
-    const footer = portfolioData.footer;
+    const footer = getPortfolioData().footer;
     const footerElement = document.getElementById("footer");
 
     if (!footerElement || !footer) return;
@@ -440,6 +478,10 @@ function renderPortfolio() {
     renderFooter();
 
     lucide.createIcons();
+
+    requestAnimationFrame(() => {
+        initReveals();
+    });
 }
 
 function initPreloader() {
@@ -581,11 +623,16 @@ function initSmoothScroll() {
 }
 
 function initPortfolio() {
+    updateDocumentLanguage();
+    updateLanguageToggle();
+
     renderPortfolio();
+
     initPreloader();
     initNavbar();
     initMobileMenu();
     initSmoothScroll();
+    initLanguageToggle();
 }
 
 initPortfolio();

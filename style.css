@@ -195,6 +195,72 @@ nav.scrolled {
     color: #00adb5;
 }
 
+.language-toggle {
+    background: transparent;
+    border: 1px solid rgba(0, 173, 181, 0.35);
+    color: #00adb5;
+    padding: 7px 12px;
+    border-radius: 4px;
+    font-family: "Inter", sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.language-toggle:hover {
+    background: rgba(0, 173, 181, 0.08);
+    box-shadow: 0 8px 24px rgba(0, 173, 181, 0.12);
+}
+
+html[dir="rtl"] .language-toggle {
+    font-family: "Inter", sans-serif;
+}
+
+html[dir="rtl"] body {
+    direction: rtl;
+    text-align: right;
+}
+
+html[dir="rtl"] .nav-links {
+    direction: rtl;
+}
+
+html[dir="rtl"] .hero-content {
+    text-align: right;
+}
+
+html[dir="rtl"] .hero-cta {
+    justify-content: flex-start;
+}
+
+html[dir="rtl"] .skill-card-header {
+    direction: rtl;
+}
+
+html[dir="rtl"] .timeline {
+    padding-left: 0;
+    padding-right: 36px;
+}
+
+html[dir="rtl"] .timeline::before {
+    left: auto;
+    right: 0;
+}
+
+html[dir="rtl"] .timeline-item::before {
+    left: auto;
+    right: -36px;
+}
+
+html[dir="rtl"] .principle-card {
+    text-align: right;
+}
+
+html[dir="rtl"] footer {
+    direction: rtl;
+}
+
 .nav-mobile-toggle {
     display: none;
     background: none;
@@ -1191,6 +1257,26 @@ footer {
 
     .nav-links {
         display: none;
+    }
+
+    .language-toggle {
+        margin-left: auto;
+        margin-right: 14px;
+    }
+
+    html[dir="rtl"] .language-toggle {
+        margin-left: 14px;
+        margin-right: auto;
+    }
+
+    html[dir="rtl"] .timeline {
+        padding-right: 28px;
+        padding-left: 0;
+    }
+
+    html[dir="rtl"] .timeline-item::before {
+        right: -28px;
+        left: auto;
     }
 
     .nav-mobile-toggle {
