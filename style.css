@@ -11,6 +11,10 @@ html {
     font-size: 16px;
 }
 
+html[dir="rtl"] body {
+    font-family: "Vazirmatn", "Inter", sans-serif;
+}
+
 body {
     font-family: "Inter", sans-serif;
     background-color: #0b0b0c;
@@ -182,7 +186,7 @@ nav.scrolled {
 }
 
 .nav-links a {
-    font-size: 11px;
+    font-size: 14px;
     font-weight: 500;
     color: #5a5a64;
     text-decoration: none;
@@ -259,6 +263,39 @@ html[dir="rtl"] .principle-card {
 
 html[dir="rtl"] footer {
     direction: rtl;
+}
+
+html[dir="rtl"] .section-label,
+html[dir="rtl"] .skill-category,
+html[dir="rtl"] .project-number,
+html[dir="rtl"] .timeline-date,
+html[dir="rtl"] .principle-num,
+html[dir="rtl"] .footer-text,
+html[dir="rtl"] .footer-links a,
+html[dir="rtl"] .tag {
+    font-family: "Vazirmatn", "IBM Plex Mono", monospace;
+}
+
+html[dir="rtl"] .hero-name {
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+}
+
+html[dir="rtl"] .hero-role {
+    letter-spacing: -0.5em;
+}
+
+html[dir="rtl"] .btn-primary,
+html[dir="rtl"] .btn-outline,
+html[dir="rtl"] .contact-link {
+    font-family: "Vazirmatn", "Inter", sans-serif;
+    letter-spacing: 0;
+}
+
+html[dir="rtl"] .hero-label {
+    font-family: "Vazirmatn", "Inter", sans-serif;
+    letter-spacing: 0;
+    font-size: 1em;
 }
 
 .nav-mobile-toggle {
