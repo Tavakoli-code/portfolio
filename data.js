@@ -1,6 +1,6 @@
 const portfolioData = {
     hero: {
-        image: "./hero_background.png",
+        image: "./assets/images/hero_background.png",
         imageAlt: "Sajad Ali Tavakoli",
         label: "Backend Developer",
         name: "Sajad Ali<br>Tavakoli",
