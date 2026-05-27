@@ -758,7 +758,6 @@ section {
 }
 
 .skill-card:hover {
-    background: rgba(255, 255, 255, 0.035);
     border-color: rgba(0, 173, 181, 0.12);
 }
 
@@ -853,7 +852,6 @@ section {
 }
 
 .project-card:hover {
-    background: rgba(255, 255, 255, 0.03);
     border-color: rgba(0, 173, 181, 0.12);
 }
 
@@ -1602,5 +1600,36 @@ footer {
     .preloader-dot {
         width: 6px;
         height: 6px;
+    }
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .skill-card:hover {
+        background: rgba(255, 255, 255, 0.035);
+        border-color: rgba(0, 173, 181, 0.12);
+    }
+
+    .project-card:hover {
+        background: rgba(255, 255, 255, 0.03);
+        border-color: rgba(0, 173, 181, 0.12);
+    }
+}
+
+@media (hover: none), (pointer: coarse) {
+    .skill-card:hover,
+    .project-card:hover,
+    .focus-card:hover,
+    .service-card:hover,
+    .principle-card:hover {
+        background: rgba(255, 255, 255, 0.015);
+        transform: none;
+    }
+
+    .skill-card,
+    .project-card,
+    .focus-card,
+    .service-card,
+    .principle-card {
+        -webkit-tap-highlight-color: transparent;
     }
 }
