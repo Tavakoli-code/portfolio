@@ -316,4 +316,43 @@ const portfolioData = {
             },
         ],
     },
+
+    contact: {
+        label: "Contact",
+        heading: "Let's build something reliable.",
+        description:
+            "If you have a project in mind or want to discuss backend architecture, feel free to reach out.",
+        links: [
+            {
+                label: "Email",
+                url: "mailto:hello@sajadtavakoli.com",
+                icon: "mail",
+                type: "email",
+            },
+            {
+                label: "GitHub",
+                url: "https://github.com",
+                icon: "github",
+                type: "external",
+            },
+            {
+                label: "GitLab",
+                url: "https://gitlab.com",
+                icon: "gitlab",
+                type: "external",
+            },
+            {
+                label: "LinkedIn",
+                url: "https://linkedin.com",
+                icon: "linkedin",
+                type: "external",
+            },
+            {
+                label: "Resume",
+                url: "#",
+                icon: "file-text",
+                type: "external",
+            },
+        ],
+    },
 };
