@@ -57,30 +57,7 @@
             <section id="hero"></section>
 
             <!-- About -->
-            <section id="about">
-                <div class="section-max-narrow">
-                    <p class="section-label reveal">About</p>
-                    <h2 class="section-heading reveal delay-1">About Me</h2>
-                    <p class="about-text reveal delay-2">
-                        I'm a backend engineer focused on building
-                        <em>scalable, maintainable systems</em> with clean architecture and
-                        production-ready solutions. I enjoy breaking complex problems into clear,
-                        manageable steps and designing systems that are secure, modular, and easy to
-                        evolve.
-                    </p>
-                    <p class="about-text reveal delay-3">
-                        With a <strong>Computer Science degree</strong> and hands-on experience in
-                        full-stack backend development, I've worked on systems ranging from land
-                        management platforms to learning applications and educational management
-                        tools.
-                    </p>
-                    <p class="about-text reveal delay-4">
-                        I prefer <em>step-by-step implementation</em>, separation of concerns, and
-                        clear architectural decisions over quick fixes and technical debt. Every
-                        line of code should serve the system's clarity, not just its functionality.
-                    </p>
-                </div>
-            </section>
+            <section id="about"></section>
 
             <!-- Skills -->
             <section id="skills"></section>
@@ -143,6 +120,32 @@
             <div class="hero-cta reveal delay-4">
                 ${buttonsHtml}
             </div>
+        </div>
+    `;
+            }
+
+            function renderAbout() {
+                const about = portfolioData.about;
+                const aboutSection = document.getElementById("about");
+
+                if (!aboutSection || !about) return;
+
+                const paragraphsHtml = about.paragraphs
+                    .map(
+                        (paragraph, index) => `
+                <p class="about-text reveal delay-${Math.min(index + 2, 6)}">
+                    ${paragraph}
+                </p>
+            `,
+                    )
+                    .join("");
+
+                aboutSection.innerHTML = `
+        <div class="section-max-narrow">
+            <p class="section-label reveal">${about.label}</p>
+            <h2 class="section-heading reveal delay-1">${about.heading}</h2>
+
+            ${paragraphsHtml}
         </div>
     `;
             }
@@ -525,6 +528,7 @@
             }
 
             renderHero();
+            renderAbout();
             renderSkills();
             renderProjects();
             renderFocus();

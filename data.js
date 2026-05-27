@@ -21,6 +21,16 @@ const portfolioData = {
         ],
     },
 
+    about: {
+        label: "About",
+        heading: "About Me",
+        paragraphs: [
+            "I'm a backend engineer focused on building <em>scalable, maintainable systems</em> with clean architecture and production-ready solutions. I enjoy breaking complex problems into clear, manageable steps and designing systems that are secure, modular, and easy to evolve.",
+            "With a <strong>Computer Science degree</strong> and hands-on experience in full-stack backend development, I've worked on systems ranging from land management platforms to learning applications and educational management tools.",
+            "I prefer <em>step-by-step implementation</em>, separation of concerns, and clear architectural decisions over quick fixes and technical debt. Every line of code should serve the system's clarity, not just its functionality.",
+        ],
+    },
+
     skills: {
         label: "Skills",
         heading: "My Skills",
