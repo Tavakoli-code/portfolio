@@ -217,6 +217,106 @@ nav.scrolled {
     box-shadow: 0 8px 24px rgba(0, 173, 181, 0.12);
 }
 
+/* ===== RTL / DARI MODE ===== */
+
+html[dir="rtl"] body {
+    direction: rtl;
+    text-align: right;
+}
+
+html[dir="rtl"] .nav-links {
+    direction: rtl;
+}
+
+html[dir="rtl"] .nav-logo {
+    direction: ltr;
+}
+
+html[dir="rtl"] .hero-content {
+    text-align: right;
+}
+
+html[dir="rtl"] .hero-cta {
+    justify-content: flex-start;
+}
+
+html[dir="rtl"] .section-label,
+html[dir="rtl"] .section-heading {
+    text-align: right;
+}
+
+html[dir="rtl"] .skill-card-header,
+html[dir="rtl"] .project-header {
+    direction: rtl;
+}
+
+html[dir="rtl"] .skill-list li {
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+}
+
+html[dir="rtl"] .tags-container,
+html[dir="rtl"] .project-links,
+html[dir="rtl"] .contact-links,
+html[dir="rtl"] .footer-links {
+    direction: rtl;
+}
+
+html[dir="rtl"] .project-desc,
+html[dir="rtl"] .focus-desc,
+html[dir="rtl"] .timeline-desc,
+html[dir="rtl"] .principle-desc,
+html[dir="rtl"] .service-desc,
+html[dir="rtl"] .contact-sub {
+    text-align: right;
+}
+
+html[dir="rtl"] .timeline {
+    padding-left: 0;
+    padding-right: 36px;
+}
+
+html[dir="rtl"] .timeline::before {
+    left: auto;
+    right: 0;
+}
+
+html[dir="rtl"] .timeline-item::before {
+    left: auto;
+    right: -36px;
+}
+
+html[dir="rtl"] .timeline-date,
+html[dir="rtl"] .timeline-role,
+html[dir="rtl"] .timeline-company,
+html[dir="rtl"] .timeline-desc {
+    text-align: right;
+}
+
+html[dir="rtl"] #approach .section-label,
+html[dir="rtl"] #approach .section-heading,
+html[dir="rtl"] #contact .section-label,
+html[dir="rtl"] #contact .contact-heading,
+html[dir="rtl"] #contact .contact-sub {
+    text-align: center;
+}
+
+html[dir="rtl"] #approach .principle-card {
+    text-align: right;
+}
+
+html[dir="rtl"] footer {
+    direction: rtl;
+}
+
+html[dir="rtl"] .footer-text {
+    direction: rtl;
+}
+
+html[dir="rtl"] .footer-links {
+    direction: rtl;
+}
+
 html[dir="rtl"] .language-toggle {
     font-family: "Inter", sans-serif;
 }
@@ -1440,6 +1540,16 @@ footer {
 
     .timeline-item::before {
         left: -28px;
+    }
+
+    html[dir="rtl"] .timeline {
+        padding-left: 0;
+        padding-right: 28px;
+    }
+
+    html[dir="rtl"] .timeline-item::before {
+        left: auto;
+        right: -28px;
     }
 
     .section-heading {
