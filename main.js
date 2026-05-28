@@ -557,17 +557,86 @@ async function waitForHeroImage() {
 }
 
 function initPreloader() {
-    if (!elements.preloader || !elements.pageContent) return;
+    const preloader = document.getElementById("preloader");
+    const pageContent = document.getElementById("page-content");
+    const heroImg = document.querySelector(".hero-bg img");
 
-    const minimumTimer = new Promise((resolve) => setTimeout(resolve, MIN_PRELOADER_TIME));
-    const imageTimer = waitForHeroImage();
-    const fallbackTimer = new Promise((resolve) => setTimeout(resolve, PRELOADER_FALLBACK_TIME));
+    const minimumDisplayTime = 1200;
+    const maximumWaitTime = 12000;
 
-    Promise.race([Promise.all([minimumTimer, imageTimer]), fallbackTimer]).then(() => {
+    if (!preloader || !pageContent) return;
+
+    let minimumTimePassed = false;
+    let heroImageReady = false;
+    let pageRevealed = false;
+
+    function revealPage() {
+        if (pageRevealed) return;
+        if (!minimumTimePassed || !heroImageReady) return;
+
+        pageRevealed = true;
+
         requestAnimationFrame(() => {
-            requestAnimationFrame(showPage);
+            requestAnimationFrame(() => {
+                preloader.classList.add("loaded");
+                pageContent.classList.add("visible");
+                initReveals();
+            });
         });
-    });
+    }
+
+    function waitForMinimumTime() {
+        setTimeout(() => {
+            minimumTimePassed = true;
+            revealPage();
+        }, minimumDisplayTime);
+    }
+
+    async function waitForHeroImage() {
+        if (!heroImg) {
+            heroImageReady = true;
+            revealPage();
+            return;
+        }
+
+        try {
+            if (!heroImg.complete || heroImg.naturalWidth === 0) {
+                await new Promise((resolve, reject) => {
+                    heroImg.addEventListener("load", resolve, { once: true });
+                    heroImg.addEventListener("error", reject, { once: true });
+                });
+            }
+
+            if (heroImg.decode) {
+                await heroImg.decode();
+            }
+
+            if (heroImg.naturalWidth === 0) {
+                throw new Error("Hero image loaded but has no natural width.");
+            }
+
+            heroImageReady = true;
+            revealPage();
+        } catch (error) {
+            console.warn("Hero image failed to load or decode:", error);
+
+            // Do not block the whole page forever if image path is wrong
+            heroImageReady = true;
+            revealPage();
+        }
+    }
+
+    waitForMinimumTime();
+    waitForHeroImage();
+
+    // Safety fallback for very slow networks
+    setTimeout(() => {
+        if (pageRevealed) return;
+
+        minimumTimePassed = true;
+        heroImageReady = true;
+        revealPage();
+    }, maximumWaitTime);
 }
 
 function initNavbar() {
@@ -661,10 +730,11 @@ function initLanguageToggle() {
 }
 
 function initPortfolio() {
-    cacheElements();
     updateDocumentLanguage();
     updateLanguageToggle();
+
     renderPortfolio();
+
     initPreloader();
     initNavbar();
     initMobileMenu();
