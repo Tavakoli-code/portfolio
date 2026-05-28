@@ -1,43 +1,91 @@
-let currentLang = localStorage.getItem("portfolioLang") || "en";
+const LANGUAGE_KEY = "portfolioLang";
+const DEFAULT_LANGUAGE = "en";
+const DARI_LANGUAGE = "fa";
+const MIN_PRELOADER_TIME = 1200;
+const PRELOADER_FALLBACK_TIME = 8000;
+
+let currentLang = getSavedLanguage();
+let revealObserver = null;
+let menuOpen = false;
+
+const elements = {};
+
+const customIcons = {
+    github: `
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path>
+            <path d="M9 18c-4.51 2-5-2-7-2"></path>
+        </svg>
+    `,
+    gitlab: `
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22.65 14.39 12 22.13 1.35 14.39a.84.84 0 0 1-.3-.94l1.22-3.78 2.44-7.51A.42.42 0 0 1 4.82 2a.43.43 0 0 1 .58 0 .42.42 0 0 1 .11.18l2.44 7.49h8.1l2.44-7.51A.42.42 0 0 1 18.6 2a.43.43 0 0 1 .58 0 .42.42 0 0 1 .11.18l2.44 7.51L23 13.45a.84.84 0 0 1-.35.94z"></path>
+            <path d="m6.09 9.67 5.91 12.46 5.91-12.46"></path>
+        </svg>
+    `,
+    linkedin: `
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+            <rect width="4" height="12" x="2" y="9"></rect>
+            <circle cx="4" cy="4" r="2"></circle>
+        </svg>
+    `,
+};
+
+function getSavedLanguage() {
+    try {
+        return localStorage.getItem(LANGUAGE_KEY) || DEFAULT_LANGUAGE;
+    } catch {
+        return DEFAULT_LANGUAGE;
+    }
+}
+
+function saveLanguage(language) {
+    try {
+        localStorage.setItem(LANGUAGE_KEY, language);
+    } catch {
+        // Ignore storage errors, such as private browsing restrictions.
+    }
+}
+
+function cacheElements() {
+    elements.html = document.documentElement;
+    elements.body = document.body;
+    elements.preloader = document.getElementById("preloader");
+    elements.pageContent = document.getElementById("page-content");
+    elements.navbar = document.getElementById("navbar");
+    elements.navLogo = document.getElementById("navLogo");
+    elements.navLinks = document.getElementById("navLinks");
+    elements.mobileToggle = document.getElementById("mobileToggle");
+    elements.mobileMenu = document.getElementById("mobileMenu");
+    elements.languageToggle = document.getElementById("languageToggle");
+}
 
 function getPortfolioData() {
-    return portfolioData[currentLang] || portfolioData.en;
+    return portfolioData[currentLang] || portfolioData[DEFAULT_LANGUAGE];
 }
 
 function updateDocumentLanguage() {
-    const html = document.documentElement;
+    const isDari = currentLang === DARI_LANGUAGE;
 
-    html.lang = currentLang === "fa" ? "fa" : "en";
-    html.dir = currentLang === "fa" ? "rtl" : "ltr";
-
-    document.body.classList.toggle("rtl", currentLang === "fa");
+    elements.html.lang = isDari ? DARI_LANGUAGE : DEFAULT_LANGUAGE;
+    elements.html.dir = isDari ? "rtl" : "ltr";
+    elements.body.classList.toggle("rtl", isDari);
 }
 
 function updateLanguageToggle() {
-    const languageToggle = document.getElementById("languageToggle");
+    if (!elements.languageToggle) return;
 
-    if (!languageToggle) return;
+    const isDari = currentLang === DARI_LANGUAGE;
 
-    languageToggle.textContent = currentLang === "fa" ? "EN" : "دری";
-    languageToggle.setAttribute(
+    elements.languageToggle.textContent = isDari ? "EN" : "دری";
+    elements.languageToggle.setAttribute(
         "aria-label",
-        currentLang === "fa" ? "Switch to English" : "تبدیل به دری",
+        isDari ? "Switch to English" : "تبدیل به دری",
     );
-}
-
-function initLanguageToggle() {
-    const languageToggle = document.getElementById("languageToggle");
-
-    if (!languageToggle) return;
-
-    languageToggle.addEventListener("click", () => {
-        currentLang = currentLang === "en" ? "fa" : "en";
-        localStorage.setItem("portfolioLang", currentLang);
-
-        updateDocumentLanguage();
-        updateLanguageToggle();
-        renderPortfolio();
-    });
 }
 
 function getDelayClass(index, start = 2) {
@@ -52,71 +100,12 @@ function renderLucideIcon(iconName, fallback = "circle") {
     return `<i data-lucide="${iconName || fallback}"></i>`;
 }
 
-function getIconHtml(iconName) {
-    const customIcons = {
-        github: `
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                stroke-linecap="round" stroke-linejoin="round">
-                <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path>
-                <path d="M9 18c-4.51 2-5-2-7-2"></path>
-            </svg>
-        `,
-        gitlab: `
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                stroke-linecap="round" stroke-linejoin="round">
-                <path d="M22.65 14.39 12 22.13 1.35 14.39a.84.84 0 0 1-.3-.94l1.22-3.78 2.44-7.51A.42.42 0 0 1 4.82 2a.43.43 0 0 1 .58 0 .42.42 0 0 1 .11.18l2.44 7.49h8.1l2.44-7.51A.42.42 0 0 1 18.6 2a.43.43 0 0 1 .58 0 .42.42 0 0 1 .11.18l2.44 7.51L23 13.45a.84.84 0 0 1-.35.94z"></path>
-                <path d="m6.09 9.67 5.91 12.46 5.91-12.46"></path>
-            </svg>
-        `,
-        linkedin: `
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                stroke-linecap="round" stroke-linejoin="round">
-                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                <rect width="4" height="12" x="2" y="9"></rect>
-                <circle cx="4" cy="4" r="2"></circle>
-            </svg>
-        `,
-    };
-
-    return customIcons[iconName] || renderLucideIcon(iconName, "circle");
+function renderIcon(iconName, fallback = "circle") {
+    return customIcons[iconName] || renderLucideIcon(iconName, fallback);
 }
 
-function renderNavigation() {
-    const nav = getPortfolioData().nav;
-    const navLogo = document.getElementById("navLogo");
-    const navLinks = document.getElementById("navLinks");
-    const mobileMenu = document.getElementById("mobileMenu");
-
-    if (!nav) return;
-
-    if (navLogo) {
-        navLogo.innerHTML = `${nav.logo}<span>${nav.logoAccent || "."}</span>dev`;
-    }
-
-    const linksHtml = (nav.links || [])
-        .filter((link) => link.label && link.url)
-        .map(
-            (link) => `
-                <li>
-                    <a href="${link.url}">${link.label}</a>
-                </li>
-            `,
-        )
-        .join("");
-
-    const mobileLinksHtml = (nav.links || [])
-        .filter((link) => link.label && link.url)
-        .map(
-            (link) => `
-                <a href="${link.url}" onclick="closeMobile()">
-                    ${link.label}
-                </a>
-            `,
-        )
-        .join("");
-
-    if (navLinks) navLinks.innerHTML = linksHtml;
-    if (mobileMenu) mobileMenu.innerHTML = mobileLinksHtml;
+function renderExternalAttributes(url, type = "external") {
+    return type === "external" && isExternalLink(url) ? 'target="_blank" rel="noopener"' : "";
 }
 
 function renderSectionHeader(section) {
@@ -126,12 +115,43 @@ function renderSectionHeader(section) {
     `;
 }
 
-function renderExternalAttributes(url, type = "external") {
-    return type === "external" && isExternalLink(url) ? 'target="_blank" rel="noopener"' : "";
+function renderNavLinks(links = [], isMobile = false) {
+    return links
+        .filter((link) => link.label && link.url)
+        .map((link) => {
+            if (isMobile) {
+                return `<a href="${link.url}" data-mobile-link>${link.label}</a>`;
+            }
+
+            return `
+                <li>
+                    <a href="${link.url}">${link.label}</a>
+                </li>
+            `;
+        })
+        .join("");
+}
+
+function renderNavigation() {
+    const { nav } = getPortfolioData();
+
+    if (!nav) return;
+
+    if (elements.navLogo) {
+        elements.navLogo.innerHTML = `${nav.logo}<span>${nav.logoAccent || "."}</span>dev`;
+    }
+
+    if (elements.navLinks) {
+        elements.navLinks.innerHTML = renderNavLinks(nav.links);
+    }
+
+    if (elements.mobileMenu) {
+        elements.mobileMenu.innerHTML = renderNavLinks(nav.links, true);
+    }
 }
 
 function renderHero() {
-    const hero = getPortfolioData().hero;
+    const { hero } = getPortfolioData();
     const heroSection = document.getElementById("hero");
 
     if (!heroSection || !hero) return;
@@ -141,11 +161,7 @@ function renderHero() {
         .map((button) => {
             const className = button.type === "outline" ? "btn-outline" : "btn-primary";
 
-            return `
-                <a href="${button.link}" class="${className}">
-                    ${button.text}
-                </a>
-            `;
+            return `<a href="${button.link}" class="${className}">${button.text}</a>`;
         })
         .join("");
 
@@ -170,7 +186,7 @@ function renderHero() {
 }
 
 function renderAbout() {
-    const about = getPortfolioData().about;
+    const { about } = getPortfolioData();
     const aboutSection = document.getElementById("about");
 
     if (!aboutSection || !about) return;
@@ -194,16 +210,14 @@ function renderAbout() {
 }
 
 function renderSkills() {
-    const skills = getPortfolioData().skills;
+    const { skills } = getPortfolioData();
     const skillsSection = document.getElementById("skills");
 
     if (!skillsSection || !skills) return;
 
     const skillCardsHtml = (skills.items || [])
         .map((skill, index) => {
-            const bulletsHtml = (skill.bullets || [])
-                .map((bullet) => `<li>${bullet}</li>`)
-                .join("");
+            const bulletsHtml = (skill.bullets || []).map((bullet) => `<li>${bullet}</li>`).join("");
 
             return `
                 <div class="skill-card reveal ${getDelayClass(index)}">
@@ -233,8 +247,22 @@ function renderSkills() {
     `;
 }
 
+function renderProjectLinks(links = {}) {
+    return Object.values(links)
+        .filter((link) => link && link.label && link.url)
+        .map(
+            (link) => `
+                <a href="${link.url}" class="project-link" ${renderExternalAttributes(link.url)}>
+                    ${renderIcon(link.icon || "external-link")}
+                    ${link.label}
+                </a>
+            `,
+        )
+        .join("");
+}
+
 function renderProjects() {
-    const projects = getPortfolioData().projects;
+    const { projects } = getPortfolioData();
     const projectsSection = document.getElementById("projects");
 
     if (!projectsSection || !projects) return;
@@ -246,22 +274,8 @@ function renderProjects() {
     const projectCardsHtml = sortedProjects
         .map((project, index) => {
             const number = String(index + 1).padStart(2, "0");
-
-            const tagsHtml = (project.tags || [])
-                .map((tag) => `<span class="tag">${tag}</span>`)
-                .join("");
-
-            const linksHtml = Object.values(project.links || {})
-                .filter((link) => link && link.label && link.url)
-                .map(
-                    (link) => `
-                        <a href="${link.url}" class="project-link" ${renderExternalAttributes(link.url)}>
-                            ${getIconHtml(link.icon || "external-link")}
-                            ${link.label}
-                        </a>
-                    `,
-                )
-                .join("");
+            const tagsHtml = (project.tags || []).map((tag) => `<span class="tag">${tag}</span>`).join("");
+            const linksHtml = renderProjectLinks(project.links);
 
             return `
                 <div class="project-card reveal ${getDelayClass(index)}">
@@ -279,15 +293,7 @@ function renderProjects() {
                         ${tagsHtml}
                     </div>
 
-                    ${
-                        linksHtml
-                            ? `
-                                <div class="project-links">
-                                    ${linksHtml}
-                                </div>
-                            `
-                            : ""
-                    }
+                    ${linksHtml ? `<div class="project-links">${linksHtml}</div>` : ""}
                 </div>
             `;
         })
@@ -305,7 +311,7 @@ function renderProjects() {
 }
 
 function renderFocus() {
-    const focus = getPortfolioData().focus;
+    const { focus } = getPortfolioData();
     const focusSection = document.getElementById("focus");
 
     if (!focusSection || !focus) return;
@@ -337,7 +343,7 @@ function renderFocus() {
 }
 
 function renderExperience() {
-    const experience = getPortfolioData().experience;
+    const { experience } = getPortfolioData();
     const experienceSection = document.getElementById("experience");
 
     if (!experienceSection || !experience) return;
@@ -371,7 +377,7 @@ function renderExperience() {
 }
 
 function renderApproach() {
-    const approach = getPortfolioData().approach;
+    const { approach } = getPortfolioData();
     const approachSection = document.getElementById("approach");
 
     if (!approachSection || !approach) return;
@@ -394,7 +400,7 @@ function renderApproach() {
         .join("");
 
     approachSection.innerHTML = `
-        <div class="section-max" style="text-align: center;">
+        <div class="section-max">
             ${renderSectionHeader(approach)}
 
             <p class="approach-quote reveal delay-2">${approach.quote}</p>
@@ -411,7 +417,7 @@ function renderApproach() {
 }
 
 function renderServices() {
-    const services = getPortfolioData().services;
+    const { services } = getPortfolioData();
     const servicesSection = document.getElementById("services");
 
     if (!servicesSection || !services) return;
@@ -443,7 +449,7 @@ function renderServices() {
 }
 
 function renderContact() {
-    const contact = getPortfolioData().contact;
+    const { contact } = getPortfolioData();
     const contactSection = document.getElementById("contact");
 
     if (!contactSection || !contact) return;
@@ -452,12 +458,8 @@ function renderContact() {
         .filter((link) => link.label && link.url)
         .map(
             (link) => `
-                <a
-                    href="${link.url}"
-                    class="contact-link"
-                    ${renderExternalAttributes(link.url, link.type)}
-                >
-                    ${getIconHtml(link.icon || "circle")}
+                <a href="${link.url}" class="contact-link" ${renderExternalAttributes(link.url, link.type)}>
+                    ${renderIcon(link.icon || "circle")}
                     ${link.label}
                 </a>
             `,
@@ -478,10 +480,13 @@ function renderContact() {
 }
 
 function renderFooter() {
-    const footer = getPortfolioData().footer;
-    const footerElement = document.getElementById("footer");
+    const { footer } = getPortfolioData();
 
-    if (!footerElement || !footer) return;
+    if (!elements.footer) {
+        elements.footer = document.getElementById("footer");
+    }
+
+    if (!elements.footer || !footer) return;
 
     const linksHtml = (footer.links || [])
         .filter((link) => link.label && link.url)
@@ -494,7 +499,7 @@ function renderFooter() {
         )
         .join("");
 
-    footerElement.innerHTML = `
+    elements.footer.innerHTML = `
         <p class="footer-text">
             ${footer.text || ""}
             <span>${footer.highlight || "·"}</span>
@@ -521,121 +526,92 @@ function renderPortfolio() {
     renderFooter();
 
     lucide.createIcons();
-
-    requestAnimationFrame(() => {
-        initReveals();
-    });
+    initReveals();
 }
 
-function initPreloader() {
-    const preloader = document.getElementById("preloader");
-    const pageContent = document.getElementById("page-content");
+function showPage() {
+    elements.preloader.classList.add("loaded");
+    elements.pageContent.classList.add("visible");
+    initReveals();
+}
+
+async function waitForHeroImage() {
     const heroImg = document.querySelector(".hero-bg img");
-    const minDisplayTime = 1200;
 
-    let imageReady = false;
-    let minimumTimePassed = false;
+    if (!heroImg) return;
 
-    if (!preloader || !pageContent) return;
-
-    function revealPage() {
-        if (!imageReady || !minimumTimePassed) return;
-
-        // Give browser one paint frame before removing preloader
-        requestAnimationFrame(() => {
-            requestAnimationFrame(() => {
-                preloader.classList.add("loaded");
-                pageContent.classList.add("visible");
-                setTimeout(initReveals, 100);
-            });
+    if (!heroImg.complete) {
+        await new Promise((resolve) => {
+            heroImg.addEventListener("load", resolve, { once: true });
+            heroImg.addEventListener("error", resolve, { once: true });
         });
     }
 
-    async function waitForHeroImage() {
-        if (!heroImg) {
-            imageReady = true;
-            revealPage();
-            return;
-        }
-
-        try {
-            if (!heroImg.complete) {
-                await new Promise((resolve, reject) => {
-                    heroImg.addEventListener("load", resolve, { once: true });
-                    heroImg.addEventListener("error", reject, { once: true });
-                });
-            }
-
-            if (heroImg.decode) {
-                await heroImg.decode();
-            }
-
-            imageReady = true;
-            revealPage();
-        } catch (error) {
-            console.warn("Hero image could not be fully loaded or decoded.", error);
-            imageReady = true;
-            revealPage();
-        }
+    if (heroImg.decode) {
+        await heroImg.decode().catch(() => undefined);
     }
-
-    waitForHeroImage();
-
-    setTimeout(() => {
-        minimumTimePassed = true;
-        revealPage();
-    }, minDisplayTime);
-
-    // Safety fallback
-    setTimeout(() => {
-        if (!preloader.classList.contains("loaded")) {
-            preloader.classList.add("loaded");
-            pageContent.classList.add("visible");
-            setTimeout(initReveals, 100);
-        }
-    }, 8000);
 }
 
-function initNavbar() {
-    const navbar = document.getElementById("navbar");
+function initPreloader() {
+    if (!elements.preloader || !elements.pageContent) return;
 
-    if (!navbar) return;
+    const minimumTimer = new Promise((resolve) => setTimeout(resolve, MIN_PRELOADER_TIME));
+    const imageTimer = waitForHeroImage();
+    const fallbackTimer = new Promise((resolve) => setTimeout(resolve, PRELOADER_FALLBACK_TIME));
 
-    window.addEventListener("scroll", () => {
-        navbar.classList.toggle("scrolled", window.scrollY > 40);
+    Promise.race([Promise.all([minimumTimer, imageTimer]), fallbackTimer]).then(() => {
+        requestAnimationFrame(() => {
+            requestAnimationFrame(showPage);
+        });
     });
 }
 
+function initNavbar() {
+    if (!elements.navbar) return;
+
+    window.addEventListener("scroll", () => {
+        elements.navbar.classList.toggle("scrolled", window.scrollY > 40);
+    });
+}
+
+function closeMobileMenu() {
+    if (!elements.mobileToggle || !elements.mobileMenu) return;
+
+    menuOpen = false;
+    elements.mobileMenu.classList.remove("active");
+    elements.mobileToggle.classList.remove("active");
+    elements.mobileToggle.innerHTML = renderLucideIcon("menu");
+    lucide.createIcons();
+}
+
+function toggleMobileMenu() {
+    if (!elements.mobileToggle || !elements.mobileMenu) return;
+
+    menuOpen = !menuOpen;
+    elements.mobileMenu.classList.toggle("active", menuOpen);
+    elements.mobileToggle.classList.toggle("active", menuOpen);
+    elements.mobileToggle.innerHTML = menuOpen ? renderLucideIcon("x") : renderLucideIcon("menu");
+    lucide.createIcons();
+}
+
 function initMobileMenu() {
-    const mobileToggle = document.getElementById("mobileToggle");
-    const mobileMenu = document.getElementById("mobileMenu");
+    if (!elements.mobileToggle || !elements.mobileMenu) return;
 
-    if (!mobileToggle || !mobileMenu) return;
+    window.closeMobile = closeMobileMenu;
 
-    let menuOpen = false;
-
-    window.closeMobile = function closeMobile() {
-        menuOpen = false;
-        mobileMenu.classList.remove("active");
-        mobileToggle.classList.remove("active");
-        mobileToggle.innerHTML = renderLucideIcon("menu");
-        lucide.createIcons();
-    };
-
-    mobileToggle.addEventListener("click", () => {
-        menuOpen = !menuOpen;
-
-        mobileMenu.classList.toggle("active", menuOpen);
-        mobileToggle.classList.toggle("active", menuOpen);
-
-        mobileToggle.innerHTML = menuOpen ? renderLucideIcon("x") : renderLucideIcon("menu");
-
-        lucide.createIcons();
+    elements.mobileToggle.addEventListener("click", toggleMobileMenu);
+    elements.mobileMenu.addEventListener("click", (event) => {
+        const link = event.target.closest("a[data-mobile-link]");
+        if (link) closeMobileMenu();
     });
 }
 
 function initReveals() {
-    const revealObserver = new IntersectionObserver(
+    if (revealObserver) {
+        revealObserver.disconnect();
+    }
+
+    revealObserver = new IntersectionObserver(
         (entries) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
@@ -653,24 +629,38 @@ function initReveals() {
 }
 
 function initSmoothScroll() {
-    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-        anchor.addEventListener("click", function (event) {
-            event.preventDefault();
+    document.addEventListener("click", (event) => {
+        const anchor = event.target.closest('a[href^="#"]');
 
-            const target = document.querySelector(this.getAttribute("href"));
-            if (target) {
-                target.scrollIntoView({ behavior: "smooth", block: "start" });
-            }
-        });
+        if (!anchor) return;
+
+        const target = document.querySelector(anchor.getAttribute("href"));
+        if (!target) return;
+
+        event.preventDefault();
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+}
+
+function initLanguageToggle() {
+    if (!elements.languageToggle) return;
+
+    elements.languageToggle.addEventListener("click", () => {
+        currentLang = currentLang === DEFAULT_LANGUAGE ? DARI_LANGUAGE : DEFAULT_LANGUAGE;
+        saveLanguage(currentLang);
+
+        updateDocumentLanguage();
+        updateLanguageToggle();
+        closeMobileMenu();
+        renderPortfolio();
     });
 }
 
 function initPortfolio() {
+    cacheElements();
     updateDocumentLanguage();
     updateLanguageToggle();
-
     renderPortfolio();
-
     initPreloader();
     initNavbar();
     initMobileMenu();

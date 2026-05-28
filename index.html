@@ -1,61 +1,69 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" dir="ltr">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
         <title>Sajad Ali Tavakoli — Backend Developer</title>
+        <meta
+            name="description"
+            content="Personal portfolio of Sajad Ali Tavakoli, a backend developer focused on building reliable backend systems, APIs, databases, and production-ready software."
+        />
+        <meta name="author" content="Sajad Ali Tavakoli" />
+
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
         <link
             href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap"
             rel="stylesheet"
         />
-        <script src="https://unpkg.com/lucide@latest"></script>
+
         <link rel="stylesheet" href="./style.css" />
+
+        <script src="https://unpkg.com/lucide@latest"></script>
     </head>
+
     <body>
         <!-- Preloader -->
-        <div id="preloader">
+        <div id="preloader" aria-hidden="true">
             <div class="preloader-code">
                 <span class="bracket">&lt;</span>
+
                 <div class="preloader-dots">
                     <div class="preloader-dot"></div>
                     <div class="preloader-dot"></div>
                     <div class="preloader-dot"></div>
                 </div>
+
                 <span class="bracket">&gt;</span>
             </div>
         </div>
 
-        <!-- Page Content (hidden until loaded) -->
+        <!-- Page Content -->
         <div id="page-content">
-            <nav id="navbar">
+            <!-- Navigation -->
+            <nav id="navbar" aria-label="Main navigation">
                 <a href="#hero" class="nav-logo" id="navLogo">sajad<span>.</span>dev</a>
-                <ul class="nav-links" id="navLinks">
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#skills">Skills</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#focus">Focus</a></li>
-                    <li><a href="#experience">Experience</a></li>
-                    <li><a href="#approach">Approach</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
+
+                <ul class="nav-links" id="navLinks"></ul>
+
                 <div class="nav-actions">
                     <button class="language-toggle" id="languageToggle" type="button">دری</button>
 
-                    <button class="nav-mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
+                    <button
+                        class="nav-mobile-toggle"
+                        id="mobileToggle"
+                        type="button"
+                        aria-label="Toggle menu"
+                    >
                         <i data-lucide="menu" style="width: 20px; height: 20px"></i>
                     </button>
                 </div>
             </nav>
 
-            <div class="mobile-menu" id="mobileMenu">
-                <a href="#about" onclick="closeMobile()">About</a>
-                <a href="#skills" onclick="closeMobile()">Skills</a>
-                <a href="#projects" onclick="closeMobile()">Projects</a>
-                <a href="#focus" onclick="closeMobile()">Focus</a>
-                <a href="#experience" onclick="closeMobile()">Experience</a>
-                <a href="#approach" onclick="closeMobile()">Approach</a>
-                <a href="#contact" onclick="closeMobile()">Contact</a>
-            </div>
+            <!-- Mobile Menu -->
+            <div class="mobile-menu" id="mobileMenu"></div>
 
             <!-- Hero -->
             <section id="hero"></section>
@@ -87,7 +95,6 @@
             <!-- Footer -->
             <footer id="footer"></footer>
         </div>
-        <!-- end #page-content -->
 
         <script src="./data.js"></script>
         <script src="./main.js"></script>

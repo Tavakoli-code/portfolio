@@ -1,31 +1,36 @@
 # Dynamic Personal Portfolio
 
-A modern, minimalist, responsive personal portfolio website built with **HTML, CSS, and JavaScript**.
+A modern, responsive, multilingual personal portfolio website built with **HTML, CSS, and JavaScript**.
 
-This portfolio is designed to be easy to customize. All portfolio content is stored in one file, `data.js`, so anyone can update the website without editing the main HTML structure.
+This portfolio is designed to be easy to customize. All personal content is stored in `data.js`, so you can update the portfolio without changing the main HTML structure.
 
-The portfolio supports:
-
-- Dynamic content rendering
-- English and Dari language modes
-- RTL layout support for Dari
-- Responsive mobile design
-- Animated mobile menu
-- Preloader
-- Lucide icons
-- Dynamic project links
-- Dynamic contact links
-- Clean section-based structure
+The project is suitable for developers, freelancers, students, and professionals who want a clean portfolio with dynamic sections and language support.
 
 ---
 
-## Preview
+## Features
+
+- Dynamic content rendering from `data.js`
+- English and Dari language modes
+- RTL layout support for Dari
+- Responsive desktop and mobile design
+- Animated mobile menu
+- Preloader animation
+- Lucide icon support
+- Dynamic project links
+- Dynamic contact links
+- Clean section-based structure
+- Easy deployment to static hosting platforms
+
+---
+
+## Portfolio Sections
 
 This portfolio includes the following sections:
 
 1. **Navigation**
     - Logo
-    - Desktop menu
+    - Desktop navigation
     - Mobile burger menu
     - Language toggle button
 
@@ -33,11 +38,11 @@ This portfolio includes the following sections:
     - Background image
     - Name
     - Role/title
-    - Short description
+    - Short introduction
     - CTA buttons
 
 3. **About Section**
-    - Short professional introduction
+    - Professional introduction
     - Multiple editable paragraphs
 
 4. **Skills Section**
@@ -64,8 +69,8 @@ This portfolio includes the following sections:
     - Title, subtitle, date, and description
 
 8. **Approach Section**
-    - Personal development philosophy
-    - Principles
+    - Personal work philosophy
+    - Work principles
     - Goals text
 
 9. **Services Section**
@@ -73,15 +78,13 @@ This portfolio includes the following sections:
     - Icon, title, and description for each service
 
 10. **Contact Section**
-
-- Contact message
-- Email, GitHub, GitLab, LinkedIn, Resume, or other links
+    - Contact message
+    - Email, GitHub, GitLab, LinkedIn, resume, or other links
 
 11. **Footer**
-
-- Copyright text
-- Role/title
-- Footer links
+    - Copyright text
+    - Role/title
+    - Footer links
 
 ---
 
@@ -99,22 +102,22 @@ portfolio/
         └── hero_background.png
 ```
 
-### File Description
+---
 
-| File             | Purpose                                                            |
-| ---------------- | ------------------------------------------------------------------ |
-| `index.html`     | Main HTML structure of the website                                 |
-| `style.css`      | All styling, layout, responsive design, animations, and RTL styles |
-| `data.js`        | All editable portfolio content                                     |
-| `main.js`        | JavaScript render functions and interactions                       |
-| `assets/images/` | Portfolio images such as the hero background                       |
-| `README.md`      | Project documentation                                              |
+## File Description
+
+| File             | Purpose                                                        |
+| ---------------- | -------------------------------------------------------------- |
+| `index.html`     | Main HTML structure of the website                             |
+| `style.css`      | Styling, layout, responsive design, animations, and RTL styles |
+| `data.js`        | All editable portfolio content                                 |
+| `main.js`        | JavaScript render functions and interactions                   |
+| `assets/images/` | Portfolio images such as the hero background                   |
+| `README.md`      | Project documentation                                          |
 
 ---
 
-## How to Use This Portfolio
-
-### 1. Download or Clone the Project
+## How to Download or Clone
 
 Clone the repository:
 
@@ -122,7 +125,7 @@ Clone the repository:
 git clone https://github.com/your-username/your-repository-name.git
 ```
 
-Then open the project folder:
+Open the project folder:
 
 ```bash
 cd your-repository-name
@@ -134,7 +137,7 @@ Or download manually:
 2. Click the green **Code** button.
 3. Click **Download ZIP**.
 4. Extract the ZIP file.
-5. Open the folder in VS Code.
+5. Open the folder in VS Code or your preferred editor.
 
 ---
 
@@ -148,7 +151,7 @@ From the project folder, run:
 python3 -m http.server 5500
 ```
 
-Then open this in your browser:
+Then open:
 
 ```txt
 http://localhost:5500
@@ -160,15 +163,13 @@ You can also use the VS Code **Live Server** extension.
 
 ## How to Customize the Portfolio
 
-Most changes should be made in:
+Most content changes should be made in:
 
 ```bash
 data.js
 ```
 
-The website content is stored inside the `portfolioData` object.
-
-The project supports two languages:
+The website content is stored inside the `portfolioData` object:
 
 ```js
 const portfolioData = {
@@ -182,6 +183,8 @@ const portfolioData = {
 };
 ```
 
+The `en` object controls English content, and the `fa` object controls Dari content.
+
 ---
 
 ## Updating the Hero Section
@@ -194,7 +197,7 @@ hero: {
     imageAlt: "Your Name",
     label: "Backend Developer",
     name: "Your Name",
-    role: "Building clean, scalable systems.",
+    role: "Building reliable systems.",
     description: "Short description about you.",
     buttons: [
         {
@@ -214,6 +217,7 @@ hero: {
 You can update:
 
 - Hero image
+- Image alt text
 - Name
 - Role
 - Description
@@ -326,7 +330,7 @@ Example:
 }
 ```
 
-Icons use [Lucide Icons](https://lucide.dev/icons/). Use the icon name as a string.
+Icons use **Lucide Icons**. Use the icon name as a string.
 
 ---
 
@@ -379,7 +383,7 @@ Each project supports:
 - `gitlab` link
 - `demo` link
 
-If a link is empty, it will not appear in the UI:
+If a link URL is empty, it will not appear in the UI:
 
 ```js
 url: "",
@@ -393,7 +397,7 @@ url: "https://github.com/your-username/project-name",
 
 Projects are sorted using the `order` field.
 
-The portfolio shows a maximum number of projects based on:
+The maximum number of visible projects is controlled by:
 
 ```js
 maxVisible: 5,
@@ -458,13 +462,13 @@ Each experience item supports:
 The visible date is:
 
 ```js
-date: "2024 — Present";
+date: "2024 — Present",
 ```
 
 The sorting date is:
 
 ```js
-sortDate: "2024-01-01";
+sortDate: "2024-01-01",
 ```
 
 Experience items are sorted newest first.
@@ -562,7 +566,7 @@ Each contact link supports:
 - `icon`
 - `type`
 
-For email:
+For email links:
 
 ```js
 url: "mailto:your-email@example.com",
@@ -615,9 +619,9 @@ This portfolio supports:
 
 The language toggle button switches between:
 
-```js
-en;
-fa;
+```txt
+en
+fa
 ```
 
 Language preference is saved in `localStorage`, so the selected language remains after refreshing the page.
@@ -665,7 +669,7 @@ This project uses **Lucide Icons**.
 Example:
 
 ```js
-icon: "server";
+icon: "server",
 ```
 
 You can find icon names here:
@@ -748,8 +752,11 @@ git push
 ```
 
 2. Open your GitHub repository.
+
 3. Go to **Settings**.
+
 4. Go to **Pages**.
+
 5. Under **Build and deployment**, choose:
     - Source: `Deploy from a branch`
     - Branch: `main`
@@ -772,13 +779,13 @@ https://your-username.github.io/your-repository-name/
 Correct:
 
 ```js
-image: "./assets/images/hero_background.png";
+image: "./assets/images/hero_background.png",
 ```
 
 Wrong:
 
 ```js
-image: "/home/user/Desktop/image.png";
+image: "/home/user/Desktop/image.png",
 ```
 
 Local computer paths will not work after deployment.
@@ -793,6 +800,20 @@ In `index.html`, scripts must be loaded in this order:
 ```
 
 Do not reverse them, because `main.js` depends on `portfolioData` from `data.js`.
+
+### Keep section IDs consistent
+
+If you add a navigation link such as:
+
+```js
+{ label: "Services", url: "#services" }
+```
+
+make sure this section exists in `index.html`:
+
+```html
+<section id="services"></section>
+```
 
 ---
 
@@ -838,4 +859,4 @@ You can use this portfolio as a personal portfolio template.
 
 Feel free to customize the content, colors, images, sections, and layout for your own personal or professional use.
 
-If you like consider rating with stars.
+If this project helps you, consider giving the repository a star.
