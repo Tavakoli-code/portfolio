@@ -15,6 +15,218 @@ html[dir="rtl"] body {
     font-family: "Vazirmatn", "Inter", sans-serif;
 }
 
+/* ===== RTL / DARI MODE ===== */
+html[dir="rtl"] body {
+    direction: rtl;
+    text-align: right;
+}
+
+html[dir="rtl"] .nav-links {
+    direction: rtl;
+}
+
+html[dir="rtl"] .nav-logo {
+    direction: ltr;
+}
+
+html[dir="rtl"] .hero-content {
+    text-align: right;
+}
+
+html[dir="rtl"] .hero-cta {
+    justify-content: flex-start;
+}
+
+html[dir="rtl"] .section-label,
+html[dir="rtl"] .section-heading {
+    text-align: right;
+}
+
+html[dir="rtl"] .skill-card-header,
+html[dir="rtl"] .project-header {
+    direction: rtl;
+}
+
+html[dir="rtl"] .skill-list {
+    direction: ltr;
+    text-align: left;
+}
+
+html[dir="rtl"] .skill-list li {
+    direction: ltr;
+    text-align: left;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+html[dir="rtl"] .tags-container,
+html[dir="rtl"] .project-links,
+html[dir="rtl"] .contact-links,
+html[dir="rtl"] .footer-links {
+    direction: rtl;
+}
+
+html[dir="rtl"] .project-desc,
+html[dir="rtl"] .focus-desc,
+html[dir="rtl"] .timeline-desc,
+html[dir="rtl"] .principle-desc,
+html[dir="rtl"] .service-desc,
+html[dir="rtl"] .contact-sub {
+    text-align: right;
+}
+
+html[dir="rtl"] .timeline {
+    padding-left: 0;
+    padding-right: 36px;
+}
+
+html[dir="rtl"] .timeline::before {
+    left: auto;
+    right: 0;
+}
+
+html[dir="rtl"] .timeline-item::before {
+    left: auto;
+    right: -36px;
+}
+
+html[dir="rtl"] .timeline-date,
+html[dir="rtl"] .timeline-role,
+html[dir="rtl"] .timeline-company,
+html[dir="rtl"] .timeline-desc {
+    text-align: right;
+}
+
+html[dir="rtl"] #contact .section-label,
+html[dir="rtl"] #contact .contact-heading,
+html[dir="rtl"] #contact .contact-sub {
+    text-align: center;
+}
+
+html[dir="rtl"] #approach .section-label,
+html[dir="rtl"] #approach .section-heading {
+    text-align: right;
+}
+
+html[dir="rtl"] #approach .principle-card {
+    text-align: right;
+}
+
+html[dir="rtl"] footer {
+    direction: rtl;
+}
+
+html[dir="rtl"] .footer-text {
+    direction: rtl;
+}
+
+html[dir="rtl"] .footer-links {
+    direction: rtl;
+}
+
+html[dir="rtl"] .language-toggle {
+    font-family: "Inter", sans-serif;
+}
+
+html[dir="rtl"] body {
+    direction: rtl;
+    text-align: right;
+}
+
+html[dir="rtl"] .nav-links {
+    direction: rtl;
+}
+
+html[dir="rtl"] .hero-content {
+    text-align: right;
+}
+
+html[dir="rtl"] .hero-cta {
+    justify-content: flex-start;
+}
+
+html[dir="rtl"] .skill-card-header {
+    direction: rtl;
+}
+
+html[dir="rtl"] .timeline {
+    padding-left: 0;
+    padding-right: 36px;
+}
+
+html[dir="rtl"] .timeline::before {
+    left: auto;
+    right: 0;
+}
+
+html[dir="rtl"] .timeline-item::before {
+    left: auto;
+    right: -36px;
+}
+
+html[dir="rtl"] .principle-card {
+    text-align: right;
+}
+
+html[dir="rtl"] footer {
+    direction: rtl;
+}
+
+html[dir="rtl"] .section-label,
+html[dir="rtl"] .skill-category,
+html[dir="rtl"] .project-number,
+html[dir="rtl"] .timeline-date,
+html[dir="rtl"] .principle-num,
+html[dir="rtl"] .footer-text,
+html[dir="rtl"] .footer-links a,
+html[dir="rtl"] .tag {
+    font-family: "Vazirmatn", "IBM Plex Mono", monospace;
+}
+
+html[dir="rtl"] .hero-name {
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+}
+
+html[dir="rtl"] .hero-role {
+    letter-spacing: -0.5em;
+}
+
+html[dir="rtl"] .btn-primary,
+html[dir="rtl"] .btn-outline,
+html[dir="rtl"] .contact-link {
+    font-family: "Vazirmatn", "Inter", sans-serif;
+    letter-spacing: 0;
+}
+
+html[dir="rtl"] .hero-label {
+    font-family: "Vazirmatn", "Inter", sans-serif;
+    letter-spacing: 0;
+    font-size: 1em;
+}
+
+html[dir="rtl"] .language-toggle {
+    font-family: "Vazirmatn", "Inter", sans-serif;
+    letter-spacing: 0;
+}
+
+html[dir="rtl"] #about .about-text,
+html[dir="rtl"] #approach .approach-quote,
+html[dir="rtl"] #approach .goals-text {
+    margin-left: auto;
+    margin-right: 0;
+    text-align: right;
+}
+
+html[dir="rtl"] #experience .timeline {
+    margin-left: auto;
+    margin-right: 0;
+}
+
+html[dir="rtl"] #approach .approach-quote::before {
+    margin: 0 0 28px auto;
+}
+
 body {
     font-family: "Inter", sans-serif;
     background-color: #0b0b0c;
@@ -225,198 +437,6 @@ nav.scrolled {
     border-color: rgba(0, 173, 181, 0.5);
     box-shadow: 0 8px 24px rgba(0, 173, 181, 0.12);
     transform: translateY(-1px);
-}
-
-html[dir="rtl"] .language-toggle {
-    font-family: "Vazirmatn", "Inter", sans-serif;
-    letter-spacing: 0;
-}
-
-/* ===== RTL / DARI MODE ===== */
-html[dir="rtl"] body {
-    direction: rtl;
-    text-align: right;
-}
-
-html[dir="rtl"] .nav-links {
-    direction: rtl;
-}
-
-html[dir="rtl"] .nav-logo {
-    direction: ltr;
-}
-
-html[dir="rtl"] .hero-content {
-    text-align: right;
-}
-
-html[dir="rtl"] .hero-cta {
-    justify-content: flex-start;
-}
-
-html[dir="rtl"] .section-label,
-html[dir="rtl"] .section-heading {
-    text-align: right;
-}
-
-html[dir="rtl"] .skill-card-header,
-html[dir="rtl"] .project-header {
-    direction: rtl;
-}
-
-html[dir="rtl"] .skill-list {
-    direction: ltr;
-    text-align: left;
-}
-
-html[dir="rtl"] .skill-list li {
-    direction: ltr;
-    text-align: left;
-    flex-direction: row;
-    justify-content: flex-start;
-}
-
-html[dir="rtl"] .tags-container,
-html[dir="rtl"] .project-links,
-html[dir="rtl"] .contact-links,
-html[dir="rtl"] .footer-links {
-    direction: rtl;
-}
-
-html[dir="rtl"] .project-desc,
-html[dir="rtl"] .focus-desc,
-html[dir="rtl"] .timeline-desc,
-html[dir="rtl"] .principle-desc,
-html[dir="rtl"] .service-desc,
-html[dir="rtl"] .contact-sub {
-    text-align: right;
-}
-
-html[dir="rtl"] .timeline {
-    padding-left: 0;
-    padding-right: 36px;
-}
-
-html[dir="rtl"] .timeline::before {
-    left: auto;
-    right: 0;
-}
-
-html[dir="rtl"] .timeline-item::before {
-    left: auto;
-    right: -36px;
-}
-
-html[dir="rtl"] .timeline-date,
-html[dir="rtl"] .timeline-role,
-html[dir="rtl"] .timeline-company,
-html[dir="rtl"] .timeline-desc {
-    text-align: right;
-}
-
-html[dir="rtl"] #approach .section-label,
-html[dir="rtl"] #approach .section-heading,
-html[dir="rtl"] #contact .section-label,
-html[dir="rtl"] #contact .contact-heading,
-html[dir="rtl"] #contact .contact-sub {
-    text-align: center;
-}
-
-html[dir="rtl"] #approach .principle-card {
-    text-align: right;
-}
-
-html[dir="rtl"] footer {
-    direction: rtl;
-}
-
-html[dir="rtl"] .footer-text {
-    direction: rtl;
-}
-
-html[dir="rtl"] .footer-links {
-    direction: rtl;
-}
-
-html[dir="rtl"] .language-toggle {
-    font-family: "Inter", sans-serif;
-}
-
-html[dir="rtl"] body {
-    direction: rtl;
-    text-align: right;
-}
-
-html[dir="rtl"] .nav-links {
-    direction: rtl;
-}
-
-html[dir="rtl"] .hero-content {
-    text-align: right;
-}
-
-html[dir="rtl"] .hero-cta {
-    justify-content: flex-start;
-}
-
-html[dir="rtl"] .skill-card-header {
-    direction: rtl;
-}
-
-html[dir="rtl"] .timeline {
-    padding-left: 0;
-    padding-right: 36px;
-}
-
-html[dir="rtl"] .timeline::before {
-    left: auto;
-    right: 0;
-}
-
-html[dir="rtl"] .timeline-item::before {
-    left: auto;
-    right: -36px;
-}
-
-html[dir="rtl"] .principle-card {
-    text-align: right;
-}
-
-html[dir="rtl"] footer {
-    direction: rtl;
-}
-
-html[dir="rtl"] .section-label,
-html[dir="rtl"] .skill-category,
-html[dir="rtl"] .project-number,
-html[dir="rtl"] .timeline-date,
-html[dir="rtl"] .principle-num,
-html[dir="rtl"] .footer-text,
-html[dir="rtl"] .footer-links a,
-html[dir="rtl"] .tag {
-    font-family: "Vazirmatn", "IBM Plex Mono", monospace;
-}
-
-html[dir="rtl"] .hero-name {
-    letter-spacing: -0.02em;
-    line-height: 1.15;
-}
-
-html[dir="rtl"] .hero-role {
-    letter-spacing: -0.5em;
-}
-
-html[dir="rtl"] .btn-primary,
-html[dir="rtl"] .btn-outline,
-html[dir="rtl"] .contact-link {
-    font-family: "Vazirmatn", "Inter", sans-serif;
-    letter-spacing: 0;
-}
-
-html[dir="rtl"] .hero-label {
-    font-family: "Vazirmatn", "Inter", sans-serif;
-    letter-spacing: 0;
-    font-size: 1em;
 }
 
 .nav-mobile-toggle {
@@ -1149,7 +1169,7 @@ section {
     padding: 0 24px;
 }
 
-.approach-quote::before {
+/* .approach-quote::before {
     content: "";
     display: block;
     width: 36px;
@@ -1157,7 +1177,7 @@ section {
     background: rgba(0, 173, 181, 0.5);
     margin: 0 auto 28px;
     border-radius: 1px;
-}
+} */
 
 .principles-grid {
     display: grid;
@@ -1382,6 +1402,39 @@ footer {
 
 .footer-links a:hover {
     color: #00adb5;
+}
+
+#about .about-text,
+#experience .timeline,
+#approach .approach-quote,
+#approach .goals-text {
+    max-width: 680px;
+}
+
+#about .about-text,
+#approach .approach-quote,
+#approach .goals-text {
+    margin-left: 0;
+    margin-right: auto;
+    text-align: left;
+}
+
+#experience .timeline {
+    margin-left: 0;
+    margin-right: auto;
+}
+
+#approach .approach-quote {
+    padding: 0;
+}
+
+#approach .approach-quote::before {
+    margin: 0 0 28px 0;
+}
+
+#approach .section-label,
+#approach .section-heading {
+    text-align: left;
 }
 
 .reveal {

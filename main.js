@@ -186,7 +186,7 @@ function renderAbout() {
         .join("");
 
     aboutSection.innerHTML = `
-        <div class="section-max-narrow">
+        <div class="section-max">
             ${renderSectionHeader(about)}
             ${paragraphsHtml}
         </div>
@@ -360,7 +360,7 @@ function renderExperience() {
         .join("");
 
     experienceSection.innerHTML = `
-        <div class="section-max-narrow">
+        <div class="section-max">
             ${renderSectionHeader(experience)}
 
             <div class="timeline">
@@ -394,7 +394,7 @@ function renderApproach() {
         .join("");
 
     approachSection.innerHTML = `
-        <div class="section-max-narrow" style="text-align: center;">
+        <div class="section-max" style="text-align: center;">
             ${renderSectionHeader(approach)}
 
             <p class="approach-quote reveal delay-2">${approach.quote}</p>
