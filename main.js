@@ -85,14 +85,14 @@ function updateDocumentLanguage() {
 }
 
 function updateLanguageToggle() {
-    if (!elements.languageToggle) return;
+    const languageToggle = document.getElementById("languageToggle");
 
-    const isDari = currentLang === DARI_LANGUAGE;
+    if (!languageToggle) return;
 
-    elements.languageToggle.textContent = isDari ? "EN" : "دری";
-    elements.languageToggle.setAttribute(
+    languageToggle.textContent = currentLang === "fa" ? "EN" : "دری";
+    languageToggle.setAttribute(
         "aria-label",
-        isDari ? "Switch to English" : "تبدیل به دری",
+        currentLang === "fa" ? "Switch to English" : "تبدیل به دری",
     );
 }
 
@@ -141,20 +141,41 @@ function renderNavLinks(links = [], isMobile = false) {
 }
 
 function renderNavigation() {
-    const { nav } = getPortfolioData();
+    const nav = getPortfolioData().nav;
+    const navLogo = document.getElementById("navLogo");
+    const navLinks = document.getElementById("navLinks");
+    const mobileMenu = document.getElementById("mobileMenu");
 
     if (!nav) return;
 
-    if (elements.navLogo) {
-        elements.navLogo.innerHTML = `${nav.logo}<span>${nav.logoAccent || "."}</span>dev`;
+    if (navLogo) {
+        navLogo.innerHTML = `${nav.logo}<span>${nav.logoAccent || "."}</span>dev`;
     }
 
-    if (elements.navLinks) {
-        elements.navLinks.innerHTML = renderNavLinks(nav.links);
+    const links = (nav.links || []).filter((link) => link.label && link.url);
+
+    if (navLinks) {
+        navLinks.innerHTML = links
+            .map(
+                (link) => `
+                    <li>
+                        <a href="${link.url}">${link.label}</a>
+                    </li>
+                `,
+            )
+            .join("");
     }
 
-    if (elements.mobileMenu) {
-        elements.mobileMenu.innerHTML = renderNavLinks(nav.links, true);
+    if (mobileMenu) {
+        mobileMenu.innerHTML = links
+            .map(
+                (link) => `
+                    <a href="${link.url}">
+                        ${link.label}
+                    </a>
+                `,
+            )
+            .join("");
     }
 }
 
@@ -538,7 +559,10 @@ function renderPortfolio() {
     renderFooter();
 
     lucide.createIcons();
-    initReveals();
+
+    requestAnimationFrame(() => {
+        initReveals();
+    });
 }
 
 function showPage() {
@@ -676,15 +700,39 @@ function toggleMobileMenu() {
 }
 
 function initMobileMenu() {
-    if (!elements.mobileToggle || !elements.mobileMenu) return;
+    const mobileToggle = document.getElementById("mobileToggle");
+    const mobileMenu = document.getElementById("mobileMenu");
 
-    window.closeMobile = closeMobileMenu;
+    if (!mobileToggle || !mobileMenu) return;
 
-    elements.mobileToggle.addEventListener("click", toggleMobileMenu);
-    elements.mobileMenu.addEventListener("click", (event) => {
-        const link = event.target.closest("a[data-mobile-link]");
-        if (link) closeMobileMenu();
+    let menuOpen = false;
+
+    function setMobileMenuState(isOpen) {
+        menuOpen = isOpen;
+
+        mobileMenu.classList.toggle("active", menuOpen);
+        mobileToggle.classList.toggle("active", menuOpen);
+
+        mobileToggle.innerHTML = menuOpen ? renderLucideIcon("x") : renderLucideIcon("menu");
+
+        lucide.createIcons();
+    }
+
+    mobileToggle.addEventListener("click", () => {
+        setMobileMenuState(!menuOpen);
     });
+
+    mobileMenu.addEventListener("click", (event) => {
+        const clickedLink = event.target.closest("a");
+
+        if (clickedLink) {
+            setMobileMenuState(false);
+        }
+    });
+
+    window.closeMobile = function closeMobile() {
+        setMobileMenuState(false);
+    };
 }
 
 function initReveals() {
@@ -724,15 +772,16 @@ function initSmoothScroll() {
 }
 
 function initLanguageToggle() {
-    if (!elements.languageToggle) return;
+    const languageToggle = document.getElementById("languageToggle");
 
-    elements.languageToggle.addEventListener("click", () => {
-        currentLang = currentLang === DEFAULT_LANGUAGE ? DARI_LANGUAGE : DEFAULT_LANGUAGE;
-        saveLanguage(currentLang);
+    if (!languageToggle) return;
+
+    languageToggle.addEventListener("click", () => {
+        currentLang = currentLang === "en" ? "fa" : "en";
+        localStorage.setItem("portfolioLang", currentLang);
 
         updateDocumentLanguage();
         updateLanguageToggle();
-        closeMobileMenu();
         renderPortfolio();
     });
 }
