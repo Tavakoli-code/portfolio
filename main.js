@@ -217,7 +217,9 @@ function renderSkills() {
 
     const skillCardsHtml = (skills.items || [])
         .map((skill, index) => {
-            const bulletsHtml = (skill.bullets || []).map((bullet) => `<li>${bullet}</li>`).join("");
+            const bulletsHtml = (skill.bullets || [])
+                .map((bullet) => `<li>${bullet}</li>`)
+                .join("");
 
             return `
                 <div class="skill-card reveal ${getDelayClass(index)}">
@@ -274,7 +276,9 @@ function renderProjects() {
     const projectCardsHtml = sortedProjects
         .map((project, index) => {
             const number = String(index + 1).padStart(2, "0");
-            const tagsHtml = (project.tags || []).map((tag) => `<span class="tag">${tag}</span>`).join("");
+            const tagsHtml = (project.tags || [])
+                .map((tag) => `<span class="tag">${tag}</span>`)
+                .join("");
             const linksHtml = renderProjectLinks(project.links);
 
             return `

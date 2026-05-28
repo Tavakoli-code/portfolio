@@ -92,7 +92,7 @@ const portfolioData = {
                     order: 1,
                     links: {
                         github: {
-                            url: "https://github.com/your-username/project-name",
+                            url: "",
                             icon: "github",
                             label: "GitHub",
                         },
@@ -117,32 +117,7 @@ const portfolioData = {
                     order: 2,
                     links: {
                         github: {
-                            url: "",
-                            icon: "github",
-                            label: "GitHub",
-                        },
-                        gitlab: {
-                            url: "",
-                            icon: "gitlab",
-                            label: "GitLab",
-                        },
-                        demo: {
-                            url: "",
-                            icon: "external-link",
-                            label: "Live Demo",
-                        },
-                    },
-                },
-                {
-                    title: "Educational Management System",
-                    icon: "graduation-cap",
-                    description:
-                        "A system for managing students, teachers, courses, enrollments, salaries, costs, and reports. It helps educational centers organize daily and monthly information in a more structured and trackable way.",
-                    tags: ["Microsoft Access", "VBA", "Database Design"],
-                    order: 3,
-                    links: {
-                        github: {
-                            url: "",
+                            url: "https://github.com/Tavakoli-code/hefz-api",
                             icon: "github",
                             label: "GitHub",
                         },
@@ -167,32 +142,7 @@ const portfolioData = {
                     order: 4,
                     links: {
                         github: {
-                            url: "",
-                            icon: "github",
-                            label: "GitHub",
-                        },
-                        gitlab: {
-                            url: "",
-                            icon: "gitlab",
-                            label: "GitLab",
-                        },
-                        demo: {
-                            url: "",
-                            icon: "external-link",
-                            label: "Live Demo",
-                        },
-                    },
-                },
-                {
-                    title: "Student Management System",
-                    icon: "users",
-                    description:
-                        "A system for adding, viewing, updating, and deleting student information. This project focuses on the core operations of data management and shows my ability to build simple, useful, and practical systems.",
-                    tags: ["PHP", "MySQL", "JavaScript"],
-                    order: 5,
-                    links: {
-                        github: {
-                            url: "",
+                            url: "https://github.com/Tavakoli-code/simple-blog",
                             icon: "github",
                             label: "GitHub",
                         },
@@ -255,6 +205,14 @@ const portfolioData = {
                         "Working as a Backend Developer with the Shafaf Hub team on a payment system. My work focuses on building secure and production-ready backend features, including API standards, authentication and authorization, role-based access, multi-tenancy, KYC workflows, notifications, file handling, background jobs, provider integrations, and customer payment-related services.",
                 },
                 {
+                    title: "Full-Stack Web Development Training",
+                    subtitle: "Udemy — The Complete Full-Stack Web Development Bootcamp",
+                    date: "Ongoing",
+                    sortDate: "2025-05-01",
+                    description:
+                        "Currently completing full-stack web development training covering HTML, CSS, JavaScript, Node.js, Express.js, PostgreSQL, authentication, React, Git/GitHub, deployment, and Web3 fundamentals through hands-on projects.",
+                },
+                {
                     title: "Computer Teacher",
                     subtitle: "Shams Private High School",
                     date: "2025/03 — 2025/12",
@@ -266,7 +224,7 @@ const portfolioData = {
                     title: "Full-Stack Developer",
                     subtitle: "Independent and Practice Projects",
                     date: "2023 — 2025",
-                    sortDate: "2023-01-01",
+                    sortDate: "2025-04-01",
                     description:
                         "Worked on projects such as learning systems, blog applications, and student management tools. These projects helped me understand how to turn user needs into practical technical solutions.",
                 },
@@ -351,31 +309,31 @@ const portfolioData = {
             links: [
                 {
                     label: "Email",
-                    url: "mailto:hello@sajadtavakoli.com",
+                    url: "mailto:sajadalitavakoli@gmail.com",
                     icon: "mail",
                     type: "email",
                 },
                 {
                     label: "GitHub",
-                    url: "https://github.com",
+                    url: "https://github.com/tavakoli-code",
                     icon: "github",
                     type: "external",
                 },
                 {
                     label: "GitLab",
-                    url: "https://gitlab.com",
+                    url: "http://213.210.20.49:9050/Tavakoli",
                     icon: "gitlab",
                     type: "external",
                 },
                 {
                     label: "LinkedIn",
-                    url: "https://linkedin.com",
+                    url: "https://www.linkedin.com/in/sajad-ali-tavakoli-8718ba3bb",
                     icon: "linkedin",
                     type: "external",
                 },
                 {
                     label: "Resume",
-                    url: "#",
+                    url: "./assets/files/resume.pdf",
                     icon: "file-text",
                     type: "external",
                 },
@@ -394,17 +352,17 @@ const portfolioData = {
                 },
                 {
                     label: "GitHub",
-                    url: "https://github.com",
+                    url: "https://github.com/tavakoli-code",
                     type: "external",
                 },
                 {
                     label: "GitLab",
-                    url: "https://gitlab.com",
+                    url: "http://213.210.20.49:9050/Tavakoli",
                     type: "external",
                 },
                 {
                     label: "LinkedIn",
-                    url: "https://linkedin.com",
+                    url: "https://www.linkedin.com/in/sajad-ali-tavakoli-8718ba3bb",
                     type: "external",
                 },
             ],
@@ -690,6 +648,14 @@ const portfolioData = {
                     description:
                         "در این دوره مفاهیم اصلی کمپیوتر ساینس، مهندسی نرم‌افزار، دیتابیس، الگوریتم‌ها و برنامه‌نویسی را یاد گرفتم و پایه فنی خود را برای کار حرفه‌ای تقویت کردم.",
                 },
+                {
+                    title: "آموزش توسعه وب فول‌استک",
+                    subtitle: "Udemy — The Complete Full-Stack Web Development Bootcamp",
+                    date: "در حال گذراندن",
+                    sortDate: "2024-01-01",
+                    description:
+                        "در حال گزراندن دوره آموزش عملی توسعه وب فول‌استک هستم که شامل HTML، CSS، JavaScript، Node.js، Express.js، PostgreSQL، احراز هویت، React، Git/GitHub، دیپلویمنت و مبانی Web3 از طریق پروژه‌های عملی می‌باشد.",
+                },
             ],
         },
 
@@ -763,31 +729,31 @@ const portfolioData = {
             links: [
                 {
                     label: "ایمیل",
-                    url: "mailto:hello@sajadtavakoli.com",
+                    url: "mailto:sajadalitavakoli.com",
                     icon: "mail",
                     type: "email",
                 },
                 {
                     label: "GitHub",
-                    url: "https://github.com",
+                    url: "https://github.com/tavakoli-code",
                     icon: "github",
                     type: "external",
                 },
                 {
                     label: "GitLab",
-                    url: "https://gitlab.com",
+                    url: "http://213.210.20.49:9050/Tavakoli",
                     icon: "gitlab",
                     type: "external",
                 },
                 {
                     label: "LinkedIn",
-                    url: "https://linkedin.com",
+                    url: "https://www.linkedin.com/in/sajad-ali-tavakoli-8718ba3bb",
                     icon: "linkedin",
                     type: "external",
                 },
                 {
                     label: "رزومه",
-                    url: "#",
+                    url: "./assets/files/resume.pdf",
                     icon: "file-text",
                     type: "external",
                 },
@@ -806,17 +772,17 @@ const portfolioData = {
                 },
                 {
                     label: "GitHub",
-                    url: "https://github.com",
+                    url: "https://github.com/tavakoli-code",
                     type: "external",
                 },
                 {
                     label: "GitLab",
-                    url: "https://gitlab.com",
+                    url: "http://213.210.20.49:9050/Tavakoli",
                     type: "external",
                 },
                 {
                     label: "LinkedIn",
-                    url: "https://linkedin.com",
+                    url: "https://www.linkedin.com/in/sajad-ali-tavakoli-8718ba3bb",
                     type: "external",
                 },
             ],
