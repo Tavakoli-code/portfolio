@@ -69,11 +69,19 @@ function getPortfolioData() {
 }
 
 function updateDocumentLanguage() {
-    const isDari = currentLang === DARI_LANGUAGE;
+    const htmlElement = document.documentElement;
+    const bodyElement = document.body;
 
-    elements.html.lang = isDari ? DARI_LANGUAGE : DEFAULT_LANGUAGE;
-    elements.html.dir = isDari ? "rtl" : "ltr";
-    elements.body.classList.toggle("rtl", isDari);
+    if (!htmlElement) return;
+
+    const isDari = currentLang === "fa";
+
+    htmlElement.setAttribute("lang", isDari ? "fa" : "en");
+    htmlElement.setAttribute("dir", isDari ? "rtl" : "ltr");
+
+    if (bodyElement) {
+        bodyElement.classList.toggle("rtl", isDari);
+    }
 }
 
 function updateLanguageToggle() {
