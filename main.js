@@ -96,6 +96,31 @@ function updateLanguageToggle() {
     );
 }
 
+function updateThemeToggle() {
+    const toggle = document.getElementById("themeToggle");
+    const isLight = document.documentElement.dataset.theme === "light";
+    const label = currentLang === "fa"
+        ? (isLight ? "تبدیل به حالت تاریک" : "تبدیل به حالت روشن")
+        : (isLight ? "Switch to dark mode" : "Switch to light mode");
+
+    toggle.setAttribute("aria-label", label);
+    toggle.title = label;
+}
+
+function initThemeToggle() {
+    updateThemeToggle();
+    document.getElementById("themeToggle").addEventListener("click", () => {
+        const theme = document.documentElement.dataset.theme === "light" ? "dark" : "light";
+        document.documentElement.dataset.theme = theme;
+        try {
+            localStorage.setItem("portfolioTheme", theme);
+        } catch {
+            // Switching themes still works when storage is unavailable.
+        }
+        updateThemeToggle();
+    });
+}
+
 function getDelayClass(index, start = 2) {
     return `delay-${Math.min(index + start, 6)}`;
 }
@@ -782,11 +807,13 @@ function initLanguageToggle() {
 
         updateDocumentLanguage();
         updateLanguageToggle();
+        updateThemeToggle();
         renderPortfolio();
     });
 }
 
 function initPortfolio() {
+    initThemeToggle();
     updateDocumentLanguage();
     updateLanguageToggle();
 
